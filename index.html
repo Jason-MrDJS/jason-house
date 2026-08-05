@@ -210,7 +210,8 @@ h1,h2,h3,h4{font-family:var(--f-head);font-weight:var(--fw-head);line-height:var
 /* ═══ 关于 ═══ */
 .about-grid{display:grid;grid-template-columns:.8fr 1.4fr;gap:28px;margin-top:30px;align-items:start}
 .about-card{background:var(--purple-t);border:var(--bd);box-shadow:var(--shadow);padding:22px;position:sticky;top:90px}
-.about-avatar{border:var(--bd);box-shadow:var(--shadow-sm);background:var(--paper);aspect-ratio:1;display:grid;place-items:center;margin-bottom:12px;background-image:var(--noise)}
+.about-avatar{border:var(--bd);box-shadow:var(--shadow-sm);background:var(--paper);aspect-ratio:1;display:grid;place-items:center;margin-bottom:12px;background-image:var(--noise);overflow:hidden}
+.about-avatar img{width:100%;height:100%;object-fit:cover}
 .about-avatar svg{width:70%;height:auto}
 .about-card h3{font-size:24px}
 .about-card .role{font-family:var(--f-mono);font-size:12px;opacity:.7;margin:2px 0 12px}
@@ -471,12 +472,8 @@ body.player-on{padding-bottom:84px}
     <h2 class="sec-title reveal">屋主是个<mark>声音制造者</mark></h2>
     <div class="about-grid">
       <aside class="about-card reveal">
-        <div class="about-avatar" aria-hidden="true">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="38" r="20" fill="#FF1493" stroke="#0A0A0A" stroke-width="3"/>
-            <path d="M22 88c0-18 12-28 28-28s28 10 28 28" fill="#00BFFF" stroke="#0A0A0A" stroke-width="3"/>
-            <circle cx="43" cy="36" r="3" fill="#0A0A0A"/><circle cx="57" cy="36" r="3" fill="#0A0A0A"/>
-          </svg>
+        <div class="about-avatar">
+          <img src="avatar.jpg" alt="邓家森" loading="lazy" decoding="async" />
         </div>
         <h3>邓家森</h3>
         <p class="role">Sound Designer · Mix Engineer</p>
@@ -596,17 +593,17 @@ var $$ = function(s){return Array.prototype.slice.call(document.querySelectorAll
 
 /* 作品数据（沿用原作品集） */
 var WORKS = [
- {id:1,cat:"分轨混音",title:"就是不想睡觉",singer:"胡海泉",src:"2025声音设计与作品创新技能大赛立体声组复赛",audio:"audio/01.mp3"},
- {id:2,cat:"分轨混音",title:"爱河",singer:"胡海泉",src:"2025声音设计与作品创新技能大赛立体声组初赛",audio:"audio/02.mp3"},
- {id:3,cat:"分轨混音",title:"马兰花",singer:"腾格尔",src:"2024声音设计与作品创新技能大赛立体声组复赛",audio:"audio/03.mp3"},
- {id:4,cat:"分轨混音",title:"从小到大",singer:"裘海正",src:"第二屆台灣杜比全景聲混音大賽",audio:"audio/04.mp3"},
- {id:5,cat:"分轨混音",title:"天河弈",singer:"虚拟歌手",src:"SMP月度混音训练营6月素",audio:"audio/05.mp3"},
- {id:6,cat:"分轨混音",title:"假如我先幸福了",singer:"满文军",src:"第七届全国校园混音大赛",audio:"audio/06.mp3"},
- {id:7,cat:"分轨混音",title:"你不在北京",singer:"曹轩宾",src:"第六届全国校园混音大赛",audio:"audio/07.mp3"},
- {id:8,cat:"分轨混音",title:"我会",singer:"陈戈平",src:"2024年造音星球11月份月度混音训练",audio:"audio/08.mp3"},
- {id:9,cat:"分轨混音",title:"长河",singer:"李宸希",src:"2024声音设计与作品创新技能大赛立体声组初赛",audio:"audio/09.mp3"},
- {id:10,cat:"分轨混音",title:"没有的光",singer:"李宸希",src:"书籍《混音思维》",audio:"audio/10.mp3"},
- {id:11,cat:"分轨混音",title:"人生首席",singer:"王凯",src:"2024声音设计与作品创新技能大赛三维声组初赛",audio:"audio/11.mp3"},
+ {id:1,cat:"分轨混音",title:"就是不想睡觉",singer:"胡海泉",src:"2025声音设计与作品创新技能大赛立体声组复赛",audio:"audio/01.mp3",cover:"covers/01.png"},
+ {id:2,cat:"分轨混音",title:"爱河",singer:"胡海泉",src:"2025声音设计与作品创新技能大赛立体声组初赛",audio:"audio/02.mp3",cover:"covers/02.png"},
+ {id:3,cat:"分轨混音",title:"马兰花",singer:"腾格尔",src:"2024声音设计与作品创新技能大赛立体声组复赛",audio:"audio/03.mp3",cover:"covers/03.png"},
+ {id:4,cat:"分轨混音",title:"从小到大",singer:"裘海正",src:"第二屆台灣杜比全景聲混音大賽",audio:"audio/04.mp3",cover:"covers/04.png"},
+ {id:5,cat:"分轨混音",title:"天河弈",singer:"虚拟歌手",src:"SMP月度混音训练营6月素",audio:"audio/05.mp3",cover:"covers/05.png"},
+ {id:6,cat:"分轨混音",title:"假如我先幸福了",singer:"满文军",src:"第七届全国校园混音大赛",audio:"audio/06.mp3",cover:"covers/06.png"},
+ {id:7,cat:"分轨混音",title:"你不在北京",singer:"曹轩宾",src:"第六届全国校园混音大赛",audio:"audio/07.mp3",cover:"covers/07.png"},
+ {id:8,cat:"分轨混音",title:"我会",singer:"陈戈平",src:"2024年造音星球11月份月度混音训练",audio:"audio/08.mp3",cover:"covers/08.png"},
+ {id:9,cat:"分轨混音",title:"长河",singer:"李宸希",src:"2024声音设计与作品创新技能大赛立体声组初赛",audio:"audio/09.mp3",cover:"covers/09.png"},
+ {id:10,cat:"分轨混音",title:"没有的光",singer:"李宸希",src:"书籍《混音思维》",audio:"audio/10.mp3",cover:"covers/10.png"},
+ {id:11,cat:"分轨混音",title:"人生首席",singer:"王凯",src:"2024声音设计与作品创新技能大赛三维声组初赛",audio:"audio/11.mp3",cover:"covers/11.png"},
  {id:12,cat:"分轨混音",title:"我的左右手",singer:"",src:"",audio:"audio/12.mp3"},
  {id:13,cat:"分轨混音",title:"是我",singer:"",src:"",audio:"audio/13.mp3"},
  {id:14,cat:"分轨混音",title:"末班飞行",singer:"",src:"",audio:"audio/14.mp3"},
@@ -682,10 +679,11 @@ function renderWorks(){
   list.forEach(function(w,i){
     var ini = (w.title || "♪").trim().charAt(0);
     var tint = TINTS[w.id % TINTS.length];
+    var cover = w.cover ? '<img src="' + esc(w.cover) + '" alt="" loading="lazy" decoding="async" />' : '<span class="work-ini" aria-hidden="true">' + esc(ini) + '</span>';
     html += '<article class="work' + spanClass(i) + '" data-id="' + w.id + '" tabindex="0" role="button" aria-label="作品 ' + esc(w.title) + (w.singer ? " · " + esc(w.singer) : "") + '">'
       +   '<div class="work-cover" style="background:' + tint + '">'
       +     '<span class="work-id">' + (w.id < 10 ? "0" + w.id : w.id) + '</span>'
-      +     '<span class="work-ini" aria-hidden="true">' + esc(ini) + '</span>'
+      +     cover
       +     '<span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>'
       +   '</div>'
       +   '<div class="work-meta">'
