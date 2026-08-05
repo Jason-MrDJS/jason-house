@@ -119,7 +119,8 @@ h1,h2,h3,h4{font-family:var(--f-head);font-weight:var(--fw-head);line-height:var
 .hero-card-top{display:flex;align-items:center;gap:6px;padding:9px 13px;background:var(--ink)}
 .hero-card-top span{width:12px;height:12px;border:2px solid #fff}
 .hero-card-top b{margin-left:auto;color:#fff;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em}
-.hero-illo{background:var(--pink-t);border-bottom:var(--bd);background-image:var(--noise);aspect-ratio:16/10;display:grid;place-items:center}
+.hero-illo{background:var(--pink-t);border-bottom:var(--bd);background-image:var(--noise);aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden}
+.hero-illo img{width:100%;height:100%;object-fit:cover}
 .hero-illo svg{width:78%;height:auto}
 .hero-card-body{padding:16px}
 .hero-card-body h3{font-size:22px}
@@ -353,15 +354,7 @@ body.player-on{padding-bottom:84px}
         <b>NOW MIXING</b>
       </div>
       <div class="hero-illo" aria-hidden="true">
-        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="60" cy="60" r="34" fill="#FF1493" stroke="#0A0A0A" stroke-width="3"/>
-          <circle cx="120" cy="50" r="26" fill="#00BFFF" stroke="#0A0A0A" stroke-width="3"/>
-          <circle cx="95" cy="100" r="30" fill="#B4E61E" stroke="#0A0A0A" stroke-width="3"/>
-          <circle cx="150" cy="105" r="18" fill="#FFE135" stroke="#0A0A0A" stroke-width="3"/>
-          <path d="M55 60h10M45 55v10M115 50h10M150 100v0" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="60" cy="60" r="4" fill="#0A0A0A"/>
-          <circle cx="120" cy="50" r="3.5" fill="#0A0A0A"/>
-        </svg>
+        <img src="avatar.jpg" alt="邓家森" loading="eager" decoding="async" />
       </div>
       <div class="hero-card-body">
         <h3>邓家森</h3>
