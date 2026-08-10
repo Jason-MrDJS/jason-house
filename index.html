@@ -243,7 +243,7 @@ h1,h2,h3,h4{font-family:var(--f-head);font-weight:var(--fw-head);line-height:var
 .cta{background:var(--yellow);border-top:var(--bd);border-bottom:var(--bd);margin-top:30px;background-image:var(--stripe)}
 .cta-in{background:var(--yellow);border:var(--bd);box-shadow:var(--shadow);margin:60px 0;padding:40px;text-align:center}
 .cta-in h2{font-size:var(--fs-section);font-weight:var(--fw-head);letter-spacing:var(--ls-head);line-height:1.08}
-.cta-in p{margin:14px auto 24px;max-width:50ch;font-size:16px}
+.cta-lead{margin:0 auto 28px;max-width:40ch;font-size:clamp(22px,3.2vw,34px);font-weight:var(--fw-head);line-height:1.35;letter-spacing:var(--ls-head);text-align:center}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
 /* ═══ 黑底 Footer ═══ */
@@ -545,8 +545,7 @@ body.player-on{padding-bottom:84px}
 <section class="cta" id="contact">
   <div class="wrap">
     <div class="cta-in reveal">
-      <h2>来拆一颗糖？</h2>
-      <p>声音合作、混音委托、虚拟音源定制或只是聊聊都欢迎。邮件与微信都能找到我。</p>
+      <p class="cta-lead">声音合作、混音委托、虚拟音源定制或只是聊聊都欢迎。<br>邮件与微信都能找到我。</p>
       <div class="cta-btns">
         <a class="btn btn--pink" href="mailto:1823086554@qq.com">✉ 发邮件</a>
         <a class="btn btn--sky" href="#top">↑ 回到顶部</a>
