@@ -325,12 +325,16 @@ mark{background:none;color:var(--gold)}
 .bar{height:6px;background:#1c1c22;border-radius:99px;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--grad);width:0;transition:width 1.1s var(--ease)}
 .resume{margin-top:8px}
-.res-row{display:grid;grid-template-columns:150px 1fr;gap:22px;padding:20px 0;border-top:1px solid var(--line)}
+/* 简历条目：居中对称，不再左对齐两栏 */
+.res-row{display:block;text-align:center;padding:30px 20px;border-top:1px solid var(--line)}
 .res-row:last-child{border-bottom:1px solid var(--line)}
-.res-row .yr{font-family:var(--f-m);font-size:12px;color:var(--gold);letter-spacing:.05em;line-height:1.7}
-.res-row h4{font-size:18px;margin-bottom:5px}
+.res-row .yr{
+  display:inline-block;font-size:12px;color:var(--gold);letter-spacing:.06em;line-height:1.7;
+  border:1px solid var(--line-2);border-radius:999px;padding:5px 18px;margin-bottom:14px;background:var(--bg-2);
+}
+.res-row h4{font-size:18px;margin-bottom:6px}
 .res-row .org{font-size:13.5px;color:var(--dim);margin-bottom:7px;font-family:var(--f-m);letter-spacing:.03em;line-height:1.6}
-.res-row p{font-size:15px;line-height:1.8;color:var(--dim)}
+.res-row p{font-size:15px;line-height:1.8;color:var(--dim);max-width:70ch;margin-inline:auto}
 .res-row ul{margin:8px 0 0 18px;display:grid;gap:6px;font-size:14.5px;line-height:1.7;color:var(--dim)}
 .tl-tabs{display:flex;gap:9px;margin:26px 0 6px;flex-wrap:wrap}
 .tl-tabs button{padding:9px 17px;border:1px solid var(--line-2);border-radius:99px;font-size:13.5px;color:var(--dim)}
@@ -425,7 +429,7 @@ mark{background:none;color:var(--gold)}
 /* ── 响应式 ── */
 @media (max-width:1000px){
   .hero-in,.tool,.player-w,.two,.steps,.creds,.about-grid,.agent-g{grid-template-columns:1fr}
-  .res-row{grid-template-columns:1fr;gap:6px}
+  .res-row{padding:24px 14px}
   .pain,.svc{grid-template-columns:1fr 1fr}
   .pri{grid-template-columns:1fr 1fr}
   .stats{grid-template-columns:1fr 1fr}
@@ -778,12 +782,12 @@ mark{background:none;color:var(--gold)}
 <section class="fin" id="cta">
   <span class="blob b2" style="top:10%;right:-10%"></span>
   <div class="wrap" style="position:relative;z-index:2">
-    <div class="kicker rv" style="justify-content:center">Let's Work Together</div>
-    <h2 class="rv">想聊聊合作，<br><span class="gold">或者只是想认识一下？</span></h2>
-    <p class="lead rv">发我一份分轨，48 小时内你会收到 30 秒试混片段。听完再决定要不要继续——这是零风险的。也欢迎直接下载这份简历。</p>
+    <div class="kicker rv" style="justify-content:center">Let's Connect</div>
+    <h2 class="rv">想认识我，<br><span class="gold">或者聊聊声音？</span></h2>
+    <p class="lead rv">邮件与微信都能找到我。想先了解我的水平，听听作品、翻翻经历，或者直接带走这份简历。</p>
     <div class="fin-cta rv">
-      <a class="btn btn--main" href="mailto:1823086554@qq.com?subject=%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2">✉ 发分轨给我</a>
-      <a class="btn btn--gold" href="#work">▶ 先听作品</a>
+      <a class="btn btn--main" href="mailto:1823086554@qq.com">✉ 发邮件</a>
+      <a class="btn btn--gold" href="#work">▶ 听作品</a>
       <button class="btn btn--ghost" id="dl2" type="button">↓ 下载简历 PDF</button>
     </div>
     <div class="contact-row rv">
@@ -791,7 +795,6 @@ mark{background:none;color:var(--gold)}
       <a>微信 qwe886501</a>
       <a>广西南宁 · 广西艺术学院</a>
     </div>
-    <div class="scar rv"><i></i>本月混音名额还剩 3 个 · 排期按定金到账顺序</div>
   </div>
 </section>
 
