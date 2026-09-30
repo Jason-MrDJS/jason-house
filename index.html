@@ -6,13 +6,7 @@
 <meta name="description" content="邓家森 声音设计与混音作品集。分轨混音 · 贴唱混音 · 虚拟音源研发 · 现场扩声 · 音乐会录音。" />
 <meta name="theme-color" content="#0A0A0A" />
 <title>邓家森 声音设计作品集</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+<!-- 字体全部走本地字体栈：不请求 fonts.googleapis.com，国内直连也不会阻塞首屏 -->
 <style>
 :root{
   --bg:#F5F5F0;
@@ -29,10 +23,10 @@
   --shadow:5px 5px 0 var(--ink);
   --shadow-lg:8px 8px 0 var(--ink);
   --shadow-sm:3px 3px 0 var(--ink);
-  --f-display:"Space Grotesk","HarmonyOS Sans","Source Han Sans SC","思源黑体","Alibaba PuHuiTi","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
-  --f-head:"Space Grotesk","HarmonyOS Sans","Source Han Sans SC","思源黑体","Alibaba PuHuiTi","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
-  --f-body:"Inter","HarmonyOS Sans","Source Han Sans SC","思源黑体","Alibaba PuHuiTi","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --f-display:"Space Grotesk","PingFang SC","HarmonyOS Sans","Source Han Sans SC","Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-head:"Space Grotesk","PingFang SC","HarmonyOS Sans","Source Han Sans SC","Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-body:"Inter","PingFang SC","HarmonyOS Sans","Source Han Sans SC","Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
   /* ── Typography System ── */
   --fs-hero:clamp(48px,8vw,96px);
   --fs-section:clamp(36px,5vw,56px);
@@ -283,6 +277,8 @@ body.player-on{padding-bottom:84px}
 /* ═══ 滚动揭示 ═══ */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
 .reveal.in{opacity:1;transform:none}
+/* 分类切换用：内容已静态渲染，tab 只是显隐，不重新生成 DOM */
+.is-hidden{display:none !important}
 
 /* ═══ 响应式 ═══ */
 @media (max-width:900px){
@@ -315,6 +311,12 @@ body.player-on{padding-bottom:84px}
   .reveal{opacity:1;transform:none}
 }
 </style>
+<!-- 无 JS 时不做分类过滤，把 25 首作品 / 9 个 Agent / 8 条经历全部显示出来 -->
+<noscript><style>
+  .work.is-hidden,.agent.is-hidden{display:flex !important}
+  .tl-item.is-hidden{display:block !important}
+  .reveal{opacity:1;transform:none}
+</style></noscript>
 </head>
 <body>
 <a class="skip" href="#main">跳到主要内容</a>
@@ -456,7 +458,302 @@ body.player-on{padding-bottom:84px}
       <button class="tab" id="tab-stem" role="tab" aria-selected="true" aria-controls="bento" data-cat="分轨混音" type="button">分轨混音 <span class="n">14</span></button>
       <button class="tab" id="tab-vocal" role="tab" aria-selected="false" aria-controls="bento" data-cat="贴唱混音" type="button">贴唱混音 <span class="n">11</span></button>
     </div>
-    <div class="bento" id="bento" role="tabpanel" aria-labelledby="tab-stem"></div>
+    <div class="bento" id="bento" role="tabpanel" aria-labelledby="tab-stem">
+      <article class="work reveal" data-id="1" data-cat="分轨混音" data-title="就是不想睡觉" data-singer="胡海泉" data-src="2025声音设计与作品创新技能大赛立体声组复赛" data-audio="audio/01.mp3" data-cover="covers/01.png" tabindex="0" role="button" aria-label="作品 就是不想睡觉 · 胡海泉">
+        <div class="work-cover" style="background:var(--sky-t)">
+          <span class="work-id">01</span>
+          <img src="covers/01.png" alt="" loading="lazy" decoding="async" />
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>就是不想睡觉</h3>
+          <p class="work-singer">胡海泉</p>
+          <p class="work-src">2025声音设计与作品创新技能大赛立体声组复赛</p>
+        </div>
+      </article>
+      <article class="work reveal" data-id="2" data-cat="分轨混音" data-title="爱河" data-singer="胡海泉" data-src="2025声音设计与作品创新技能大赛立体声组初赛" data-audio="audio/02.mp3" data-cover="covers/02.png" tabindex="0" role="button" aria-label="作品 爱河 · 胡海泉">
+        <div class="work-cover" style="background:var(--lime-t)">
+          <span class="work-id">02</span>
+          <img src="covers/02.png" alt="" loading="lazy" decoding="async" />
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>爱河</h3>
+          <p class="work-singer">胡海泉</p>
+          <p class="work-src">2025声音设计与作品创新技能大赛立体声组初赛</p>
+        </div>
+      </article>
+      <article class="work reveal" data-id="3" data-cat="分轨混音" data-title="马兰花" data-singer="腾格尔" data-src="2024声音设计与作品创新技能大赛立体声组复赛" data-audio="audio/03.mp3" data-cover="covers/03.png" tabindex="0" role="button" aria-label="作品 马兰花 · 腾格尔">
+        <div class="work-cover" style="background:var(--orange-t)">
+          <span class="work-id">03</span>
+          <img src="covers/03.png" alt="" loading="lazy" decoding="async" />
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>马兰花</h3>
+          <p class="work-singer">腾格尔</p>
+          <p class="work-src">2024声音设计与作品创新技能大赛立体声组复赛</p>
+        </div>
+      </article>
+      <article class="work reveal" data-id="4" data-cat="分轨混音" data-title="从小到大" data-singer="裘海正" data-src="第二屆台灣杜比全景聲混音大賽" data-audio="audio/04.mp3" data-cover="covers/04.png" tabindex="0" role="button" aria-label="作品 从小到大 · 裘海正">
+        <div class="work-cover" style="background:var(--purple-t)">
+          <span class="work-id">04</span>
+          <img src="covers/04.png" alt="" loading="lazy" decoding="async" />
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>从小到大</h3>
+          <p class="work-singer">裘海正</p>
+          <p class="work-src">第二屆台灣杜比全景聲混音大賽</p>
+        </div>
+      </article>
+      <article class="work reveal" data-id="5" data-cat="分轨混音" data-title="天河弈" data-singer="虚拟歌手" data-src="SMP月度混音训练营6月素" data-audio="audio/05.mp3" data-cover="covers/05.png" tabindex="0" role="button" aria-label="作品 天河弈 · 虚拟歌手">
+        <div class="work-cover" style="background:var(--yellow-t)">
+          <span class="work-id">05</span>
+          <img src="covers/05.png" alt="" loading="lazy" decoding="async" />
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>天河弈</h3>
+          <p class="work-singer">虚拟歌手</p>
+          <p class="work-src">SMP月度混音训练营6月素</p>
+        </div>
+      </article>
+      <article class="work reveal" data-id="6" data-cat="分轨混音" data-title="假如我先幸福了" data-singer="满文军" data-src="第七届全国校园混音大赛" data-audio="audio/06.mp3" data-cover="covers/06.png" tabindex="0" role="button" aria-label="作品 假如我先幸福了 · 满文军">
+        <div class="work-cover" style="background:var(--pink-t)">
+          <span class="work-id">06</span>
+          <img src="covers/06.png" alt="" loading="lazy" decoding="async" />
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>假如我先幸福了</h3>
+          <p class="work-singer">满文军</p>
+          <p class="work-src">第七届全国校园混音大赛</p>
+        </div>
+      </article>
+      <article class="work reveal" data-id="7" data-cat="分轨混音" data-title="你不在北京" data-singer="曹轩宾" data-src="第六届全国校园混音大赛" data-audio="audio/07.mp3" data-cover="covers/07.png" tabindex="0" role="button" aria-label="作品 你不在北京 · 曹轩宾">
+        <div class="work-cover" style="background:var(--sky-t)">
+          <span class="work-id">07</span>
+          <img src="covers/07.png" alt="" loading="lazy" decoding="async" />
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>你不在北京</h3>
+          <p class="work-singer">曹轩宾</p>
+          <p class="work-src">第六届全国校园混音大赛</p>
+        </div>
+      </article>
+      <article class="work reveal" data-id="8" data-cat="分轨混音" data-title="我会" data-singer="陈戈平" data-src="2024年造音星球11月份月度混音训练" data-audio="audio/08.mp3" data-cover="covers/08.png" tabindex="0" role="button" aria-label="作品 我会 · 陈戈平">
+        <div class="work-cover" style="background:var(--lime-t)">
+          <span class="work-id">08</span>
+          <img src="covers/08.png" alt="" loading="lazy" decoding="async" />
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>我会</h3>
+          <p class="work-singer">陈戈平</p>
+          <p class="work-src">2024年造音星球11月份月度混音训练</p>
+        </div>
+      </article>
+      <article class="work reveal" data-id="9" data-cat="分轨混音" data-title="长河" data-singer="李宸希" data-src="2024声音设计与作品创新技能大赛立体声组初赛" data-audio="audio/09.mp3" data-cover="covers/09.png" tabindex="0" role="button" aria-label="作品 长河 · 李宸希">
+        <div class="work-cover" style="background:var(--orange-t)">
+          <span class="work-id">09</span>
+          <img src="covers/09.png" alt="" loading="lazy" decoding="async" />
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>长河</h3>
+          <p class="work-singer">李宸希</p>
+          <p class="work-src">2024声音设计与作品创新技能大赛立体声组初赛</p>
+        </div>
+      </article>
+      <article class="work reveal" data-id="10" data-cat="分轨混音" data-title="没有的光" data-singer="李宸希" data-src="书籍《混音思维》" data-audio="audio/10.mp3" data-cover="covers/10.png" tabindex="0" role="button" aria-label="作品 没有的光 · 李宸希">
+        <div class="work-cover" style="background:var(--purple-t)">
+          <span class="work-id">10</span>
+          <img src="covers/10.png" alt="" loading="lazy" decoding="async" />
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>没有的光</h3>
+          <p class="work-singer">李宸希</p>
+          <p class="work-src">书籍《混音思维》</p>
+        </div>
+      </article>
+      <article class="work reveal" data-id="11" data-cat="分轨混音" data-title="人生首席" data-singer="王凯" data-src="2024声音设计与作品创新技能大赛三维声组初赛" data-audio="audio/11.mp3" data-cover="covers/11.png" tabindex="0" role="button" aria-label="作品 人生首席 · 王凯">
+        <div class="work-cover" style="background:var(--yellow-t)">
+          <span class="work-id">11</span>
+          <img src="covers/11.png" alt="" loading="lazy" decoding="async" />
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>人生首席</h3>
+          <p class="work-singer">王凯</p>
+          <p class="work-src">2024声音设计与作品创新技能大赛三维声组初赛</p>
+        </div>
+      </article>
+      <article class="work reveal" data-id="12" data-cat="分轨混音" data-title="我的左右手" data-singer="" data-src="" data-audio="audio/12.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 我的左右手">
+        <div class="work-cover" style="background:var(--pink-t)">
+          <span class="work-id">12</span>
+          <span class="work-ini" aria-hidden="true">我</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>我的左右手</h3>
+        </div>
+      </article>
+      <article class="work reveal" data-id="13" data-cat="分轨混音" data-title="是我" data-singer="" data-src="" data-audio="audio/13.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 是我">
+        <div class="work-cover" style="background:var(--sky-t)">
+          <span class="work-id">13</span>
+          <span class="work-ini" aria-hidden="true">是</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>是我</h3>
+        </div>
+      </article>
+      <article class="work reveal" data-id="14" data-cat="分轨混音" data-title="末班飞行" data-singer="" data-src="" data-audio="audio/14.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 末班飞行">
+        <div class="work-cover" style="background:var(--lime-t)">
+          <span class="work-id">14</span>
+          <span class="work-ini" aria-hidden="true">末</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>末班飞行</h3>
+        </div>
+      </article>
+      <article class="work reveal is-hidden" data-id="15" data-cat="贴唱混音" data-title="在夜里跳舞" data-singer="翻唱者" data-src="贴唱调试单子" data-audio="audio/15.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 在夜里跳舞 · 翻唱者">
+        <div class="work-cover" style="background:var(--orange-t)">
+          <span class="work-id">15</span>
+          <span class="work-ini" aria-hidden="true">在</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>在夜里跳舞</h3>
+          <p class="work-singer">翻唱者</p>
+          <p class="work-src">贴唱调试单子</p>
+        </div>
+      </article>
+      <article class="work reveal is-hidden" data-id="16" data-cat="贴唱混音" data-title="珠玉" data-singer="翻唱者" data-src="贴唱调试单子" data-audio="audio/16.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 珠玉 · 翻唱者">
+        <div class="work-cover" style="background:var(--purple-t)">
+          <span class="work-id">16</span>
+          <span class="work-ini" aria-hidden="true">珠</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>珠玉</h3>
+          <p class="work-singer">翻唱者</p>
+          <p class="work-src">贴唱调试单子</p>
+        </div>
+      </article>
+      <article class="work reveal is-hidden" data-id="17" data-cat="贴唱混音" data-title="孤勇者" data-singer="翻唱者" data-src="贴唱调试单子" data-audio="audio/17.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 孤勇者 · 翻唱者">
+        <div class="work-cover" style="background:var(--yellow-t)">
+          <span class="work-id">17</span>
+          <span class="work-ini" aria-hidden="true">孤</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>孤勇者</h3>
+          <p class="work-singer">翻唱者</p>
+          <p class="work-src">贴唱调试单子</p>
+        </div>
+      </article>
+      <article class="work reveal is-hidden" data-id="18" data-cat="贴唱混音" data-title="春不晚" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/18.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 春不晚 · 翻唱者">
+        <div class="work-cover" style="background:var(--pink-t)">
+          <span class="work-id">18</span>
+          <span class="work-ini" aria-hidden="true">春</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>春不晚</h3>
+          <p class="work-singer">翻唱者</p>
+          <p class="work-src">贴唱混音</p>
+        </div>
+      </article>
+      <article class="work reveal is-hidden" data-id="19" data-cat="贴唱混音" data-title="归途有风" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/19.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 归途有风 · 翻唱者">
+        <div class="work-cover" style="background:var(--sky-t)">
+          <span class="work-id">19</span>
+          <span class="work-ini" aria-hidden="true">归</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>归途有风</h3>
+          <p class="work-singer">翻唱者</p>
+          <p class="work-src">贴唱混音</p>
+        </div>
+      </article>
+      <article class="work reveal is-hidden" data-id="20" data-cat="贴唱混音" data-title="修炼爱情" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/20.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 修炼爱情 · 翻唱者">
+        <div class="work-cover" style="background:var(--lime-t)">
+          <span class="work-id">20</span>
+          <span class="work-ini" aria-hidden="true">修</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>修炼爱情</h3>
+          <p class="work-singer">翻唱者</p>
+          <p class="work-src">贴唱混音</p>
+        </div>
+      </article>
+      <article class="work reveal is-hidden" data-id="21" data-cat="贴唱混音" data-title="小美满" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/21.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 小美满 · 翻唱者">
+        <div class="work-cover" style="background:var(--orange-t)">
+          <span class="work-id">21</span>
+          <span class="work-ini" aria-hidden="true">小</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>小美满</h3>
+          <p class="work-singer">翻唱者</p>
+          <p class="work-src">贴唱混音</p>
+        </div>
+      </article>
+      <article class="work reveal is-hidden" data-id="22" data-cat="贴唱混音" data-title="如愿" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/22.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 如愿 · 翻唱者">
+        <div class="work-cover" style="background:var(--purple-t)">
+          <span class="work-id">22</span>
+          <span class="work-ini" aria-hidden="true">如</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>如愿</h3>
+          <p class="work-singer">翻唱者</p>
+          <p class="work-src">贴唱混音</p>
+        </div>
+      </article>
+      <article class="work reveal is-hidden" data-id="23" data-cat="贴唱混音" data-title="默" data-singer="翻唱者" data-src="贴唱调试单子" data-audio="audio/23.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 默 · 翻唱者">
+        <div class="work-cover" style="background:var(--yellow-t)">
+          <span class="work-id">23</span>
+          <span class="work-ini" aria-hidden="true">默</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>默</h3>
+          <p class="work-singer">翻唱者</p>
+          <p class="work-src">贴唱调试单子</p>
+        </div>
+      </article>
+      <article class="work reveal is-hidden" data-id="24" data-cat="贴唱混音" data-title="刻在我心底的名字" data-singer="翻唱者" data-src="贴唱调试单子" data-audio="audio/24.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 刻在我心底的名字 · 翻唱者">
+        <div class="work-cover" style="background:var(--pink-t)">
+          <span class="work-id">24</span>
+          <span class="work-ini" aria-hidden="true">刻</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>刻在我心底的名字</h3>
+          <p class="work-singer">翻唱者</p>
+          <p class="work-src">贴唱调试单子</p>
+        </div>
+      </article>
+      <article class="work reveal is-hidden" data-id="25" data-cat="贴唱混音" data-title="生活倒影" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/25.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 生活倒影 · 翻唱者">
+        <div class="work-cover" style="background:var(--sky-t)">
+          <span class="work-id">25</span>
+          <span class="work-ini" aria-hidden="true">生</span>
+          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </div>
+        <div class="work-meta">
+          <h3>生活倒影</h3>
+          <p class="work-singer">翻唱者</p>
+          <p class="work-src">贴唱混音</p>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -472,7 +769,98 @@ body.player-on{padding-bottom:84px}
       <button class="tab" id="tab-content" role="tab" aria-selected="false" data-cat="content" type="button">内容运营 <span class="n">2</span></button>
       <button class="tab" id="tab-tool" role="tab" aria-selected="false" data-cat="tool" type="button">开发 / 工具 <span class="n">3</span></button>
     </div>
-    <div class="agent-grid" id="agentGrid" role="tabpanel" aria-labelledby="tab-all"></div>
+    <div class="agent-grid" id="agentGrid" role="tabpanel" aria-labelledby="tab-all">
+      <article class="agent reveal" data-cat="music" tabindex="0" aria-label="Lyria Music Producer · AI 音乐制作人决策系统">
+        <div class="agent-top" style="background:var(--pink-t)">
+          <span class="agent-badge" aria-hidden="true">L</span>
+          <div><div class="agent-name">Lyria Music Producer</div><div class="agent-cn">AI 音乐制作人决策系统</div></div>
+        </div>
+        <div class="agent-body">
+          <p class="agent-desc">把制作人判断固化成「强制锚点 + 双槽路由」，输出 Lyria / Suno 专业级提示词，杜绝长推理跑偏（v1.3）。</p>
+          <div class="skill-tags"><span class="chip chip--pink">音乐 / 音频</span></div>
+        </div>
+      </article>
+      <article class="agent reveal" data-cat="music" tabindex="0" aria-label="Lyria Scoring Prompt · AI 配乐提示词专家">
+        <div class="agent-top" style="background:var(--pink-t)">
+          <span class="agent-badge" aria-hidden="true">L</span>
+          <div><div class="agent-name">Lyria Scoring Prompt</div><div class="agent-cn">AI 配乐提示词专家</div></div>
+        </div>
+        <div class="agent-body">
+          <p class="agent-desc">专攻游戏 / 影视过场配乐，强制锚点 + 音乐语言翻译，零伪控制标签（v1.4）。</p>
+          <div class="skill-tags"><span class="chip chip--pink">音乐 / 音频</span></div>
+        </div>
+      </article>
+      <article class="agent reveal" data-cat="music" tabindex="0" aria-label="Scoring Director · 配乐导演">
+        <div class="agent-top" style="background:var(--pink-t)">
+          <span class="agent-badge" aria-hidden="true">S</span>
+          <div><div class="agent-name">Scoring Director</div><div class="agent-cn">配乐导演</div></div>
+        </div>
+        <div class="agent-body">
+          <p class="agent-desc">将情绪与场景转译为可执行的配乐指令，统一系列一致性。</p>
+          <div class="skill-tags"><span class="chip chip--pink">音乐 / 音频</span></div>
+        </div>
+      </article>
+      <article class="agent reveal" data-cat="music" tabindex="0" aria-label="Song Forge · 歌曲流水线总控">
+        <div class="agent-top" style="background:var(--pink-t)">
+          <span class="agent-badge" aria-hidden="true">S</span>
+          <div><div class="agent-name">Song Forge</div><div class="agent-cn">歌曲流水线总控</div></div>
+        </div>
+        <div class="agent-body">
+          <p class="agent-desc">歌词 → 双评分质检 → 回炉改写 → 编译提示词，一条龙闭环（v1.0）。</p>
+          <div class="skill-tags"><span class="chip chip--pink">音乐 / 音频</span></div>
+        </div>
+      </article>
+      <article class="agent reveal" data-cat="content" tabindex="0" aria-label="Three-platform Copywriter · 三平台文案">
+        <div class="agent-top" style="background:var(--sky-t)">
+          <span class="agent-badge" aria-hidden="true">T</span>
+          <div><div class="agent-name">Three-platform Copywriter</div><div class="agent-cn">三平台文案</div></div>
+        </div>
+        <div class="agent-body">
+          <p class="agent-desc">抖音 / 小红书 / 公众号差异化文案，一次输入多端适配。</p>
+          <div class="skill-tags"><span class="chip chip--sky">内容运营</span></div>
+        </div>
+      </article>
+      <article class="agent reveal" data-cat="content" tabindex="0" aria-label="News Poster Crawler · 资讯海报生成">
+        <div class="agent-top" style="background:var(--sky-t)">
+          <span class="agent-badge" aria-hidden="true">N</span>
+          <div><div class="agent-name">News Poster Crawler</div><div class="agent-cn">资讯海报生成</div></div>
+        </div>
+        <div class="agent-body">
+          <p class="agent-desc">爬取新闻站实时生成 3:4 海报图，适合日更资讯账号。</p>
+          <div class="skill-tags"><span class="chip chip--sky">内容运营</span></div>
+        </div>
+      </article>
+      <article class="agent reveal" data-cat="tool" tabindex="0" aria-label="Skill Forge · 造 skill 的元技能">
+        <div class="agent-top" style="background:var(--lime-t)">
+          <span class="agent-badge" aria-hidden="true">S</span>
+          <div><div class="agent-name">Skill Forge</div><div class="agent-cn">造 skill 的元技能</div></div>
+        </div>
+        <div class="agent-body">
+          <p class="agent-desc">从零搭建 / 校验 / 发布 Agent Skills 的框架。</p>
+          <div class="skill-tags"><span class="chip chip--lime">开发 / 工具</span></div>
+        </div>
+      </article>
+      <article class="agent reveal" data-cat="tool" tabindex="0" aria-label="Dachuang Mentor · 大创项目辅导">
+        <div class="agent-top" style="background:var(--lime-t)">
+          <span class="agent-badge" aria-hidden="true">D</span>
+          <div><div class="agent-name">Dachuang Mentor</div><div class="agent-cn">大创项目辅导</div></div>
+        </div>
+        <div class="agent-body">
+          <p class="agent-desc">模糊项目方向 → 清晰可申报的创新训练计划。</p>
+          <div class="skill-tags"><span class="chip chip--lime">开发 / 工具</span></div>
+        </div>
+      </article>
+      <article class="agent reveal" data-cat="tool" tabindex="0" aria-label="HR Reply Scripts · 求职回复话术">
+        <div class="agent-top" style="background:var(--lime-t)">
+          <span class="agent-badge" aria-hidden="true">H</span>
+          <div><div class="agent-name">HR Reply Scripts</div><div class="agent-cn">求职回复话术</div></div>
+        </div>
+        <div class="agent-body">
+          <p class="agent-desc">谈薪 / 催进度 / Offer 管理的话术库。</p>
+          <div class="skill-tags"><span class="chip chip--lime">开发 / 工具</span></div>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -486,7 +874,80 @@ body.player-on{padding-bottom:84px}
       <button class="tab" id="tab-exp" role="tab" aria-selected="true" aria-controls="tlList" data-tl="exp" type="button">项目经历 <span class="n">04</span></button>
       <button class="tab" id="tab-awd" role="tab" aria-selected="false" aria-controls="tlList" data-tl="awd" type="button">荣誉奖项 <span class="n">04</span></button>
     </div>
-    <div class="tl" id="tlList" role="tabpanel" aria-labelledby="tab-exp"></div>
+    <div class="tl" id="tlList" role="tabpanel" aria-labelledby="tab-exp">
+      <article class="tl-item reveal" data-tl="exp">
+        <div class="tl-card">
+          <span class="tl-year">2023 · National Project</span>
+          <h3>新声音计划 · 羊角钮钟虚拟音源</h3>
+          <span class="en">Ethnic Instrument Kontakt Library</span>
+          <p>主持研发广西艺术学院首款中国传统民族乐器 Kontakt 音源，完成多力度采样录音、降噪精修、Mapping 与脚本，获国家级大创认证。</p>
+          <div class="tl-chips"><span class="chip chip--pink">Lead Audio Designer</span><span class="chip chip--lime">Kontakt</span><span class="chip chip--sky">Sampling</span><span class="chip chip--yellow">Mapping</span></div>
+        </div>
+      </article>
+      <article class="tl-item reveal" data-tl="exp">
+        <div class="tl-card">
+          <span class="tl-year">Audio Drama</span>
+          <h3>《犬军》有声书声音设计</h3>
+          <span class="en">Audiobook Sound Design &amp; Mix</span>
+          <p>使用 Reaper 独立完成音效制作、环境音铺设与人声贴唱混音，并参与多部画本绘本的声音设计。</p>
+          <div class="tl-chips"><span class="chip chip--pink">Sound Designer</span><span class="chip chip--purple">Reaper</span><span class="chip chip--sky">Post</span><span class="chip chip--orange">Mix</span></div>
+        </div>
+      </article>
+      <article class="tl-item reveal" data-tl="exp">
+        <div class="tl-card">
+          <span class="tl-year">30+ Shows</span>
+          <h3>现场扩声与演艺音频控制</h3>
+          <span class="en">Live Sound Engineering</span>
+          <p>累计执行 30+ 场扩声项目，负责舞台返送调试、主扩搭建、现场调音台操作与突发故障排除。</p>
+          <div class="tl-chips"><span class="chip chip--pink">Live Sound Engineer</span><span class="chip chip--orange">FOH</span><span class="chip chip--lime">Monitor</span></div>
+        </div>
+      </article>
+      <article class="tl-item reveal" data-tl="exp">
+        <div class="tl-card">
+          <span class="tl-year">10+ Concerts</span>
+          <h3>音乐会实况录音与混音</h3>
+          <span class="en">Classical Recording &amp; Mix</span>
+          <p>第十四届中国—东盟音乐会等 10+ 场钢琴音乐会高质量实况录音与后期混音，熟练运用 AB / XY / ORTF 等制式还原真实声场。</p>
+          <div class="tl-chips"><span class="chip chip--pink">Recording Engineer</span><span class="chip chip--sky">ORTF</span><span class="chip chip--purple">Mix</span></div>
+        </div>
+      </article>
+      <article class="tl-item reveal is-hidden" data-tl="awd">
+        <div class="tl-card">
+          <span class="tl-year">2025 · Competition</span>
+          <h3>高校音乐创作大赛华南区 · AI 音乐赛道</h3>
+          <span class="en">Music Creation Awards</span>
+          <p>《鹏城青春之歌》三等奖、《心灵舒缓》二等奖。</p>
+          <div class="tl-chips"><span class="chip chip--yellow">2nd Prize</span><span class="chip chip--orange">3rd Prize</span></div>
+        </div>
+      </article>
+      <article class="tl-item reveal is-hidden" data-tl="awd">
+        <div class="tl-card">
+          <span class="tl-year">2025 · Finalist</span>
+          <h3>USC 上和弦 · 杜比全景声混音赛道</h3>
+          <span class="en">Dolby Atmos Mix Competition</span>
+          <p>混音作品《TOOOOO BUSY》进入决赛。</p>
+          <div class="tl-chips"><span class="chip chip--pink">Finalist</span><span class="chip chip--sky">Dolby Atmos</span></div>
+        </div>
+      </article>
+      <article class="tl-item reveal is-hidden" data-tl="awd">
+        <div class="tl-card">
+          <span class="tl-year">2024 · Publication</span>
+          <h3>国家级期刊《参花》论文发表</h3>
+          <span class="en">Academic Paper</span>
+          <p>《古乐器「羊角钮钟」在现代音乐中的创新应用》正式发表。</p>
+          <div class="tl-chips"><span class="chip chip--lime">Published</span></div>
+        </div>
+      </article>
+      <article class="tl-item reveal is-hidden" data-tl="awd">
+        <div class="tl-card">
+          <span class="tl-year">2023 – 2024 · Honor</span>
+          <h3>筑梦奖学金 · 正艺微创工作室</h3>
+          <span class="en">Scholarship &amp; Studio Lead</span>
+          <p>2024 年度筑梦奖学金；主导完成 2023 校级网络文化工作室项目（正艺微创）。</p>
+          <div class="tl-chips"><span class="chip chip--yellow">Scholarship</span><span class="chip chip--purple">Studio Lead</span></div>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -615,49 +1076,18 @@ body.player-on{padding-bottom:84px}
 var $ = function(s){return document.querySelector(s);};
 var $$ = function(s){return Array.prototype.slice.call(document.querySelectorAll(s));};
 
-/* 作品数据（沿用原作品集） */
-var WORKS = [
- {id:1,cat:"分轨混音",title:"就是不想睡觉",singer:"胡海泉",src:"2025声音设计与作品创新技能大赛立体声组复赛",audio:"audio/01.mp3",cover:"covers/01.png"},
- {id:2,cat:"分轨混音",title:"爱河",singer:"胡海泉",src:"2025声音设计与作品创新技能大赛立体声组初赛",audio:"audio/02.mp3",cover:"covers/02.png"},
- {id:3,cat:"分轨混音",title:"马兰花",singer:"腾格尔",src:"2024声音设计与作品创新技能大赛立体声组复赛",audio:"audio/03.mp3",cover:"covers/03.png"},
- {id:4,cat:"分轨混音",title:"从小到大",singer:"裘海正",src:"第二屆台灣杜比全景聲混音大賽",audio:"audio/04.mp3",cover:"covers/04.png"},
- {id:5,cat:"分轨混音",title:"天河弈",singer:"虚拟歌手",src:"SMP月度混音训练营6月素",audio:"audio/05.mp3",cover:"covers/05.png"},
- {id:6,cat:"分轨混音",title:"假如我先幸福了",singer:"满文军",src:"第七届全国校园混音大赛",audio:"audio/06.mp3",cover:"covers/06.png"},
- {id:7,cat:"分轨混音",title:"你不在北京",singer:"曹轩宾",src:"第六届全国校园混音大赛",audio:"audio/07.mp3",cover:"covers/07.png"},
- {id:8,cat:"分轨混音",title:"我会",singer:"陈戈平",src:"2024年造音星球11月份月度混音训练",audio:"audio/08.mp3",cover:"covers/08.png"},
- {id:9,cat:"分轨混音",title:"长河",singer:"李宸希",src:"2024声音设计与作品创新技能大赛立体声组初赛",audio:"audio/09.mp3",cover:"covers/09.png"},
- {id:10,cat:"分轨混音",title:"没有的光",singer:"李宸希",src:"书籍《混音思维》",audio:"audio/10.mp3",cover:"covers/10.png"},
- {id:11,cat:"分轨混音",title:"人生首席",singer:"王凯",src:"2024声音设计与作品创新技能大赛三维声组初赛",audio:"audio/11.mp3",cover:"covers/11.png"},
- {id:12,cat:"分轨混音",title:"我的左右手",singer:"",src:"",audio:"audio/12.mp3"},
- {id:13,cat:"分轨混音",title:"是我",singer:"",src:"",audio:"audio/13.mp3"},
- {id:14,cat:"分轨混音",title:"末班飞行",singer:"",src:"",audio:"audio/14.mp3"},
- {id:15,cat:"贴唱混音",title:"在夜里跳舞",singer:"翻唱者",src:"贴唱调试单子",audio:"audio/15.mp3"},
- {id:16,cat:"贴唱混音",title:"珠玉",singer:"翻唱者",src:"贴唱调试单子",audio:"audio/16.mp3"},
- {id:17,cat:"贴唱混音",title:"孤勇者",singer:"翻唱者",src:"贴唱调试单子",audio:"audio/17.mp3"},
- {id:18,cat:"贴唱混音",title:"春不晚",singer:"翻唱者",src:"贴唱混音",audio:"audio/18.mp3"},
- {id:19,cat:"贴唱混音",title:"归途有风",singer:"翻唱者",src:"贴唱混音",audio:"audio/19.mp3"},
- {id:20,cat:"贴唱混音",title:"修炼爱情",singer:"翻唱者",src:"贴唱混音",audio:"audio/20.mp3"},
- {id:21,cat:"贴唱混音",title:"小美满",singer:"翻唱者",src:"贴唱混音",audio:"audio/21.mp3"},
- {id:22,cat:"贴唱混音",title:"如愿",singer:"翻唱者",src:"贴唱混音",audio:"audio/22.mp3"},
- {id:23,cat:"贴唱混音",title:"默",singer:"翻唱者",src:"贴唱调试单子",audio:"audio/23.mp3"},
- {id:24,cat:"贴唱混音",title:"刻在我心底的名字",singer:"翻唱者",src:"贴唱调试单子",audio:"audio/24.mp3"},
- {id:25,cat:"贴唱混音",title:"生活倒影",singer:"翻唱者",src:"贴唱混音",audio:"audio/25.mp3"}
-];
-var TL = {
- exp:[
-  {y:"2023 · National Project",t:"新声音计划 · 羊角钮钟虚拟音源",en:"Ethnic Instrument Kontakt Library",d:"主持研发广西艺术学院首款中国传统民族乐器 Kontakt 音源，完成多力度采样录音、降噪精修、Mapping 与脚本，获国家级大创认证。",c:[["Lead Audio Designer","pink"],["Kontakt","lime"],["Sampling","sky"],["Mapping","yellow"]]},
-  {y:"Audio Drama",t:"《犬军》有声书声音设计",en:"Audiobook Sound Design & Mix",d:"使用 Reaper 独立完成音效制作、环境音铺设与人声贴唱混音，并参与多部画本绘本的声音设计。",c:[["Sound Designer","pink"],["Reaper","purple"],["Post","sky"],["Mix","orange"]]},
-  {y:"30+ Shows",t:"现场扩声与演艺音频控制",en:"Live Sound Engineering",d:"累计执行 30+ 场扩声项目，负责舞台返送调试、主扩搭建、现场调音台操作与突发故障排除。",c:[["Live Sound Engineer","pink"],["FOH","orange"],["Monitor","lime"]]},
-  {y:"10+ Concerts",t:"音乐会实况录音与混音",en:"Classical Recording & Mix",d:"第十四届中国—东盟音乐会等 10+ 场钢琴音乐会高质量实况录音与后期混音，熟练运用 AB / XY / ORTF 等制式还原真实声场。",c:[["Recording Engineer","pink"],["ORTF","sky"],["Mix","purple"]]}
- ],
- awd:[
-  {y:"2025 · Competition",t:"高校音乐创作大赛华南区 · AI 音乐赛道",en:"Music Creation Awards",d:"《鹏城青春之歌》三等奖、《心灵舒缓》二等奖。",c:[["2nd Prize","yellow"],["3rd Prize","orange"]]},
-  {y:"2025 · Finalist",t:"USC 上和弦 · 杜比全景声混音赛道",en:"Dolby Atmos Mix Competition",d:"混音作品《TOOOOO BUSY》进入决赛。",c:[["Finalist","pink"],["Dolby Atmos","sky"]]},
-  {y:"2024 · Publication",t:"国家级期刊《参花》论文发表",en:"Academic Paper",d:"《古乐器「羊角钮钟」在现代音乐中的创新应用》正式发表。",c:[["Published","lime"]]},
-  {y:"2023 – 2024 · Honor",t:"筑梦奖学金 · 正艺微创工作室",en:"Scholarship & Studio Lead",d:"2024 年度筑梦奖学金；主导完成 2023 校级网络文化工作室项目（正艺微创）。",c:[["Scholarship","yellow"],["Studio Lead","purple"]]}
- ]
-};
-var TINTS = ["var(--pink-t)","var(--sky-t)","var(--lime-t)","var(--orange-t)","var(--purple-t)","var(--yellow-t)"];
+/* 作品数据直接来自静态 DOM：HTML 是唯一真实来源，无 JS 时爬虫也能读到 */
+var WORKS = $$("#bento .work").map(function(el){
+  return {
+    id: parseInt(el.getAttribute("data-id"), 10),
+    cat: el.getAttribute("data-cat") || "",
+    title: el.getAttribute("data-title") || "",
+    singer: el.getAttribute("data-singer") || "",
+    src: el.getAttribute("data-src") || "",
+    audio: el.getAttribute("data-audio") || "",
+    cover: el.getAttribute("data-cover") || ""
+  };
+});
 var REDUCE = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* 导航 */
@@ -693,125 +1123,60 @@ if("IntersectionObserver" in window){
   secIds.forEach(function(id){ var el = document.getElementById(id); if(el) navIo.observe(el); });
 }
 
-/* 作品 Bento */
+/* 作品 Bento：25 张卡片已静态写在 HTML 里，这里只负责分类显隐 */
 var bento = $("#bento"), curCat = "分轨混音", list = [];
 function esc(s){ return String(s).replace(/[&<>"]/g, function(m){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]; }); }
-function renderWorks(){
-  list = WORKS.filter(function(w){ return w.cat === curCat; });
-  var html = "";
-  list.forEach(function(w,i){
-    var ini = (w.title || "♪").trim().charAt(0);
-    var tint = TINTS[w.id % TINTS.length];
-    var cover = w.cover ? '<img src="' + esc(w.cover) + '" alt="" loading="lazy" decoding="async" />' : '<span class="work-ini" aria-hidden="true">' + esc(ini) + '</span>';
-    html += '<article class="work" data-id="' + w.id + '" tabindex="0" role="button" aria-label="作品 ' + esc(w.title) + (w.singer ? " · " + esc(w.singer) : "") + '">'
-      +   '<div class="work-cover" style="background:' + tint + '">'
-      +     '<span class="work-id">' + (w.id < 10 ? "0" + w.id : w.id) + '</span>'
-      +     cover
-      +     '<span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>'
-      +   '</div>'
-      +   '<div class="work-meta">'
-      +     '<h3>' + esc(w.title) + '</h3>'
-      +     (w.singer ? '<p class="work-singer">' + esc(w.singer) + '</p>' : "")
-      +     (w.src ? '<p class="work-src">' + esc(w.src) + '</p>' : "")
-      +   '</div>'
-      + '</article>';
+function showCat(cat, force){
+  curCat = cat;
+  list = WORKS.filter(function(w){ return w.cat === cat; });
+  $$("#bento .work").forEach(function(el){
+    var on = el.getAttribute("data-cat") === cat;
+    el.classList.toggle("is-hidden", !on);
+    if(on && force) el.classList.add("in");
   });
-  bento.innerHTML = html;
-  if(REDUCE || !("IntersectionObserver" in window)) return;
-  var wio = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(!e.isIntersecting) return; e.target.classList.add("reveal","in"); wio.unobserve(e.target); });
-  }, {threshold:0.06});
-  $$("#bento .work").forEach(function(el,i){ el.classList.add("reveal"); el.style.transitionDelay = Math.min(i,8) * 55 + "ms"; wio.observe(el); });
 }
 $$('.tabs .tab').forEach(function(t){
   t.addEventListener("click", function(){
     $$('.tabs .tab').forEach(function(o){ o.setAttribute("aria-selected","false"); });
     t.setAttribute("aria-selected","true");
-    curCat = t.getAttribute("data-cat");
     bento.setAttribute("aria-labelledby", t.id);
-    renderWorks();
+    showCat(t.getAttribute("data-cat"), true);
   });
 });
 
-/* ═══ AI Skills / Agent 模块 ═══ */
-var SKILLS = [
- {n:"Lyria Music Producer", cn:"AI 音乐制作人决策系统", cat:"music", d:"把制作人判断固化成「强制锚点 + 双槽路由」，输出 Lyria / Suno 专业级提示词，杜绝长推理跑偏（v1.3）。"},
- {n:"Lyria Scoring Prompt", cn:"AI 配乐提示词专家", cat:"music", d:"专攻游戏 / 影视过场配乐，强制锚点 + 音乐语言翻译，零伪控制标签（v1.4）。"},
- {n:"Scoring Director", cn:"配乐导演", cat:"music", d:"将情绪与场景转译为可执行的配乐指令，统一系列一致性。"},
- {n:"Song Forge", cn:"歌曲流水线总控", cat:"music", d:"歌词 → 双评分质检 → 回炉改写 → 编译提示词，一条龙闭环（v1.0）。"},
-
- {n:"Three-platform Copywriter", cn:"三平台文案", cat:"content", d:"抖音 / 小红书 / 公众号差异化文案，一次输入多端适配。"},
- {n:"News Poster Crawler", cn:"资讯海报生成", cat:"content", d:"爬取新闻站实时生成 3:4 海报图，适合日更资讯账号。"},
-
- {n:"Skill Forge", cn:"造 skill 的元技能", cat:"tool", d:"从零搭建 / 校验 / 发布 Agent Skills 的框架。"},
- {n:"Dachuang Mentor", cn:"大创项目辅导", cat:"tool", d:"模糊项目方向 → 清晰可申报的创新训练计划。"},
- {n:"HR Reply Scripts", cn:"求职回复话术", cat:"tool", d:"谈薪 / 催进度 / Offer 管理的话术库。"},
-];
-var AGENT_TINT = {music:"var(--pink-t)",content:"var(--sky-t)",tool:"var(--lime-t)"};
-var AGENT_CHIP = {music:"chip--pink",content:"chip--sky",tool:"chip--lime"};
-var AGENT_LABEL = {music:"音乐 / 音频",content:"内容运营",tool:"开发 / 工具"};
+/* ═══ AI Skills / Agent 模块：9 张卡片同样静态渲染 ═══ */
 var agentGrid = $("#agentGrid");
-function renderAgents(cat){
-  var list = cat === "all" ? SKILLS : SKILLS.filter(function(s){ return s.cat === cat; });
-  var html = "";
-  list.forEach(function(s){
-    var badge = (s.n.trim().charAt(0) || "#").toUpperCase();
-    var tint = AGENT_TINT[s.cat] || "var(--yellow-t)";
-    var chip = AGENT_CHIP[s.cat] || "chip--yellow";
-    var label = AGENT_LABEL[s.cat] || "工具";
-    html += '<article class="agent" tabindex="0" aria-label="' + esc(s.n) + (s.cn ? " · " + esc(s.cn) : "") + '">'
-      +   '<div class="agent-top" style="background:' + tint + '">'
-      +     '<span class="agent-badge" aria-hidden="true">' + esc(badge) + '</span>'
-      +     '<div><div class="agent-name">' + esc(s.n) + '</div>' + (s.cn ? '<div class="agent-cn">' + esc(s.cn) + '</div>' : '') + '</div>'
-      +   '</div>'
-      +   '<div class="agent-body">'
-      +     '<p class="agent-desc">' + esc(s.d) + '</p>'
-      +     '<div class="skill-tags"><span class="chip ' + chip + '">' + esc(label) + '</span></div>'
-      +   '</div>'
-      + '</article>';
+function showAgents(cat, force){
+  $$("#agentGrid .agent").forEach(function(el){
+    var on = cat === "all" || el.getAttribute("data-cat") === cat;
+    el.classList.toggle("is-hidden", !on);
+    if(on && force) el.classList.add("in");
   });
-  agentGrid.innerHTML = html;
-  if(REDUCE || !("IntersectionObserver" in window)){ $$("#agentGrid .agent").forEach(function(el){ el.classList.add("in"); }); return; }
-  var aio = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); aio.unobserve(e.target); } });
-  }, {threshold:0.06});
-  $$("#agentGrid .agent").forEach(function(el,i){ el.classList.add("reveal"); el.style.transitionDelay = Math.min(i,8) * 45 + "ms"; aio.observe(el); });
 }
 $$('.agent-tabs .tab').forEach(function(t){
   t.addEventListener("click", function(){
     $$('.agent-tabs .tab').forEach(function(o){ o.setAttribute("aria-selected","false"); });
     t.setAttribute("aria-selected","true");
     agentGrid.setAttribute("aria-labelledby", t.id);
-    renderAgents(t.getAttribute("data-cat"));
+    showAgents(t.getAttribute("data-cat"), true);
   });
 });
-renderAgents("all");
 
-/* 时间线 */
+/* 时间线：8 条（项目经历 4 + 荣誉奖项 4）已静态渲染 */
 var tlList = $("#tlList");
-function renderTL(key){
-  tlList.innerHTML = TL[key].map(function(it){
-    return '<article class="tl-item reveal">'
-      +   '<div class="tl-card">'
-      +     '<span class="tl-year">' + esc(it.y) + '</span>'
-      +     '<h3>' + esc(it.t) + '</h3>'
-      +     '<span class="en">' + esc(it.en) + '</span>'
-      +     '<p>' + esc(it.d) + '</p>'
-      +     '<div class="tl-chips">' + it.c.map(function(c){ return '<span class="chip chip--' + c[1] + '">' + esc(c[0]) + '</span>'; }).join("") + '</div>'
-      +   '</div></article>';
-  }).join("");
-  if(REDUCE || !("IntersectionObserver" in window)){ $$("#tlList .reveal").forEach(function(el){ el.classList.add("in"); }); return; }
-  var tio = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); tio.unobserve(e.target); } });
-  }, {threshold:0.12});
-  $$("#tlList .reveal").forEach(function(el,i){ el.style.transitionDelay = Math.min(i,5) * 80 + "ms"; tio.observe(el); });
+function showTL(key, force){
+  $$("#tlList .tl-item").forEach(function(el){
+    var on = el.getAttribute("data-tl") === key;
+    el.classList.toggle("is-hidden", !on);
+    if(on && force) el.classList.add("in");
+  });
 }
-$$('.tl-switch .tab, #timeline .tabs .tab').forEach(function(t){
+$$('#timeline .tabs .tab').forEach(function(t){
   t.addEventListener("click", function(){
     $$('#timeline .tabs .tab').forEach(function(o){ o.setAttribute("aria-selected","false"); });
     t.setAttribute("aria-selected","true");
     tlList.setAttribute("aria-labelledby", t.id);
-    renderTL(t.getAttribute("data-tl"));
+    showTL(t.getAttribute("data-tl"), true);
   });
 });
 
@@ -957,9 +1322,10 @@ document.addEventListener("keydown", function(e){
   if(audio.paused){ audio.play().catch(noop); } else { audio.pause(); }
 });
 
-/* 启动 */
-renderWorks();
-renderTL("exp");
+/* 启动：内容已在 HTML 中，这里只同步一次默认分类 */
+showCat(curCat);
+showAgents("all");
+showTL("exp");
 })();
 </script>
 </body>
