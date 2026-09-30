@@ -402,6 +402,26 @@ mark{background:none;color:var(--gold)}
   .acc-b{max-height:none !important}
 }
 
+/* ── 英文标签与大数字用衬线体（Times New Roman），中文仍走黑体 ── */
+.kicker,
+.hero-id .rl,
+.svc-c .en,
+.res-row .yr,
+.res-row .org,
+.cred .y,
+.agent-c .tag,
+.stat-c b,
+.pri-c .p,
+.svc-c .price{
+  font-family:"Times New Roman",Times,"Nimbus Roman",Georgia,serif;
+}
+.kicker{font-size:12.5px;letter-spacing:.18em}
+.res-row .yr{font-size:13px;letter-spacing:.04em;line-height:1.7}
+.res-row .org{letter-spacing:.05em}
+.stat-c b{font-size:46px;font-variant-numeric:lining-nums}
+.pri-c .p,.svc-c .price{font-weight:700;font-variant-numeric:lining-nums}
+.svc-c .price{font-size:27px}
+
 /* ── 响应式 ── */
 @media (max-width:1000px){
   .hero-in,.tool,.player-w,.two,.steps,.creds,.about-grid,.agent-g{grid-template-columns:1fr}
