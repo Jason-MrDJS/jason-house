@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="邓家森 · 混音、声卡调试与混音教学。分轨混音 / 贴唱混音 / 声卡与系统调试 / 1v1 混音教学。先免费试混 30 秒，满意再谈钱。" />
+<meta name="description" content="邓家森 · 混音与声卡调试。分轨混音 / 贴唱混音 / 声卡与系统调试。先免费试混 30 秒，满意再谈钱。" />
 <meta name="theme-color" content="#0A0A0B" />
 <title>混音 · 声卡调试 · 混音教学 ｜ 邓家森</title>
 <style>
@@ -157,7 +157,7 @@ mark{background:none;color:var(--gold)}
 .pain-c .fix b{color:var(--gold)}
 
 /* ═══════════ 服务三支柱 ═══════════ */
-.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.svc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:44px}
 .svc-c{padding:30px;display:flex;flex-direction:column}
 .svc-c .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;background:#17171c;border:1px solid var(--line-2)}
 .svc-c h3{font-size:23px}
@@ -254,7 +254,7 @@ mark{background:none;color:var(--gold)}
 .cred .y{font-family:var(--f-m);font-size:11px;color:var(--gold);white-space:nowrap}
 
 /* ═══════════ 价格 ═══════════ */
-.pri{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+.pri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px}
 .pri-c{padding:28px;display:flex;flex-direction:column;position:relative}
 .pri-c.hot{outline:1px solid var(--gold)}
 .pri-c .badge{position:absolute;top:-11px;right:20px;background:var(--gold);color:#14100A;font-family:var(--f-m);font-size:10px;letter-spacing:.14em;padding:4px 10px;border-radius:99px;font-weight:700}
@@ -300,6 +300,26 @@ mark{background:none;color:var(--gold)}
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .rv.in{opacity:1;transform:none}
 
+/* ── 英文标签与大数字用衬线体（Times New Roman），中文仍走黑体 ── */
+.kicker,
+.hero-id .rl,
+.svc-c .en,
+.res-row .yr,
+.res-row .org,
+.cred .y,
+.agent-c .tag,
+.stat-c b,
+.pri-c .p,
+.svc-c .price{
+  font-family:"Times New Roman",Times,"Nimbus Roman",Georgia,serif;
+}
+.kicker{font-size:12.5px;letter-spacing:.18em}
+.res-row .yr{font-size:13px;letter-spacing:.04em;line-height:1.7}
+.res-row .org{letter-spacing:.05em}
+.stat-c b{font-size:46px;font-variant-numeric:lining-nums}
+.pri-c .p,.svc-c .price{font-weight:700;font-variant-numeric:lining-nums}
+.svc-c .price{font-size:27px}
+
 /* ── 响应式 ── */
 @media (max-width:1000px){
   .hero-in,.tool,.player-w,.two,.steps,.creds{grid-template-columns:1fr}
@@ -341,7 +361,7 @@ mark{background:none;color:var(--gold)}
       <a href="#svc">服务</a>
       <a href="#tool">调试自检</a>
       <a href="#listen">试听</a>
-      <a href="#teach">教学</a>
+      <a href="#price">教学</a>
       <a href="#price">价格</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -358,9 +378,9 @@ mark{background:none;color:var(--gold)}
   <canvas id="wave"></canvas>
   <div class="wrap hero-in">
     <div>
-      <div class="kicker">Mixing · Sound Card Setup · 1v1 Lessons</div>
+      <div class="kicker">Mixing · Sound Card Setup</div>
       <h1>把粗糙的 demo，<br><span class="gold">做成能发出去的成品</span></h1>
-      <p class="lead">分轨混音 · 贴唱混音 · 声卡与系统调试 · 1v1 混音教学。<br><b style="color:var(--ink)">先免费试混 30 秒，满意我们再谈钱。</b></p>
+      <p class="lead">分轨混音 · 贴唱混音 · 声卡与系统调试。<br><b style="color:var(--ink)">先免费试混 30 秒，满意我们再谈钱。</b></p>
       <div class="hero-cta">
         <a class="btn btn--main" href="#cta">免费试混 30 秒</a>
         <a class="btn btn--ghost" href="#listen">先听 25 首作品 →</a>
@@ -467,19 +487,6 @@ mark{background:none;color:var(--gold)}
           <li>远程操作，结束后给一份你的专属参数文档</li>
         </ul>
         <a class="btn btn--main btn--sm" href="#tool">先做个免费自检 →</a>
-      </article>
-      <article class="svc-c beam spot rv">
-        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4F4F2" stroke-width="2" stroke-linecap="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M7 10v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5"/></svg></span>
-        <h3>混音教学 1v1</h3>
-        <div class="en">1v1 Mixing Lessons</div>
-        <div class="price" style="margin-top:16px">¥1,680 <small>/ 8 节</small></div>
-        <ul>
-          <li>8 节 1v1 直播课，全程用你自己的歌实操</li>
-          <li>每节课一份作业，逐条批改到能听出差别</li>
-          <li>从听觉校准到母带交付，完整走通一遍</li>
-          <li>结课后长期答疑，有问题随时问</li>
-        </ul>
-        <a class="btn btn--main btn--sm" href="#teach">看 8 节课大纲 →</a>
       </article>
     </div>
   </div>
@@ -588,43 +595,6 @@ mark{background:none;color:var(--gold)}
 </section>
 
 <!-- ══════════ 教学 ══════════ -->
-<section class="sec" id="teach">
-  <div class="wrap">
-    <div class="kicker rv">1v1 Curriculum · 8 Lessons</div>
-    <h2 class="sec-t rv">8 节课，<mark>从"会拧旋钮"到"知道为什么"</mark></h2>
-    <p class="sec-l rv">不给你 preset，也不讲玄学。每节课一个可验证的能力点，下课你就能听出自己之前错在哪。</p>
-    <div class="cur" id="cur">
-      <div class="acc rv"><button class="acc-h" type="button"><span class="no">01</span><b>听觉校准与监听环境</b><span class="tag">2 课时</span><span class="ar">+</span></button><div class="acc-b"><p>先解决"听得准"这个前提。认识频段的听觉地图、监听音量与疲劳的关系、如何用一个参考曲目建立你自己的标准。这一节不校准，后面全是白学。</p></div></div>
-      <div class="acc rv"><button class="acc-h" type="button"><span class="no">02</span><b>增益结构与素材精修</b><span class="tag">2 课时</span><span class="ar">+</span></button><div class="acc-b"><p>干净的输入决定天花板。增益排布、降噪与齿音处理的边界、什么时候该重录而不是硬修。动手处理你自己录的一段干声。</p></div></div>
-      <div class="acc rv"><button class="acc-h" type="button"><span class="no">03</span><b>EQ：频段避让与音色塑造</b><span class="tag">2 课时</span><span class="ar">+</span></button><div class="acc-b"><p>减法优先、加法克制。怎么做乐器之间的"让路"，怎么用窄带 Q 找出刺耳的那一个点，以及低频为什么要先切而不是先抬。</p></div></div>
-      <div class="acc rv"><button class="acc-h" type="button"><span class="no">04</span><b>压缩：动态控制的四种用法</b><span class="tag">2 课时</span><span class="ar">+</span></button><div class="acc-b"><p>把压缩拆成四件事：稳住、塑形、粘住、控制峰值。你会学会用耳朵判断 attack / release，而不是照抄数值。</p></div></div>
-      <div class="acc rv"><button class="acc-h" type="button"><span class="no">05</span><b>空间：混响、延迟与纵深</b><span class="tag">2 课时</span><span class="ar">+</span></button><div class="acc-b"><p>空间不是"加个混响"。预延迟、早期反射、衰减时间怎么对应房间大小，怎么把乐器摆在前后而不是左右。</p></div></div>
-      <div class="acc rv"><button class="acc-h" type="button"><span class="no">06</span><b>人声专题：贴唱全流程</b><span class="tag">2 课时</span><span class="ar">+</span></button><div class="acc-b"><p>从干声到成品一遍走通：修音准与节奏的尺度、齿音与呼吸的处理、人声与伴奏的能量关系，以及如何让副歌真的"起来"。</p></div></div>
-      <div class="acc rv"><button class="acc-h" type="button"><span class="no">07</span><b>分轨专题：鼓组与低频管理</b><span class="tag">2 课时</span><span class="ar">+</span></button><div class="acc-b"><p>底鼓与贝斯怎么共存、军鼓怎么有"打点"、镲片怎么不刺。以及多轨并行处理与总线处理的分工。</p></div></div>
-      <div class="acc rv"><button class="acc-h" type="button"><span class="no">08</span><b>母带与多环境验证</b><span class="tag">2 课时</span><span class="ar">+</span></button><div class="acc-b"><p>响度标准、动态保留、三种回放环境交叉验证、交付格式与命名规范。结课作品会按真实交付标准验收。</p></div></div>
-    </div>
-    <div class="two">
-      <div class="fit yes beam spot rv">
-        <h4>这门课适合你，如果</h4>
-        <ul>
-          <li>会用 DAW 建工程、录音、导出，但混音结果不稳定</li>
-          <li>看过很多教程，动手时依然不知道先做哪一步</li>
-          <li>想听懂"为什么"，而不是复制一组 preset</li>
-          <li>愿意做作业——每节课都要动手，只看不练没用</li>
-        </ul>
-      </div>
-      <div class="fit no beam spot rv">
-        <h4>不适合你，如果</h4>
-        <ul>
-          <li>想找一套万能 preset 一键出片</li>
-          <li>完全没接触过 DAW，需要先补基础操作</li>
-          <li>两周内要交片，只想找人代做（那直接约混音）</li>
-          <li>不接受别人指出你的问题——我会直说</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════ 流程 ══════════ -->
 <section class="sec" id="flow">
@@ -697,18 +667,6 @@ mark{background:none;color:var(--gold)}
         </ul>
         <a class="btn btn--main btn--sm" href="#cta">发我分轨</a>
       </div>
-      <div class="pri-c beam spot rv">
-        <h3>系统学习</h3>
-        <div class="p">¥1,680</div>
-        <div class="u">8 节 1v1 · 约 16 课时</div>
-        <ul>
-          <li>用你自己的歌实操</li>
-          <li>作业逐条批改</li>
-          <li>结课按交付标准验收</li>
-          <li>长期答疑</li>
-        </ul>
-        <a class="btn btn--ghost btn--sm" href="#teach">看大纲</a>
-      </div>
     </div>
   </div>
 </section>
@@ -724,9 +682,9 @@ mark{background:none;color:var(--gold)}
       <div class="acc rv"><button class="acc-h" type="button"><span class="no">Q3</span><b>能改几次？</b><span class="ar">+</span></button><div class="acc-b"><p>分轨混音含 3 次免费修改，贴唱含 2 次。每次修改请一次性说清所有意见，这样最省你的时间。超出部分按次计费，接单前会讲清楚。</p></div></div>
       <div class="acc rv"><button class="acc-h" type="button"><span class="no">Q4</span><b>做完我不满意怎么办？</b><span class="ar">+</span></button><div class="acc-b"><p>改到满意为止。如果改完你还是觉得方向不对，那说明我一开始没接住你的需求——这种情况不收费。所以强烈建议先走免费试混那 30 秒。</p></div></div>
       <div class="acc rv"><button class="acc-h" type="button"><span class="no">Q5</span><b>声卡调试必须远程吗？</b><span class="ar">+</span></button><div class="acc-b"><p>主要远程（向日葵 / TeamViewer / 腾讯会议共享），30–60 分钟。同城的也可以约线下，南宁市区内不加价。</p></div></div>
-      <div class="acc rv"><button class="acc-h" type="button"><span class="no">Q6</span><b>教学需要什么基础？</b><span class="ar">+</span></button><div class="acc-b"><p>会用 DAW 建工程、录音、导出就够。第一节课会先校准你的听觉和监听环境，零基础也能跟上，但如果你完全没碰过 DAW，建议先补两周基础操作再来。</p></div></div>
-      <div class="acc rv"><button class="acc-h" type="button"><span class="no">Q7</span><b>我的歌会被拿去发作品集吗？</b><span class="ar">+</span></button><div class="acc-b"><p>不会。所有素材全程保密，不公开发布、不发社交平台，除非你书面授权。需要保密协议的也可以签。</p></div></div>
-      <div class="acc rv"><button class="acc-h" type="button"><span class="no">Q8</span><b>怎么付款？</b><span class="ar">+</span></button><div class="acc-b"><p>定金 50% 开工，交付确认满意后付尾款。免费试混不收任何费用，也不需要你先付定金。</p></div></div>
+      
+      <div class="acc rv"><button class="acc-h" type="button"><span class="no">Q6</span><b>我的歌会被拿去发作品集吗？</b><span class="ar">+</span></button><div class="acc-b"><p>不会。所有素材全程保密，不公开发布、不发社交平台，除非你书面授权。需要保密协议的也可以签。</p></div></div>
+      <div class="acc rv"><button class="acc-h" type="button"><span class="no">Q7</span><b>怎么付款？</b><span class="ar">+</span></button><div class="acc-b"><p>定金 50% 开工，交付确认满意后付尾款。免费试混不收任何费用，也不需要你先付定金。</p></div></div>
     </div>
     <div class="guar">
       <div class="guar-c beam spot rv"><span class="ic">🛡</span><div><b>先试后付</b><p>30 秒免费试混，方向不对当场结束，不收一分钱。</p></div></div>
@@ -819,7 +777,7 @@ if ('IntersectionObserver' in window) {
       });
     });
   }, {rootMargin:'-45% 0px -50% 0px'});
-  ['pain','svc','tool','listen','teach','price','faq'].forEach(function(id){
+  ['pain','svc','tool','listen','price','faq'].forEach(function(id){
     var el = document.getElementById(id); if (el) navIo.observe(el);
   });
 }
