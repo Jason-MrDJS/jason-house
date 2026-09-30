@@ -3,1329 +3,1230 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="邓家森 声音设计与混音作品集。分轨混音 · 贴唱混音 · 虚拟音源研发 · 现场扩声 · 音乐会录音。" />
-<meta name="theme-color" content="#0A0A0A" />
-<title>邓家森 声音设计作品集</title>
-<!-- 字体全部走本地字体栈：不请求 fonts.googleapis.com，国内直连也不会阻塞首屏 -->
+<meta name="description" content="邓家森 · 声音设计师 / 混音师。作品集与简历：25 首混音作品、国家级民族乐器虚拟音源研发、30+ 场现场扩声、10+ 场音乐会录音、6 项赛事奖项与期刊发表。" />
+<meta name="theme-color" content="#0A0A0B" />
+<title>邓家森 · 声音设计师 / 混音师 ｜ 作品集 &amp; 简历</title>
 <style>
+/* ═══════════ 设计系统 ═══════════ */
 :root{
-  --bg:#F5F5F0;
-  --ink:#0A0A0A;
-  --paper:#FFFFFF;
-  --pink:#FF1493;   --pink-t:#FFE0F0;
-  --yellow:#FFE135; --yellow-t:#FFF7C2;
-  --sky:#00BFFF;    --sky-t:#D6F1FF;
-  --lime:#B4E61E;   --lime-t:#EEFAD0;
-  --orange:#FF8A3D; --orange-t:#FFE3CC;
-  --purple:#8B7CF6; --purple-t:#E7E1FF;
-  --bd:3px solid var(--ink);
-  --bd-thin:2px solid var(--ink);
-  --shadow:5px 5px 0 var(--ink);
-  --shadow-lg:8px 8px 0 var(--ink);
-  --shadow-sm:3px 3px 0 var(--ink);
-  --f-display:"Space Grotesk","PingFang SC","HarmonyOS Sans","Source Han Sans SC","Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-head:"Space Grotesk","PingFang SC","HarmonyOS Sans","Source Han Sans SC","Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-body:"Inter","PingFang SC","HarmonyOS Sans","Source Han Sans SC","Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
-  /* ── Typography System ── */
-  --fs-hero:clamp(48px,8vw,96px);
-  --fs-section:clamp(36px,5vw,56px);
-  --fs-sub:clamp(22px,3vw,30px);
-  --fs-body:17px;
-  --fs-aux:14px;
-  --fw-display:700;
-  --fw-head:600;
-  --fw-body:400;
-  --lh-tight:1.04;
-  --lh-body:1.75;
-  --ls-display:-.03em;
-  --ls-head:-.02em;
-  --ls-wide:.08em;
-  --dot:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='3' cy='3' r='1.6' fill='%230A0A0A' opacity='0.06'/%3E%3C/svg%3E");
-  --stripe:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M-4,4 l8,-8 M0,24 l24,-24 M20,28 l8,-8' stroke='%230A0A0A' stroke-width='2' opacity='0.14' fill='none'/%3E%3C/svg%3E");
-  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  --bg:#0A0A0B;
+  --bg-2:#111114;
+  --ink:#F5F5F3;
+  --dim:#ADADB8;
+  --line:rgba(255,255,255,.10);
+  --line-2:rgba(255,255,255,.16);
+  --gold:#FFD166;
+  --pink:#FF1493;
+  --violet:#8B7CF6;
+  --sky:#00BFFF;
+  --lime:#B4E61E;
+  --grad:linear-gradient(115deg,var(--pink),var(--violet) 45%,var(--sky));
+  --f-d:"Space Grotesk","PingFang SC","HarmonyOS Sans","Source Han Sans SC","Source Han Sans CN","Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-b:"Inter","PingFang SC","HarmonyOS Sans","Source Han Sans SC","Source Han Sans CN","Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-m:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
+  --r:16px;
+  --ease:cubic-bezier(.22,1,.36,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;scroll-padding-top:82px;
+  -webkit-text-size-adjust:100%;text-size-adjust:100%;
+}
 body{
-  font-family:var(--f-body);
-  color:var(--ink);
-  background-color:var(--bg);
-  background-image:var(--dot);
-  font-size:var(--fs-body);
-  line-height:var(--lh-body);
-  letter-spacing:-.005em;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  text-rendering:optimizeLegibility;
-  overflow-x:hidden;
+  background:var(--bg);color:var(--ink);font-family:var(--f-b);
+  font-size:16.5px;line-height:1.78;letter-spacing:.012em;
+  text-rendering:optimizeLegibility;font-kerning:normal;font-variant-ligatures:common-ligatures;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;overflow-wrap:break-word;
 }
-img{max-width:100%;display:block}
+img,canvas,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
-h1,h2,h3,h4{font-family:var(--f-head);font-weight:var(--fw-head);line-height:var(--lh-tight);letter-spacing:var(--ls-head)}
-:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--yellow);border:var(--bd);box-shadow:var(--shadow-sm);padding:10px 18px;font-family:var(--f-mono);font-weight:700}
-.skip:focus{left:12px;top:12px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+p{text-wrap:pretty}
+::selection{background:var(--pink);color:#fff}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-thumb{background:#2a2a31;border-radius:10px;border:3px solid var(--bg)}
+
+/* 颗粒噪点：让大面积暗色不发死 */
+body::after{
+  content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 .wrap{width:min(1180px,92vw);margin-inline:auto}
+.mono{font-family:var(--f-m);font-variant-numeric:tabular-nums}
+.kicker{
+  font-family:var(--f-m);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--dim);display:flex;align-items:center;gap:10px;margin-bottom:16px;
+}
+.kicker::before{content:'';width:26px;height:1px;background:var(--grad)}
+/* 中西文混排：标题不收紧字距（负字距会挤压汉字），改用轻微正字距 + balance 换行 */
+h1,h2,h3,h4{font-family:var(--f-d);font-weight:700;line-height:1.2;letter-spacing:.005em;text-wrap:balance}
+h1{line-height:1.14}
+h2{line-height:1.22}
+h3,h4{line-height:1.35}
+.gold{background:linear-gradient(92deg,var(--gold),#FFA94D);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec{padding:110px 0;position:relative}
+.sec-t{font-size:clamp(30px,4.4vw,52px);margin-bottom:14px}
+.sec-l{color:var(--dim);font-size:17.5px;line-height:1.8;max-width:64ch}
+mark{background:none;color:var(--gold)}
 
-/* ═══ 导航 ═══ */
-.nav{position:sticky;top:0;z-index:80;background:var(--yellow);border-bottom:var(--bd)}
-.nav-in{display:flex;align-items:center;gap:16px;padding:12px 0}
-.brand{display:flex;align-items:center;gap:10px}
-.brand-mark{width:42px;height:42px;border:var(--bd);background:var(--pink);display:grid;place-items:center;box-shadow:var(--shadow-sm);flex:none}
-.brand-text b{font-family:var(--f-head);font-size:21px;display:block;line-height:1}
-.brand-text i{font-family:var(--f-mono);font-style:normal;font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;display:block}
-.nav-links{display:flex;gap:6px;margin-left:auto}
-.nav-links a{padding:8px 14px;font-family:var(--f-mono);font-weight:600;font-size:13px;border:var(--bd);background:var(--paper);box-shadow:var(--shadow-sm);transition:transform .12s,box-shadow .12s}
-.nav-links a:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow)}
-.nav-links a.active{background:var(--ink);color:#fff}
-.nav-cta{margin-left:0}
-.nav-toggle{display:none;width:44px;height:44px;border:var(--bd);background:var(--paper);box-shadow:var(--shadow-sm);place-items:center;flex:none}
-.progress{height:5px;background:var(--ink);width:0}
-/* 按钮 */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;font-family:var(--f-head);font-weight:700;border:var(--bd);box-shadow:var(--shadow);background:var(--paper);transition:transform .1s,box-shadow .1s}
-.btn:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-lg)}
-.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
-.btn--pink{background:var(--pink);color:#fff}
-.btn--yellow{background:var(--yellow)}
-.btn--sky{background:var(--sky);color:#fff}
-.btn--lime{background:var(--lime)}
-.btn--orange{background:var(--orange);color:#fff}
+/* ── 点阵加载器 ── */
+#loader{
+  position:fixed;inset:0;z-index:9999;background:var(--bg);display:grid;place-items:center;gap:22px;
+  transition:opacity .6s var(--ease),visibility .6s;
+}
+#loader.off{opacity:0;visibility:hidden}
+.dots{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;width:112px}
+.dots i{aspect-ratio:1;background:#26262d;border-radius:2px;animation:dotw 1.25s var(--ease) infinite}
+@keyframes dotw{0%,100%{transform:scale(1);background:#26262d}45%{transform:scale(.55);background:var(--gold)}}
+#loader p{font-family:var(--f-m);font-size:11px;letter-spacing:.24em;color:var(--dim);text-transform:uppercase}
 
-/* ═══ HERO ═══ */
-.hero{padding:46px 0 0}
-.hero-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:34px;align-items:start}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;padding:8px 14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.03em;margin-bottom:18px;border:var(--bd)}
-.hero-badge .dot{width:10px;height:10px;border-radius:50%;background:var(--lime);animation:blink 1.6s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-.hero h1{font-family:var(--f-display);font-size:var(--fs-hero);font-weight:var(--fw-display);letter-spacing:var(--ls-display);line-height:1.12}
-.hero h1 .hl{display:block;font-size:.55em;color:var(--pink);margin-top:10px;letter-spacing:var(--ls-head)}
-.hero-role{font-family:var(--f-mono);font-weight:600;margin-top:14px;font-size:15px}
-.hero-desc{margin-top:16px;max-width:48ch;font-size:var(--fs-body)}
-.hero-desc strong{background:var(--yellow);padding:0 4px}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
-.hero-stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
-.stat{background:var(--paper);border:var(--bd);box-shadow:var(--shadow-sm);padding:12px 16px;min-width:94px}
-.stat b{display:block;font-family:var(--f-head);font-size:32px;font-weight:var(--fw-display);line-height:1}
-.stat span{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
-.hero-card{border:var(--bd);background:var(--paper);box-shadow:var(--shadow);overflow:hidden}
-.hero-card-top{display:flex;align-items:center;gap:6px;padding:9px 13px;background:var(--ink)}
-.hero-card-top span{width:12px;height:12px;border:2px solid #fff}
-.hero-card-top b{margin-left:auto;color:#fff;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em}
-.hero-illo{background:var(--pink-t);border-bottom:var(--bd);background-image:var(--noise);aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden}
-.hero-illo img{width:100%;height:100%;object-fit:cover}
-.hero-illo svg{width:78%;height:auto}
-.hero-card-body{padding:16px}
-.hero-card-body h3{font-size:22px}
-.hero-card-body>p{font-family:var(--f-mono);font-size:12px;opacity:.7;margin:2px 0 12px}
-.hero-card-body ul{list-style:none;display:grid;gap:8px}
-.hero-card-body li{display:flex;align-items:center;gap:8px;font-size:13px;font-family:var(--f-mono)}
-.marquee{margin-top:40px;background:var(--ink);color:#fff;overflow:hidden;border-top:var(--bd);border-bottom:var(--bd);padding:12px 0}
-.marquee-track{display:flex;white-space:nowrap;animation:marquee 24s linear infinite;font-family:var(--f-mono);font-weight:700;letter-spacing:.08em}
-.marquee-track span{padding-right:24px}
-@keyframes marquee{to{transform:translateX(-50%)}}
+/* ── 导航 ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;transition:.3s var(--ease)}
+.nav.on{background:rgba(10,10,11,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:22px;height:70px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--f-d);font-weight:700;font-size:17px}
+.brand i{width:26px;height:26px;border-radius:7px;background:var(--grad);display:grid;place-items:center;font-style:normal;font-size:13px;color:#0A0A0B;font-weight:800}
+.nav-links{display:flex;gap:26px;margin-left:auto;font-size:14px;color:var(--dim)}
+.nav-links a{transition:color .2s;position:relative}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--grad)}
+.burger{display:none;margin-left:auto;width:42px;height:42px;border:1px solid var(--line-2);border-radius:10px;place-items:center}
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--grad);z-index:901;width:0}
 
-/* ═══ 区块标题 ═══ */
-.sec{padding:70px 0}
-.kicker{display:inline-flex;align-items:baseline;gap:10px;font-family:var(--f-mono);font-weight:700;font-size:var(--fs-aux);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
-.kicker .num{background:var(--ink);color:#fff;padding:3px 9px;font-size:12px}
-.kicker .en{font-size:13px;opacity:.7}
-.sec-title{font-size:var(--fs-section);font-weight:var(--fw-head);letter-spacing:var(--ls-head);line-height:1.08}
-.sec-title mark{background:var(--yellow);padding:0 6px}
-.sec-lead{max-width:62ch;margin-top:14px;font-size:var(--fs-body);opacity:.85}
+/* ── 按钮 ── */
+.btn{
+  position:relative;display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;
+  font-weight:600;font-size:15px;transition:transform .18s var(--ease),box-shadow .25s;will-change:transform;
+}
+.btn--main{background:var(--grad);color:#0A0A0B;box-shadow:0 8px 30px -10px rgba(255,20,147,.6)}
+.btn--main:hover{box-shadow:0 14px 40px -10px rgba(255,20,147,.8)}
+.btn--gold{background:linear-gradient(92deg,var(--gold),#FFA94D);color:#14100A}
+.btn--ghost{border:1px solid var(--line-2);color:var(--ink)}
+.btn--ghost:hover{border-color:var(--ink)}
+.btn--sm{padding:10px 18px;font-size:13.5px}
 
-/* ═══ 技能卡 ═══ */
-.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px;margin-top:32px}
-.skill-card{background:var(--paper);border:var(--bd);box-shadow:var(--shadow);padding:22px;transition:transform .12s,box-shadow .12s}
-.skill-card:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-lg)}
-.skill-card:nth-child(1){background:var(--pink-t)}
-.skill-card:nth-child(2){background:var(--sky-t)}
-.skill-card:nth-child(3){background:var(--lime-t)}
-.skill-card:nth-child(4){background:var(--orange-t)}
-.skill-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.skill-icon{width:46px;height:46px;border:var(--bd);background:var(--paper);display:grid;place-items:center;box-shadow:var(--shadow-sm);flex:none}
-.skill-head h3{font-size:19px}
-.skill-head .en{font-family:var(--f-mono);font-size:11px;opacity:.65;text-transform:uppercase}
-.skill-card p{font-size:var(--fs-aux);margin-bottom:14px}
-.bar-row{margin-bottom:12px}
-.bar-lab{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:12px;margin-bottom:4px}
-.bar{height:15px;border:var(--bd);background:var(--paper);overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:var(--ink);transition:width 1.1s cubic-bezier(.16,1,.3,1)}
-.skill-card:nth-child(1) .bar i{background:var(--pink)}
-.skill-card:nth-child(2) .bar i{background:var(--sky)}
-.skill-card:nth-child(3) .bar i{background:var(--lime)}
-.skill-card:nth-child(4) .bar i{background:var(--orange)}
-.skill-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+/* ── 边框流光（Border beam） ── */
+.beam{position:relative;border-radius:var(--r);background:var(--bg-2);border:1px solid var(--line)}
+.beam::before{
+  content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
+  background:conic-gradient(from var(--a,0deg),transparent 0 300deg,var(--pink) 330deg,var(--violet) 350deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  animation:spin 5.5s linear infinite;opacity:0;transition:opacity .4s;
+}
+.beam:hover::before,.beam.lit::before{opacity:1}
+@keyframes spin{to{--a:360deg}}
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
 
-/* ═══ 标签 ═══ */
-.chip{display:inline-block;padding:4px 10px;font-family:var(--f-mono);font-size:11px;font-weight:700;border:var(--bd-thin);box-shadow:var(--shadow-sm);text-transform:uppercase;letter-spacing:.04em;background:#fff}
-.chip--pink{background:var(--pink);color:#fff}
-.chip--sky{background:var(--sky);color:#fff}
-.chip--lime{background:var(--lime)}
-.chip--orange{background:var(--orange);color:#fff}
-.chip--yellow{background:var(--yellow)}
-.chip--purple{background:var(--purple);color:#fff}
-.tabs{display:flex;gap:12px;margin:28px 0 22px;flex-wrap:wrap}
-.tab{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;font-family:var(--f-head);font-weight:700;border:var(--bd);background:#fff;box-shadow:var(--shadow-sm);transition:transform .12s,box-shadow .12s}
-.tab:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow)}
-.tab[aria-selected="true"]{background:var(--ink);color:#fff}
-.tab .n{font-family:var(--f-mono);font-size:11px;padding:1px 7px;border:2px solid currentColor;border-radius:999px}
+/* ── 鼠标聚光灯 ── */
+.spot{position:relative;overflow:hidden}
+.spot::before{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.07),transparent 65%);
+}
+.spot:hover::before{opacity:1}
 
-/* ═══ 作品 Bento ═══ */
-.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
-.work{background:var(--paper);border:var(--bd);box-shadow:var(--shadow-sm);overflow:hidden;cursor:pointer;transition:transform .12s,box-shadow .12s;display:flex;flex-direction:column}
-.work:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow)}
-.work-cover{position:relative;aspect-ratio:1/1;border-bottom:var(--bd);overflow:hidden;display:grid;place-items:center}
-.work-cover img{width:100%;height:100%;object-fit:cover}
-.work-id{position:absolute;top:8px;left:8px;z-index:2;font-family:var(--f-mono);font-weight:700;font-size:13px;background:#fff;border:var(--bd);padding:1px 7px}
-.work-ini{font-family:var(--f-head);font-weight:700;font-size:52px;color:var(--ink)}
-.work-play{position:absolute;right:10px;bottom:10px;z-index:2;width:34px;height:34px;border:var(--bd);background:var(--yellow);display:grid;place-items:center;box-shadow:var(--shadow-sm);opacity:0;transform:translateY(6px);transition:.15s}
-.work:hover .work-play,.work:focus .work-play{opacity:1;transform:translateY(0)}
-.work-meta{padding:12px 14px;flex:1;display:flex;flex-direction:column}
-.work-meta h3{font-family:var(--f-head);font-size:16px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.work-singer{font-family:var(--f-mono);font-size:12px;opacity:.75;margin-top:4px}
-.work-src{font-size:11px;opacity:.6;margin-top:auto;padding-top:6px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* ═══════════ HERO ═══════════ */
+.hero{position:relative;padding:150px 0 90px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none}
+.b1{width:520px;height:520px;background:var(--pink);top:-160px;left:-120px;animation:drift 18s ease-in-out infinite}
+.b2{width:460px;height:460px;background:var(--violet);top:-60px;right:-140px;animation:drift 22s ease-in-out infinite reverse}
+.b3{width:380px;height:380px;background:var(--sky);bottom:-200px;left:38%;animation:drift 26s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,40px) scale(1.12)}}
+#wave{position:absolute;inset:auto 0 0;height:220px;width:100%;opacity:.55;pointer-events:none}
+.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(38px,6.2vw,76px);margin:18px 0 20px}
+.hero p.lead{font-size:18.5px;line-height:1.72;color:var(--dim);max-width:54ch}
+.hero-cta{display:flex;gap:14px;margin:34px 0 28px;flex-wrap:wrap}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;font-family:var(--f-m);font-size:11.5px;letter-spacing:.1em;
+  padding:7px 14px;border:1px solid var(--line-2);border-radius:999px;color:var(--dim);text-transform:uppercase;
+}
+.trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.trust span{font-size:13px;color:var(--dim)}
+.trust b{color:var(--ink);font-family:var(--f-d)}
+.hero-card{padding:26px}
+.hero-card .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.live{display:inline-flex;align-items:center;gap:7px;font-family:var(--f-m);font-size:10.5px;letter-spacing:.16em;color:var(--lime)}
+.live i{width:7px;height:7px;border-radius:50%;background:var(--lime);animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+#spec{width:100%;height:120px;display:block;border-radius:10px;background:#0d0d10}
+.eq{display:grid;gap:9px;margin-top:16px}
+.eq-row{display:grid;grid-template-columns:64px 1fr 42px;align-items:center;gap:10px;font-family:var(--f-m);font-size:11px;letter-spacing:.06em;color:var(--dim)}
+.eq-bar{height:5px;background:#1c1c22;border-radius:99px;overflow:hidden}
+.eq-bar i{display:block;height:100%;background:var(--grad);width:0;transition:width .9s var(--ease)}
 
-/* ═══ AI Skills / Agent 模块 ═══ */
-.agent-tabs{display:flex;gap:12px;margin:28px 0 22px;flex-wrap:wrap}
-.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
-.agent{background:var(--paper);border:var(--bd);box-shadow:var(--shadow-sm);overflow:hidden;transition:transform .12s,box-shadow .12s;display:flex;flex-direction:column}
-.agent:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow)}
-.agent-top{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:var(--bd)}
-.agent-badge{width:36px;height:36px;flex:none;border:var(--bd);background:#fff;display:grid;place-items:center;font-family:var(--f-head);font-weight:700;font-size:18px;color:var(--ink)}
-.agent-name{font-family:var(--f-head);font-size:16px;line-height:1.2}
-.agent-cn{font-family:var(--f-mono);font-size:11px;opacity:.6;margin-top:2px}
-.agent-body{padding:12px 16px 16px;flex:1;display:flex;flex-direction:column;gap:10px}
-.agent-desc{font-size:13px;line-height:1.55;opacity:.85}
-.agent .skill-tags{margin-top:auto}
+/* ═══════════ 痛点 ═══════════ */
+.pain{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:44px}
+.pain-c{padding:24px}
+.pain-c .n{font-family:var(--f-m);font-size:11px;color:var(--pink);letter-spacing:.14em}
+.pain-c h3{font-size:19px;margin:10px 0 8px}
+.pain-c p{font-size:14px;color:var(--dim);line-height:1.6}
+.pain-c .fix{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line-2);font-size:13px;color:var(--ink)}
+.pain-c .fix b{color:var(--gold)}
 
-/* ═══ 时间线 ═══ */
-.tl{display:grid;gap:18px;margin-top:8px}
-.tl-item{border:var(--bd);box-shadow:var(--shadow-sm);background:var(--paper)}
-.tl-card{padding:20px;border-left:10px solid var(--pink)}
-.tl-item:nth-child(2n) .tl-card{border-left-color:var(--sky)}
-.tl-item:nth-child(3n) .tl-card{border-left-color:var(--lime)}
-.tl-item:nth-child(4n) .tl-card{border-left-color:var(--orange)}
-.tl-year{display:inline-block;font-family:var(--f-mono);font-weight:700;font-size:12px;background:var(--ink);color:#fff;padding:3px 10px;letter-spacing:.04em}
-.tl-card h3{font-size:20px;margin:10px 0 4px}
-.tl-card .en{font-family:var(--f-mono);font-size:11px;opacity:.6;text-transform:uppercase}
-.tl-card p{font-size:var(--fs-aux);margin:10px 0 12px}
-.tl-chips{display:flex;flex-wrap:wrap;gap:8px}
+/* ═══════════ 服务三支柱 ═══════════ */
+.svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:44px}
+.svc-c{padding:30px;display:flex;flex-direction:column}
+.svc-c .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;background:#17171c;border:1px solid var(--line-2)}
+.svc-c h3{font-size:23px}
+.svc-c .en{font-family:var(--f-m);font-size:10.5px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase;margin-top:6px}
+.svc-c ul{list-style:none;margin:20px 0;display:grid;gap:10px;flex:1}
+.svc-c li{font-size:14px;color:var(--dim);padding-left:20px;position:relative}
+.svc-c li::before{content:'';position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:2px;background:var(--grad)}
+.svc-c .price{font-family:var(--f-d);font-size:26px;margin-bottom:14px}
+.svc-c .price small{font-size:12px;color:var(--dim);font-weight:400}
 
-/* ═══ 关于 ═══ */
-.about-grid{display:grid;grid-template-columns:.8fr 1.4fr;gap:28px;margin-top:30px;align-items:start}
-.about-card{background:var(--purple-t);border:var(--bd);box-shadow:var(--shadow);padding:22px;position:sticky;top:90px}
-.about-avatar{border:var(--bd);box-shadow:var(--shadow-sm);background:var(--paper);aspect-ratio:1;display:grid;place-items:center;margin-bottom:12px;background-image:var(--noise);overflow:hidden}
-.about-avatar img{width:100%;height:100%;object-fit:cover}
-.about-avatar svg{width:70%;height:auto}
-.about-card h3{font-size:24px}
-.about-card .role{font-family:var(--f-mono);font-size:12px;opacity:.7;margin:2px 0 12px}
-.about-contact{list-style:none;display:grid;gap:8px;margin-top:12px}
-.about-contact li{display:flex;align-items:center;gap:8px;font-size:13px;font-family:var(--f-mono)}
-.about-body{display:grid;gap:20px}
-.quote-box{background:var(--yellow);border:var(--bd);box-shadow:var(--shadow-sm);padding:22px;position:relative;background-image:var(--noise)}
-.quote-box .qm{font-family:var(--f-head);font-size:60px;line-height:.6;position:absolute;top:8px;right:16px;opacity:.25}
-.quote-box p{font-size:var(--fs-body);margin-bottom:8px}
-.quote-box .hl{background:#fff;padding:0 4px;border-bottom:3px solid var(--pink)}
-.about-body>p{font-size:16px}
-.about-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:4px}
-.about-col h4{font-family:var(--f-head);font-size:15px;margin-bottom:10px;border-bottom:var(--bd);padding-bottom:6px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
+/* ═══════════ 调试工具 ═══════════ */
+.tool{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:24px;margin-top:40px}
+.tool-f{padding:28px}
+.field{margin-bottom:18px}
+.field label{display:block;font-family:var(--f-m);font-size:11px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;margin-bottom:9px}
+.chips-f{display:flex;gap:8px;flex-wrap:wrap}
+.chips-f button{padding:9px 15px;border:1px solid var(--line-2);border-radius:99px;font-size:13px;color:var(--dim);transition:.2s}
+.chips-f button:hover{border-color:var(--line-2);color:var(--ink)}
+.chips-f button.on{background:var(--ink);color:#0A0A0B;border-color:var(--ink);font-weight:600}
+.tool-o{padding:28px;display:flex;flex-direction:column}
+.tool-o .kv{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0}
+.kv div{border:1px solid var(--line);border-radius:12px;padding:14px;background:#0d0d10}
+.kv span{display:block;font-family:var(--f-m);font-size:10px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
+.kv b{font-family:var(--f-d);font-size:22px;display:block;margin-top:5px}
+.tool-o ol{margin:0 0 18px 18px;display:grid;gap:8px;font-size:14px;color:var(--dim)}
+.tool-o ol li::marker{color:var(--gold);font-family:var(--f-m);font-size:12px}
 
-/* ═══ 黄底联系 CTA ═══ */
-.cta{background:var(--yellow);border-top:var(--bd);border-bottom:var(--bd);margin-top:30px;background-image:var(--stripe)}
-.cta-in{background:var(--yellow);border:var(--bd);box-shadow:var(--shadow);margin:60px 0;padding:40px;text-align:center}
-.cta-in h2{font-size:var(--fs-section);font-weight:var(--fw-head);letter-spacing:var(--ls-head);line-height:1.08}
-.cta-lead{margin:0 auto 28px;max-width:40ch;font-size:clamp(22px,3.2vw,34px);font-weight:var(--fw-head);line-height:1.35;letter-spacing:var(--ls-head);text-align:center}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+/* ═══════════ 播放器 / 试听 ═══════════ */
+.player-w{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:24px;margin-top:40px}
+.p-main{padding:26px}
+.envs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.envs button{padding:9px 16px;border:1px solid var(--line-2);border-radius:99px;font-size:13px;color:var(--dim)}
+.envs button.on{background:var(--gold);color:#14100A;border-color:var(--gold);font-weight:600}
+#viz{width:100%;height:150px;display:block;border-radius:12px;background:#0c0c0f}
+.now{display:flex;align-items:center;gap:14px;margin-top:16px}
+.now img{width:56px;height:56px;border-radius:10px;object-fit:cover;border:1px solid var(--line-2)}
+.now .t{font-family:var(--f-d);font-size:17px}
+.now .s{font-size:13px;color:var(--dim);line-height:1.5}
+.rail{margin-top:16px}
+.rail-bar{height:6px;background:#1c1c22;border-radius:99px;cursor:pointer;position:relative;overflow:hidden}
+.rail-bar i{position:absolute;inset:0 auto 0 0;background:var(--grad);width:0}
+.rail-t{display:flex;justify-content:space-between;font-family:var(--f-m);font-size:11px;color:var(--dim);margin-top:8px}
+.ctrls{display:flex;align-items:center;gap:12px;margin-top:14px}
+.ctrls button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;transition:.2s}
+.ctrls button:hover{border-color:var(--ink)}
+.ctrls .play{background:var(--ink);color:#0A0A0B;border-color:var(--ink);width:52px;height:52px}
+.pl{padding:18px;max-height:430px;overflow:auto}
+.pl h4{font-family:var(--f-m);font-size:10.5px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase;margin-bottom:12px}
+.pl-i{display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:10px;cursor:pointer;transition:.18s}
+.pl-i:hover{background:#17171c}
+.pl-i.on{background:#17171c;outline:1px solid var(--line-2)}
+.pl-i img{width:38px;height:38px;border-radius:7px;object-fit:cover}
+.pl-i .m{min-width:0}
+.pl-i .m b{display:block;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-i .m span{font-size:12px;color:var(--dim)}
+.pl-i .k{margin-left:auto;font-family:var(--f-m);font-size:11px;color:var(--dim)}
 
-/* ═══ 黑底 Footer ═══ */
-.foot{background:var(--ink);color:#fff;padding:48px 0 26px}
-.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:30px}
-.foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.foot-brand .brand-mark{background:var(--pink)}
-.foot-brand b{font-family:var(--f-head);font-size:22px}
-.foot p{opacity:.82;font-size:var(--fs-aux);max-width:42ch}
-.foot h4{font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin-bottom:12px;opacity:.6}
-.foot ul{list-style:none;display:grid;gap:8px}
-.foot a:hover{color:var(--yellow)}
-.foot-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);font-family:var(--f-mono);font-size:12px;opacity:.7}
+/* ═══════════ 教学 ═══════════ */
+.cur{margin-top:40px;display:grid;gap:10px}
+.acc{border:1px solid var(--line);border-radius:14px;background:var(--bg-2);overflow:hidden}
+.acc-h{width:100%;display:flex;align-items:center;gap:16px;padding:18px 22px;text-align:left}
+.acc-h .no{font-family:var(--f-m);font-size:12px;color:var(--gold);letter-spacing:.1em}
+.acc-h b{font-family:var(--f-d);font-size:17.5px;font-weight:600;line-height:1.45}
+.acc-h .tag{margin-left:auto;font-family:var(--f-m);font-size:10.5px;color:var(--dim);letter-spacing:.1em}
+.acc-h .ar{transition:transform .3s var(--ease);color:var(--dim)}
+.acc.open .ar{transform:rotate(45deg)}
+.acc-b{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.acc-b p{padding:0 22px 20px 66px;color:var(--dim);font-size:15px;line-height:1.8}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:34px}
+.fit{padding:24px}
+.fit h4{font-size:17px;margin-bottom:14px}
+.fit li{list-style:none;padding-left:22px;position:relative;font-size:14px;color:var(--dim);margin-bottom:9px}
+.fit.yes li::before{content:'✓';position:absolute;left:0;color:var(--lime);font-weight:700}
+.fit.no li::before{content:'×';position:absolute;left:0;color:var(--pink);font-weight:700}
 
-/* ═══ 底部播放器 ═══ */
-.player{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:center;gap:14px;padding:10px 16px;background:var(--yellow);border-top:var(--bd);transform:translateY(110%);transition:transform .25s cubic-bezier(.16,1,.3,1)}
-.player.on{transform:translateY(0)}
-body.player-on{padding-bottom:84px}
-.pl-cover{width:54px;height:54px;border:var(--bd);background:#fff;flex:none;display:grid;place-items:center;overflow:hidden;box-shadow:var(--shadow-sm)}
-.pl-cover img{width:100%;height:100%;object-fit:cover}
-.pl-cover span{font-family:var(--f-head);font-weight:700;font-size:22px}
-.pl-info{min-width:0;flex:1}
-.pl-info .t{font-family:var(--f-head);font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pl-info .s{font-family:var(--f-mono);font-size:12px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pl-ctrl{display:flex;gap:8px;flex:none}
-.pl-btn{width:40px;height:40px;border:var(--bd);background:#fff;display:grid;place-items:center;box-shadow:var(--shadow-sm);transition:transform .1s}
-.pl-btn:hover{transform:translate(-2px,-2px)}
-.pl-btn:active{transform:translate(2px,2px);box-shadow:none}
-.pl-btn.main{background:var(--ink)}
-.pl-rail{display:flex;align-items:center;gap:8px;flex:1;min-width:120px}
-.pl-time{font-family:var(--f-mono);font-size:12px;flex:none}
-.pl-track{flex:1;height:14px;border:var(--bd);background:#fff;position:relative;cursor:pointer}
-.pl-track i{display:block;height:100%;width:0;background:var(--pink)}
-.pl-x{flex:none}
-.work.playing{outline:3px solid var(--pink);outline-offset:3px}
+/* ═══════════ 流程 ═══════════ */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:44px;counter-reset:s}
+.step{padding:24px;position:relative}
+.step::before{
+  counter-increment:s;content:counter(s,decimal-leading-zero);
+  font-family:var(--f-m);font-size:11px;color:var(--gold);letter-spacing:.12em;display:block;margin-bottom:12px;
+}
+.step h4{font-size:16.5px;margin-bottom:8px}
+.step p{font-size:13.5px;color:var(--dim)}
 
-/* ═══ 滚动揭示 ═══ */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
-.reveal.in{opacity:1;transform:none}
-/* 分类切换用：内容已静态渲染，tab 只是显隐，不重新生成 DOM */
+/* ═══════════ 数据 ═══════════ */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:40px}
+.stat-c{padding:26px;text-align:center}
+.stat-c b{font-family:var(--f-d);font-size:44px;display:block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-c span{font-size:13.5px;color:var(--dim);line-height:1.6}
+.creds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:20px}
+.cred{padding:18px 22px;display:flex;gap:14px;align-items:flex-start;font-size:14.5px;line-height:1.7;color:var(--dim)}
+.cred b{color:var(--ink);font-weight:600;display:block;font-size:15px}
+.cred .y{font-family:var(--f-m);font-size:11.5px;letter-spacing:.06em;color:var(--gold);white-space:nowrap}
+
+/* ═══════════ 价格 ═══════════ */
+.pri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px}
+.pri-c{padding:28px;display:flex;flex-direction:column;position:relative}
+.pri-c.hot{outline:1px solid var(--gold)}
+.pri-c .badge{position:absolute;top:-11px;right:20px;background:var(--gold);color:#14100A;font-family:var(--f-m);font-size:10px;letter-spacing:.14em;padding:4px 10px;border-radius:99px;font-weight:700}
+.pri-c h3{font-size:19px}
+.pri-c .p{font-family:var(--f-d);font-size:36px;margin:12px 0 4px}
+.pri-c .p small{font-size:13px;color:var(--dim);font-weight:400}
+.pri-c .u{font-size:13px;color:var(--dim);margin-bottom:18px}
+.pri-c ul{list-style:none;display:grid;gap:10px;font-size:14px;line-height:1.65;color:var(--dim);flex:1;margin-bottom:20px}
+.pri-c ul li::before{content:'—';color:var(--gold);margin-right:8px}
+
+/* ═══════════ FAQ + 保障 ═══════════ */
+.faq-q{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:40px}
+.guar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px}
+.guar-c{padding:22px;display:flex;gap:14px;align-items:flex-start}
+.guar-c .ic{flex:none;width:38px;height:38px;border-radius:10px;background:#17171c;border:1px solid var(--line-2);display:grid;place-items:center;font-size:17px}
+.guar-c b{display:block;font-size:15.5px;margin-bottom:4px}
+.guar-c p{font-size:14px;line-height:1.7;color:var(--dim)}
+
+/* ═══════════ 终局 CTA ═══════════ */
+.fin{padding:120px 0;text-align:center;position:relative;overflow:hidden}
+.fin h2{font-size:clamp(32px,5.4vw,68px);margin-bottom:18px}
+.fin .lead{color:var(--dim);font-size:18px;max-width:56ch;margin:0 auto 32px}
+.fin-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.contact-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.contact-row a{padding:12px 20px;border:1px solid var(--line-2);border-radius:12px;font-family:var(--f-m);font-size:13px;color:var(--dim)}
+.contact-row a:hover{border-color:var(--gold);color:var(--gold)}
+.scar{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-family:var(--f-m);font-size:12px;color:var(--gold)}
+.scar i{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 1.6s infinite}
+
+/* ── 移动端常驻 CTA ── */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:890;display:none;gap:10px;padding:12px 14px;
+  background:rgba(10,10,11,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);
+}
+.sticky-cta .btn{flex:1;justify-content:center;padding:13px}
+
+/* ── 页脚 ── */
+.foot{padding:46px 0;border-top:1px solid var(--line);color:var(--dim);font-size:14px}
+.foot-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot a:hover{color:var(--gold)}
+
+/* ── 揭示动画 ── */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* ═══════════ 简历 / 作品集扩展 ═══════════ */
 .is-hidden{display:none !important}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;align-items:start}
+.quote{
+  padding:26px 28px;border-left:3px solid var(--gold);background:var(--bg-2);border-radius:0 14px 14px 0;
+  font-size:20px;line-height:1.65;font-family:var(--f-d);letter-spacing:.01em;
+}
+.quote+p{color:var(--dim);font-size:15.5px;line-height:1.85;margin-top:22px}
+.skill-bars{display:grid;gap:16px}
+.skill-b .lab{display:flex;justify-content:space-between;align-items:baseline;font-size:14.5px;margin-bottom:7px}
+.skill-b .lab span:last-child{font-family:var(--f-m);font-size:12px;color:var(--dim)}
+.bar{height:6px;background:#1c1c22;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--grad);width:0;transition:width 1.1s var(--ease)}
+.resume{margin-top:8px}
+.res-row{display:grid;grid-template-columns:150px 1fr;gap:22px;padding:20px 0;border-top:1px solid var(--line)}
+.res-row:last-child{border-bottom:1px solid var(--line)}
+.res-row .yr{font-family:var(--f-m);font-size:12px;color:var(--gold);letter-spacing:.05em;line-height:1.7}
+.res-row h4{font-size:18px;margin-bottom:5px}
+.res-row .org{font-size:13.5px;color:var(--dim);margin-bottom:7px;font-family:var(--f-m);letter-spacing:.03em;line-height:1.6}
+.res-row p{font-size:15px;line-height:1.8;color:var(--dim)}
+.res-row ul{margin:8px 0 0 18px;display:grid;gap:6px;font-size:14.5px;line-height:1.7;color:var(--dim)}
+.tl-tabs{display:flex;gap:9px;margin:26px 0 6px;flex-wrap:wrap}
+.tl-tabs button{padding:9px 17px;border:1px solid var(--line-2);border-radius:99px;font-size:13.5px;color:var(--dim)}
+.tl-tabs button.on{background:var(--ink);color:#0A0A0B;border-color:var(--ink);font-weight:600}
+.toolbox{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.toolbox span{padding:8px 14px;border:1px solid var(--line-2);border-radius:99px;font-size:13.5px;color:var(--dim)}
+.agent-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px}
+.agent-c{padding:20px;display:flex;flex-direction:column;gap:8px}
+.agent-c .nm{font-family:var(--f-d);font-size:16px}
+.agent-c .cn{font-size:13px;color:var(--dim);font-family:var(--f-m);letter-spacing:.02em}
+.agent-c .ds{font-size:14px;color:var(--dim);line-height:1.7}
+.agent-c .tag{font-family:var(--f-m);font-size:10px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin-top:auto;padding-top:6px}
+.hero-id{display:flex;align-items:center;gap:22px;margin-bottom:22px}
+.hero-id img{width:78px;height:78px;border-radius:50%;object-fit:cover;border:2px solid var(--line-2)}
+.hero-id .nm{font-family:var(--f-d);font-size:26px;font-weight:700}
+.hero-id .rl{font-family:var(--f-m);font-size:12px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin-top:3px}
+.meta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;font-family:var(--f-m);font-size:12.5px;line-height:1.7;color:var(--dim)}
+.meta-row span{display:inline-flex;align-items:center;gap:6px}
 
-/* ═══ 响应式 ═══ */
-@media (max-width:900px){
-  .hero-grid{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr}
-  .about-card{position:static}
-  .foot-top{grid-template-columns:1fr 1fr}
+/* ── 触摸目标：手机上放大到 44px 量级 ── */
+@media (max-width:1000px){
+  .chips-f button{padding:11px 16px}
+  .pl-i{padding:11px 10px}
+  .envs button{padding:11px 16px}
+  .tl-tabs button{padding:11px 18px}
+  .acc-h{padding:20px 22px}
 }
-@media (max-width:680px){
-  .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--yellow);border-bottom:var(--bd);padding:12px;gap:8px;display:none}
-  .nav-links.open{display:flex}
-  .nav-links a{width:100%;text-align:left}
-  .nav-cta{display:none}
-  .nav-toggle{display:grid}
-  .bento{grid-template-columns:repeat(2,1fr);gap:14px}
-  .agent-grid{grid-template-columns:repeat(2,1fr);gap:14px}
-  .work-meta{padding:10px 12px}
-  .work-meta h3{font-size:15px}
-  .foot-top{grid-template-columns:1fr}
-  .about-cols{grid-template-columns:1fr}
-  .player{flex-wrap:wrap;gap:8px}
-  .pl-rail{order:3;flex-basis:100%}
+
+/* ── 横屏手机 / 矮视口：压缩纵向占用，保证首屏与功能一致 ── */
+@media (orientation:landscape) and (max-height:620px){
+  .hero{padding:104px 0 48px}
+  .hero h1{font-size:clamp(28px,5.4vw,44px)}
+  .hero p.lead{font-size:16.5px}
+  .hero-id{gap:16px;margin-bottom:16px}
+  .hero-id img{width:60px;height:60px}
+  .hero-id .nm{font-size:22px}
+  .hero-cta{margin:24px 0 20px}
+  .sec{padding:56px 0}
+  .fin{padding:64px 0}
+  .blob{display:none}
+  #wave{height:120px}
+  #spec{height:96px}
+  .pl{max-height:220px}
+  .sticky-cta{padding:8px 12px}
+  .sticky-cta .btn{padding:11px 12px;font-size:14px}
+  body{padding-bottom:64px}
+  .agent-g,.pri,.stats,.creds,.pain,.svc{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media (max-width:420px){
-  .bento{grid-template-columns:1fr}
-  .agent-grid{grid-template-columns:1fr}
+@media (orientation:landscape) and (max-height:420px){
+  .sticky-cta{display:none}
+  body{padding-bottom:0}
+  .hero{padding:92px 0 40px}
+}
+
+/* ── 打印 / 导出 PDF ── */
+@media print{
+  #loader,#prog,.nav,.sticky-cta,.blob,#wave,#spec,.hero-card,.envs,.ctrls,.pl,.footer-cta,.foot{display:none !important}
+  body{background:#fff;color:#111;font-size:12px;padding:0}
+  .wrap{width:100%}
+  .sec,.hero,.fin{padding:16px 0 !important;break-inside:avoid}
+  h1,h2,h3,h4,b,.res-row .yr,.agent-c .tag{color:#111 !important}
+  .sec-l,.res-row p,.res-row ul,.res-row .org,.agent-c .ds,.agent-c .cn,.meta-row,p{color:#444 !important}
+  .grad,.gold{-webkit-text-fill-color:#111;color:#111 !important;background:none}
+  .beam,.step,.pain-c,.svc-c,.pri-c,.stat-c,.cred,.agent-c,.guar-c,.tool-o,.tool-f,.p-main{border-color:#ddd !important;background:#fff !important;box-shadow:none !important}
+  .beam::before,.spot::before{display:none !important}
+  .rv{opacity:1 !important;transform:none !important}
+  .bar i{background:#111 !important}
+  .toolbox span{border-color:#ccc;color:#444 !important}
+  .acc-b{max-height:none !important}
+}
+
+/* ── 英文标签与大数字用衬线体（Times New Roman），中文仍走黑体 ── */
+.kicker,
+.hero-id .rl,
+.svc-c .en,
+.res-row .yr,
+.res-row .org,
+.cred .y,
+.agent-c .tag,
+.stat-c b,
+.pri-c .p,
+.svc-c .price{
+  font-family:"Times New Roman",Times,"Nimbus Roman",Georgia,serif;
+}
+.kicker{font-size:12.5px;letter-spacing:.18em}
+.res-row .yr{font-size:13px;letter-spacing:.04em;line-height:1.7}
+.res-row .org{letter-spacing:.05em}
+.stat-c b{font-size:46px;font-variant-numeric:lining-nums}
+.pri-c .p,.svc-c .price{font-weight:700;font-variant-numeric:lining-nums}
+.svc-c .price{font-size:27px}
+
+/* ── 响应式 ── */
+@media (max-width:1000px){
+  .hero-in,.tool,.player-w,.two,.steps,.creds,.about-grid,.agent-g{grid-template-columns:1fr}
+  .res-row{grid-template-columns:1fr;gap:6px}
+  .pain,.svc{grid-template-columns:1fr 1fr}
+  .pri{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .guar{grid-template-columns:1fr}
+  .faq-q{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .burger{display:grid}
+  .sticky-cta{display:flex}
+  body{padding-bottom:76px}
+  .sec{padding:80px 0}
+}
+@media (max-width:620px){
+  .pain,.svc,.pri,.stats{grid-template-columns:1fr}
+  .hero{padding:120px 0 70px}
 }
 @media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .reveal{opacity:1;transform:none}
+  *{animation:none !important;transition:none !important;scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+  .blob{display:none}
 }
 </style>
-<!-- 无 JS 时不做分类过滤，把 25 首作品 / 9 个 Agent / 8 条经历全部显示出来 -->
-<noscript><style>
-  .work.is-hidden,.agent.is-hidden{display:flex !important}
-  .tl-item.is-hidden{display:block !important}
-  .reveal{opacity:1;transform:none}
-</style></noscript>
 </head>
 <body>
-<a class="skip" href="#main">跳到主要内容</a>
 
-<!-- ═══ 1 · 导航 ═══ -->
-<header class="nav">
+<div id="loader">
+  <div class="dots" id="dots"></div>
+  <p>Loading · Sound Lab</p>
+</div>
+<div id="prog"></div>
+
+<header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top" aria-label="声音实验室 首页">
-      <span class="brand-mark" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.4" stroke-linejoin="round"><path d="M6 5h5v4H6zM13 5h5v14h-5z" fill="#FFE135"/></svg>
-      </span>
-      <span class="brand-text"><b>声音实验室</b><i>Sound Lab Portfolio</i></span>
-    </a>
-    <nav class="nav-links" id="navLinks" aria-label="主导航">
-      <a href="#skills">技能</a>
-      <a href="#works">作品</a>
-      <a href="#timeline">经历</a>
+    <a class="brand" href="#top"><i>J</i>邓家森 · 声音实验室</a>
+    <nav class="nav-links" id="navLinks">
       <a href="#about">关于</a>
-      <a href="#contact">联系</a>
+      <a href="#work">作品</a>
+      <a href="#exp">经历</a>
+      <a href="#edu">教育</a>
+      <a href="#build">我做的</a>
+      <a href="#cta">联系</a>
     </nav>
-    <a class="btn btn--pink nav-cta" href="#works">▶ 试听作品</a>
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="展开菜单" aria-expanded="false" aria-controls="navLinks">
-      <svg width="22" height="22" viewBox="0 0 24 24" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <button class="btn btn--main btn--sm" id="dl" type="button">下载简历 PDF</button>
+    <button class="burger" id="burger" type="button" aria-label="展开菜单">
+      <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
   </div>
-  <div class="progress" id="progress" role="presentation"></div>
 </header>
 
-<main id="main">
-<!-- ═══ 2 · HERO ═══ -->
+<!-- ══════════ HERO ══════════ -->
 <section class="hero" id="top">
-  <div class="wrap hero-grid">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <canvas id="wave"></canvas>
+  <div class="wrap hero-in">
     <div>
-      <p class="hero-badge"><span class="dot" aria-hidden="true"></span>正在接受混音 / 声音设计合作 · 2026</p>
-      <h1>声音实验室</h1>
-      <p class="hero-role">邓家森 · Sound Designer · Mix Engineer</p>
-      <p class="hero-desc">声音不是参数的堆叠，而是<strong>情绪、空间与人物身份</strong>的延伸。这里存放着 25 首真实混音作品、一套国家级民族乐器虚拟音源，以及 30+ 场现场扩声的实战记录。</p>
-      <div class="hero-cta">
-        <a class="btn btn--pink" href="#works">试听 25 首作品</a>
-        <a class="btn btn--yellow" href="#contact">联系合作 →</a>
+      <div class="hero-id">
+        <img src="avatar.jpg" alt="邓家森" width="78" height="78" />
+        <div>
+          <div class="nm">邓家森 · Jason</div>
+          <div class="rl">Sound Designer · Mix Engineer</div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><b>25</b><span>混音作品</span></div>
-        <div class="stat"><b>30+</b><span>扩声场次</span></div>
-        <div class="stat"><b>10+</b><span>音乐会录音</span></div>
-        <div class="stat"><b>6</b><span>奖项 / 发表</span></div>
+      <div class="kicker">Portfolio &amp; Résumé · 2026</div>
+      <h1>我把声音，<br><span class="gold">做成能交付的成品</span></h1>
+      <p class="lead">声音设计师 / 混音师。25 首已交付混音作品，主持研发广西艺术学院首款中国传统民族乐器 Kontakt 虚拟音源，累计 30+ 场现场扩声与 10+ 场音乐会实况录音。</p>
+      <div class="meta-row">
+        <span>📍 广西南宁 · 广西艺术学院</span>
+        <span>✉ 1823086554@qq.com</span>
+        <span>💬 微信 qwe886501</span>
+        <span style="color:var(--lime)">● 正在接混音 / 声音设计合作</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn--main" href="#work">▶ 听代表作品</a>
+        <a class="btn btn--ghost" href="#exp">看项目经历 →</a>
+      </div>
+      <div class="trust">
+        <span class="pill"><b>25</b>&nbsp;首混音作品</span>
+        <span class="pill"><b>30+</b>&nbsp;场现场扩声</span>
+        <span class="pill"><b>10+</b>&nbsp;场音乐会录音</span>
+        <span class="pill"><b>6</b>&nbsp;项赛事与发表</span>
       </div>
     </div>
-    <aside class="hero-card">
-      <div class="hero-card-top" aria-hidden="true">
-        <span style="background:var(--pink)"></span>
-        <span style="background:var(--yellow)"></span>
-        <span style="background:var(--sky)"></span>
-        <b>NOW MIXING</b>
+    <aside class="hero-card beam lit spot">
+      <div class="top">
+        <span class="live"><i></i>NOW MIXING</span>
+        <span class="mono" style="font-size:10.5px;color:var(--dim)">SESSION 01</span>
       </div>
-      <div class="hero-illo" aria-hidden="true">
-        <img src="avatar.jpg" alt="邓家森" loading="eager" decoding="async" />
-      </div>
-      <div class="hero-card-body">
-        <h3>邓家森</h3>
-        <p>Guangxi Arts University</p>
-        <ul>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.6"><rect x="2" y="5" width="20" height="14"/><path d="m2 6 10 7 10-7"/></svg>1823086554@qq.com</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.6"><path d="M21 12a9 9 0 1 1-3.5-7.1L21 4l-1 4"/></svg>微信 qwe886501</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.6"><path d="M12 22s7-6.2 7-12A7 7 0 0 0 5 10c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>广西南宁 · 广西艺术学院</li>
-        </ul>
+      <canvas id="spec"></canvas>
+      <div class="eq">
+        <div class="eq-row"><span>LOW</span><div class="eq-bar"><i data-w="78"></i></div><span>78</span></div>
+        <div class="eq-row"><span>LOW-MID</span><div class="eq-bar"><i data-w="62"></i></div><span>62</span></div>
+        <div class="eq-row"><span>HI-MID</span><div class="eq-bar"><i data-w="88"></i></div><span>88</span></div>
+        <div class="eq-row"><span>HIGH</span><div class="eq-bar"><i data-w="71"></i></div><span>71</span></div>
       </div>
     </aside>
   </div>
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track" id="mq">
-      <span>MIXING ✦ SOUND DESIGN ✦ GAME AUDIO ✦ DOLBY ATMOS ✦ LIVE SOUND ✦ KONTAKT ✦ 分轨混音 ✦ 贴唱混音 ✦</span>
-      <span>MIXING ✦ SOUND DESIGN ✦ GAME AUDIO ✦ DOLBY ATMOS ✦ LIVE SOUND ✦ KONTAKT ✦ 分轨混音 ✦ 贴唱混音 ✦</span>
-    </div>
-  </div>
 </section>
 
-<!-- ═══ 3 · 技能卡 + 进度条 ═══ -->
-<section class="sec" id="skills">
-  <div class="wrap">
-    <div class="kicker reveal"><span class="num">01</span><span class="en">Skills &amp; Toolbox</span></div>
-    <h2 class="sec-title reveal">从声学理论到工程落地——混音、声音设计、空间音频、现场扩声与虚拟音源开发，一整条链路自己走通。</h2>
-    <div class="skill-grid">
-      <article class="skill-card reveal">
-        <div class="skill-head">
-          <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round"><path d="M6 3v18M12 7v10M18 3v18"/><circle cx="6" cy="9" r="2.4" fill="#fff"/><circle cx="12" cy="15" r="2.4" fill="#fff"/><circle cx="18" cy="7" r="2.4" fill="#fff"/></svg></span>
-          <div><h3>音乐混音</h3><span class="en">Mixing &amp; Mastering</span></div>
-        </div>
-        <p>分轨混音 14 首、贴唱混音 11 首，覆盖流行、民谣、虚拟歌手与影视歌曲，多次进入全国赛事复赛与决赛。</p>
-        <div class="bar-row"><div class="bar-lab"><span>Stem Mixing</span><span>95%</span></div><div class="bar" role="img" aria-label="分轨混音 熟练度 95%"><i data-w="95"></i></div></div>
-        <div class="bar-row"><div class="bar-lab"><span>Vocal Mixing</span><span>92%</span></div><div class="bar" role="img" aria-label="贴唱混音 熟练度 92%"><i data-w="92"></i></div></div>
-        <div class="bar-row"><div class="bar-lab"><span>Mastering</span><span>84%</span></div><div class="bar" role="img" aria-label="母带 熟练度 84%"><i data-w="84"></i></div></div>
-        <div class="skill-tags"><span class="chip chip--pink">Pro Tools</span><span class="chip chip--pink">Cubase</span><span class="chip chip--pink">Reaper</span></div>
-      </article>
-      <article class="skill-card reveal">
-        <div class="skill-head">
-          <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round"><path d="M3 12h3l3-7 3 14 3-9 2 4h4"/></svg></span>
-          <div><h3>声音设计</h3><span class="en">Sound Design</span></div>
-        </div>
-        <p>《犬军》有声书全流程音效制作、环境音铺设与人声贴唱混音，并参与多部画本绘本的声音设计。</p>
-        <div class="bar-row"><div class="bar-lab"><span>Foley &amp; SFX</span><span>90%</span></div><div class="bar" role="img" aria-label="音效设计 熟练度 90%"><i data-w="90"></i></div></div>
-        <div class="bar-row"><div class="bar-lab"><span>Game Audio</span><span>82%</span></div><div class="bar" role="img" aria-label="游戏音频 熟练度 82%"><i data-w="82"></i></div></div>
-        <div class="bar-row"><div class="bar-lab"><span>Spatial / Atmos</span><span>86%</span></div><div class="bar" role="img" aria-label="空间音频 熟练度 86%"><i data-w="86"></i></div></div>
-        <div class="skill-tags"><span class="chip chip--sky">Dolby Atmos</span><span class="chip chip--sky">Post</span><span class="chip chip--sky">Audio Engine</span></div>
-      </article>
-      <article class="skill-card reveal">
-        <div class="skill-head">
-          <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M9 9v12"/></svg></span>
-          <div><h3>虚拟音源研发</h3><span class="en">Sample Library Dev</span></div>
-        </div>
-        <p>主持研发广西艺术学院首款中国传统民族乐器 Kontakt 音源「羊角钮钟」，多力度采样、降噪精修、Mapping 与脚本全程负责。</p>
-        <div class="bar-row"><div class="bar-lab"><span>Sampling</span><span>88%</span></div><div class="bar" role="img" aria-label="采样录音 熟练度 88%"><i data-w="88"></i></div></div>
-        <div class="bar-row"><div class="bar-lab"><span>Kontakt Script</span><span>78%</span></div><div class="bar" role="img" aria-label="Kontakt 脚本 熟练度 78%"><i data-w="78"></i></div></div>
-        <div class="bar-row"><div class="bar-lab"><span>Editing / Mapping</span><span>91%</span></div><div class="bar" role="img" aria-label="精修与映射 熟练度 91%"><i data-w="91"></i></div></div>
-        <div class="skill-tags"><span class="chip chip--lime">Kontakt</span><span class="chip chip--lime">RX</span><span class="chip chip--lime">Mapping</span></div>
-      </article>
-      <article class="skill-card reveal">
-        <div class="skill-head">
-          <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round"><path d="M12 3v11"/><rect x="8" y="14" width="8" height="7" fill="#fff"/><path d="M5 8a9 9 0 0 1 14 0"/></svg></span>
-          <div><h3>现场与录音</h3><span class="en">Live Sound &amp; Recording</span></div>
-        </div>
-        <p>累计 30+ 场扩声项目，负责舞台返送、主扩搭建与突发故障排除；10+ 场音乐会实况录音，熟练运用 AB / XY / ORTF 制式。</p>
-        <div class="bar-row"><div class="bar-lab"><span>FOH / Monitor</span><span>89%</span></div><div class="bar" role="img" aria-label="现场扩声 熟练度 89%"><i data-w="89"></i></div></div>
-        <div class="bar-row"><div class="bar-lab"><span>Classical Recording</span><span>87%</span></div><div class="bar" role="img" aria-label="古典录音 熟练度 87%"><i data-w="87"></i></div></div>
-        <div class="bar-row"><div class="bar-lab"><span>System Tuning</span><span>80%</span></div><div class="bar" role="img" aria-label="系统调试 熟练度 80%"><i data-w="80"></i></div></div>
-        <div class="skill-tags"><span class="chip chip--orange">FOH</span><span class="chip chip--orange">ORTF</span><span class="chip chip--orange">Monitor</span></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 4 · 作品 Bento 网格 ═══ -->
-<section class="sec" id="works">
-  <div class="wrap">
-    <div class="kicker reveal"><span class="num">02</span><span class="en">Selected Works</span></div>
-    <h2 class="sec-title reveal">我的作品</h2>
-    <p class="sec-lead reveal">25 首真实混音作品，点任意一块糖即可试听。音频版权归原作者及演唱者所有，仅供学习交流。</p>
-    <div class="tabs reveal" role="tablist" aria-label="作品分类">
-      <button class="tab" id="tab-stem" role="tab" aria-selected="true" aria-controls="bento" data-cat="分轨混音" type="button">分轨混音 <span class="n">14</span></button>
-      <button class="tab" id="tab-vocal" role="tab" aria-selected="false" aria-controls="bento" data-cat="贴唱混音" type="button">贴唱混音 <span class="n">11</span></button>
-    </div>
-    <div class="bento" id="bento" role="tabpanel" aria-labelledby="tab-stem">
-      <article class="work reveal" data-id="1" data-cat="分轨混音" data-title="就是不想睡觉" data-singer="胡海泉" data-src="2025声音设计与作品创新技能大赛立体声组复赛" data-audio="audio/01.mp3" data-cover="covers/01.png" tabindex="0" role="button" aria-label="作品 就是不想睡觉 · 胡海泉">
-        <div class="work-cover" style="background:var(--sky-t)">
-          <span class="work-id">01</span>
-          <img src="covers/01.png" alt="" loading="lazy" decoding="async" />
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>就是不想睡觉</h3>
-          <p class="work-singer">胡海泉</p>
-          <p class="work-src">2025声音设计与作品创新技能大赛立体声组复赛</p>
-        </div>
-      </article>
-      <article class="work reveal" data-id="2" data-cat="分轨混音" data-title="爱河" data-singer="胡海泉" data-src="2025声音设计与作品创新技能大赛立体声组初赛" data-audio="audio/02.mp3" data-cover="covers/02.png" tabindex="0" role="button" aria-label="作品 爱河 · 胡海泉">
-        <div class="work-cover" style="background:var(--lime-t)">
-          <span class="work-id">02</span>
-          <img src="covers/02.png" alt="" loading="lazy" decoding="async" />
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>爱河</h3>
-          <p class="work-singer">胡海泉</p>
-          <p class="work-src">2025声音设计与作品创新技能大赛立体声组初赛</p>
-        </div>
-      </article>
-      <article class="work reveal" data-id="3" data-cat="分轨混音" data-title="马兰花" data-singer="腾格尔" data-src="2024声音设计与作品创新技能大赛立体声组复赛" data-audio="audio/03.mp3" data-cover="covers/03.png" tabindex="0" role="button" aria-label="作品 马兰花 · 腾格尔">
-        <div class="work-cover" style="background:var(--orange-t)">
-          <span class="work-id">03</span>
-          <img src="covers/03.png" alt="" loading="lazy" decoding="async" />
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>马兰花</h3>
-          <p class="work-singer">腾格尔</p>
-          <p class="work-src">2024声音设计与作品创新技能大赛立体声组复赛</p>
-        </div>
-      </article>
-      <article class="work reveal" data-id="4" data-cat="分轨混音" data-title="从小到大" data-singer="裘海正" data-src="第二屆台灣杜比全景聲混音大賽" data-audio="audio/04.mp3" data-cover="covers/04.png" tabindex="0" role="button" aria-label="作品 从小到大 · 裘海正">
-        <div class="work-cover" style="background:var(--purple-t)">
-          <span class="work-id">04</span>
-          <img src="covers/04.png" alt="" loading="lazy" decoding="async" />
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>从小到大</h3>
-          <p class="work-singer">裘海正</p>
-          <p class="work-src">第二屆台灣杜比全景聲混音大賽</p>
-        </div>
-      </article>
-      <article class="work reveal" data-id="5" data-cat="分轨混音" data-title="天河弈" data-singer="虚拟歌手" data-src="SMP月度混音训练营6月素" data-audio="audio/05.mp3" data-cover="covers/05.png" tabindex="0" role="button" aria-label="作品 天河弈 · 虚拟歌手">
-        <div class="work-cover" style="background:var(--yellow-t)">
-          <span class="work-id">05</span>
-          <img src="covers/05.png" alt="" loading="lazy" decoding="async" />
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>天河弈</h3>
-          <p class="work-singer">虚拟歌手</p>
-          <p class="work-src">SMP月度混音训练营6月素</p>
-        </div>
-      </article>
-      <article class="work reveal" data-id="6" data-cat="分轨混音" data-title="假如我先幸福了" data-singer="满文军" data-src="第七届全国校园混音大赛" data-audio="audio/06.mp3" data-cover="covers/06.png" tabindex="0" role="button" aria-label="作品 假如我先幸福了 · 满文军">
-        <div class="work-cover" style="background:var(--pink-t)">
-          <span class="work-id">06</span>
-          <img src="covers/06.png" alt="" loading="lazy" decoding="async" />
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>假如我先幸福了</h3>
-          <p class="work-singer">满文军</p>
-          <p class="work-src">第七届全国校园混音大赛</p>
-        </div>
-      </article>
-      <article class="work reveal" data-id="7" data-cat="分轨混音" data-title="你不在北京" data-singer="曹轩宾" data-src="第六届全国校园混音大赛" data-audio="audio/07.mp3" data-cover="covers/07.png" tabindex="0" role="button" aria-label="作品 你不在北京 · 曹轩宾">
-        <div class="work-cover" style="background:var(--sky-t)">
-          <span class="work-id">07</span>
-          <img src="covers/07.png" alt="" loading="lazy" decoding="async" />
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>你不在北京</h3>
-          <p class="work-singer">曹轩宾</p>
-          <p class="work-src">第六届全国校园混音大赛</p>
-        </div>
-      </article>
-      <article class="work reveal" data-id="8" data-cat="分轨混音" data-title="我会" data-singer="陈戈平" data-src="2024年造音星球11月份月度混音训练" data-audio="audio/08.mp3" data-cover="covers/08.png" tabindex="0" role="button" aria-label="作品 我会 · 陈戈平">
-        <div class="work-cover" style="background:var(--lime-t)">
-          <span class="work-id">08</span>
-          <img src="covers/08.png" alt="" loading="lazy" decoding="async" />
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>我会</h3>
-          <p class="work-singer">陈戈平</p>
-          <p class="work-src">2024年造音星球11月份月度混音训练</p>
-        </div>
-      </article>
-      <article class="work reveal" data-id="9" data-cat="分轨混音" data-title="长河" data-singer="李宸希" data-src="2024声音设计与作品创新技能大赛立体声组初赛" data-audio="audio/09.mp3" data-cover="covers/09.png" tabindex="0" role="button" aria-label="作品 长河 · 李宸希">
-        <div class="work-cover" style="background:var(--orange-t)">
-          <span class="work-id">09</span>
-          <img src="covers/09.png" alt="" loading="lazy" decoding="async" />
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>长河</h3>
-          <p class="work-singer">李宸希</p>
-          <p class="work-src">2024声音设计与作品创新技能大赛立体声组初赛</p>
-        </div>
-      </article>
-      <article class="work reveal" data-id="10" data-cat="分轨混音" data-title="没有的光" data-singer="李宸希" data-src="书籍《混音思维》" data-audio="audio/10.mp3" data-cover="covers/10.png" tabindex="0" role="button" aria-label="作品 没有的光 · 李宸希">
-        <div class="work-cover" style="background:var(--purple-t)">
-          <span class="work-id">10</span>
-          <img src="covers/10.png" alt="" loading="lazy" decoding="async" />
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>没有的光</h3>
-          <p class="work-singer">李宸希</p>
-          <p class="work-src">书籍《混音思维》</p>
-        </div>
-      </article>
-      <article class="work reveal" data-id="11" data-cat="分轨混音" data-title="人生首席" data-singer="王凯" data-src="2024声音设计与作品创新技能大赛三维声组初赛" data-audio="audio/11.mp3" data-cover="covers/11.png" tabindex="0" role="button" aria-label="作品 人生首席 · 王凯">
-        <div class="work-cover" style="background:var(--yellow-t)">
-          <span class="work-id">11</span>
-          <img src="covers/11.png" alt="" loading="lazy" decoding="async" />
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>人生首席</h3>
-          <p class="work-singer">王凯</p>
-          <p class="work-src">2024声音设计与作品创新技能大赛三维声组初赛</p>
-        </div>
-      </article>
-      <article class="work reveal" data-id="12" data-cat="分轨混音" data-title="我的左右手" data-singer="" data-src="" data-audio="audio/12.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 我的左右手">
-        <div class="work-cover" style="background:var(--pink-t)">
-          <span class="work-id">12</span>
-          <span class="work-ini" aria-hidden="true">我</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>我的左右手</h3>
-        </div>
-      </article>
-      <article class="work reveal" data-id="13" data-cat="分轨混音" data-title="是我" data-singer="" data-src="" data-audio="audio/13.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 是我">
-        <div class="work-cover" style="background:var(--sky-t)">
-          <span class="work-id">13</span>
-          <span class="work-ini" aria-hidden="true">是</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>是我</h3>
-        </div>
-      </article>
-      <article class="work reveal" data-id="14" data-cat="分轨混音" data-title="末班飞行" data-singer="" data-src="" data-audio="audio/14.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 末班飞行">
-        <div class="work-cover" style="background:var(--lime-t)">
-          <span class="work-id">14</span>
-          <span class="work-ini" aria-hidden="true">末</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>末班飞行</h3>
-        </div>
-      </article>
-      <article class="work reveal is-hidden" data-id="15" data-cat="贴唱混音" data-title="在夜里跳舞" data-singer="翻唱者" data-src="贴唱调试单子" data-audio="audio/15.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 在夜里跳舞 · 翻唱者">
-        <div class="work-cover" style="background:var(--orange-t)">
-          <span class="work-id">15</span>
-          <span class="work-ini" aria-hidden="true">在</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>在夜里跳舞</h3>
-          <p class="work-singer">翻唱者</p>
-          <p class="work-src">贴唱调试单子</p>
-        </div>
-      </article>
-      <article class="work reveal is-hidden" data-id="16" data-cat="贴唱混音" data-title="珠玉" data-singer="翻唱者" data-src="贴唱调试单子" data-audio="audio/16.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 珠玉 · 翻唱者">
-        <div class="work-cover" style="background:var(--purple-t)">
-          <span class="work-id">16</span>
-          <span class="work-ini" aria-hidden="true">珠</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>珠玉</h3>
-          <p class="work-singer">翻唱者</p>
-          <p class="work-src">贴唱调试单子</p>
-        </div>
-      </article>
-      <article class="work reveal is-hidden" data-id="17" data-cat="贴唱混音" data-title="孤勇者" data-singer="翻唱者" data-src="贴唱调试单子" data-audio="audio/17.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 孤勇者 · 翻唱者">
-        <div class="work-cover" style="background:var(--yellow-t)">
-          <span class="work-id">17</span>
-          <span class="work-ini" aria-hidden="true">孤</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>孤勇者</h3>
-          <p class="work-singer">翻唱者</p>
-          <p class="work-src">贴唱调试单子</p>
-        </div>
-      </article>
-      <article class="work reveal is-hidden" data-id="18" data-cat="贴唱混音" data-title="春不晚" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/18.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 春不晚 · 翻唱者">
-        <div class="work-cover" style="background:var(--pink-t)">
-          <span class="work-id">18</span>
-          <span class="work-ini" aria-hidden="true">春</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>春不晚</h3>
-          <p class="work-singer">翻唱者</p>
-          <p class="work-src">贴唱混音</p>
-        </div>
-      </article>
-      <article class="work reveal is-hidden" data-id="19" data-cat="贴唱混音" data-title="归途有风" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/19.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 归途有风 · 翻唱者">
-        <div class="work-cover" style="background:var(--sky-t)">
-          <span class="work-id">19</span>
-          <span class="work-ini" aria-hidden="true">归</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>归途有风</h3>
-          <p class="work-singer">翻唱者</p>
-          <p class="work-src">贴唱混音</p>
-        </div>
-      </article>
-      <article class="work reveal is-hidden" data-id="20" data-cat="贴唱混音" data-title="修炼爱情" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/20.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 修炼爱情 · 翻唱者">
-        <div class="work-cover" style="background:var(--lime-t)">
-          <span class="work-id">20</span>
-          <span class="work-ini" aria-hidden="true">修</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>修炼爱情</h3>
-          <p class="work-singer">翻唱者</p>
-          <p class="work-src">贴唱混音</p>
-        </div>
-      </article>
-      <article class="work reveal is-hidden" data-id="21" data-cat="贴唱混音" data-title="小美满" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/21.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 小美满 · 翻唱者">
-        <div class="work-cover" style="background:var(--orange-t)">
-          <span class="work-id">21</span>
-          <span class="work-ini" aria-hidden="true">小</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>小美满</h3>
-          <p class="work-singer">翻唱者</p>
-          <p class="work-src">贴唱混音</p>
-        </div>
-      </article>
-      <article class="work reveal is-hidden" data-id="22" data-cat="贴唱混音" data-title="如愿" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/22.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 如愿 · 翻唱者">
-        <div class="work-cover" style="background:var(--purple-t)">
-          <span class="work-id">22</span>
-          <span class="work-ini" aria-hidden="true">如</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>如愿</h3>
-          <p class="work-singer">翻唱者</p>
-          <p class="work-src">贴唱混音</p>
-        </div>
-      </article>
-      <article class="work reveal is-hidden" data-id="23" data-cat="贴唱混音" data-title="默" data-singer="翻唱者" data-src="贴唱调试单子" data-audio="audio/23.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 默 · 翻唱者">
-        <div class="work-cover" style="background:var(--yellow-t)">
-          <span class="work-id">23</span>
-          <span class="work-ini" aria-hidden="true">默</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>默</h3>
-          <p class="work-singer">翻唱者</p>
-          <p class="work-src">贴唱调试单子</p>
-        </div>
-      </article>
-      <article class="work reveal is-hidden" data-id="24" data-cat="贴唱混音" data-title="刻在我心底的名字" data-singer="翻唱者" data-src="贴唱调试单子" data-audio="audio/24.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 刻在我心底的名字 · 翻唱者">
-        <div class="work-cover" style="background:var(--pink-t)">
-          <span class="work-id">24</span>
-          <span class="work-ini" aria-hidden="true">刻</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>刻在我心底的名字</h3>
-          <p class="work-singer">翻唱者</p>
-          <p class="work-src">贴唱调试单子</p>
-        </div>
-      </article>
-      <article class="work reveal is-hidden" data-id="25" data-cat="贴唱混音" data-title="生活倒影" data-singer="翻唱者" data-src="贴唱混音" data-audio="audio/25.mp3" data-cover="" tabindex="0" role="button" aria-label="作品 生活倒影 · 翻唱者">
-        <div class="work-cover" style="background:var(--sky-t)">
-          <span class="work-id">25</span>
-          <span class="work-ini" aria-hidden="true">生</span>
-          <span class="work-play" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M7 4l13 8-13 8z"/></svg></span>
-        </div>
-        <div class="work-meta">
-          <h3>生活倒影</h3>
-          <p class="work-singer">翻唱者</p>
-          <p class="work-src">贴唱混音</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 4 · AI Skills 智能体应用 ═══ -->
-<section class="sec" id="agents">
-  <div class="wrap">
-    <div class="kicker reveal"><span class="num">03</span><span class="en">AI Skills · Agents</span></div>
-    <h2 class="sec-title reveal">把经验，<mark>封装成会思考的 skill</mark></h2>
-    <p class="sec-lead reveal">不止做音乐——也把工作流沉淀成一套可复用的 AI Agent / Skill。从音乐生成到内容运营，都是我自己亲手构建、持续迭代的成果。</p>
-    <div class="agent-tabs reveal" role="tablist" aria-label="技能分类">
-      <button class="tab" id="tab-all" role="tab" aria-selected="true" data-cat="all" type="button">全部 <span class="n">9</span></button>
-      <button class="tab" id="tab-music" role="tab" aria-selected="false" data-cat="music" type="button">音乐 / 音频 <span class="n">4</span></button>
-      <button class="tab" id="tab-content" role="tab" aria-selected="false" data-cat="content" type="button">内容运营 <span class="n">2</span></button>
-      <button class="tab" id="tab-tool" role="tab" aria-selected="false" data-cat="tool" type="button">开发 / 工具 <span class="n">3</span></button>
-    </div>
-    <div class="agent-grid" id="agentGrid" role="tabpanel" aria-labelledby="tab-all">
-      <article class="agent reveal" data-cat="music" tabindex="0" aria-label="Lyria Music Producer · AI 音乐制作人决策系统">
-        <div class="agent-top" style="background:var(--pink-t)">
-          <span class="agent-badge" aria-hidden="true">L</span>
-          <div><div class="agent-name">Lyria Music Producer</div><div class="agent-cn">AI 音乐制作人决策系统</div></div>
-        </div>
-        <div class="agent-body">
-          <p class="agent-desc">把制作人判断固化成「强制锚点 + 双槽路由」，输出 Lyria / Suno 专业级提示词，杜绝长推理跑偏（v1.3）。</p>
-          <div class="skill-tags"><span class="chip chip--pink">音乐 / 音频</span></div>
-        </div>
-      </article>
-      <article class="agent reveal" data-cat="music" tabindex="0" aria-label="Lyria Scoring Prompt · AI 配乐提示词专家">
-        <div class="agent-top" style="background:var(--pink-t)">
-          <span class="agent-badge" aria-hidden="true">L</span>
-          <div><div class="agent-name">Lyria Scoring Prompt</div><div class="agent-cn">AI 配乐提示词专家</div></div>
-        </div>
-        <div class="agent-body">
-          <p class="agent-desc">专攻游戏 / 影视过场配乐，强制锚点 + 音乐语言翻译，零伪控制标签（v1.4）。</p>
-          <div class="skill-tags"><span class="chip chip--pink">音乐 / 音频</span></div>
-        </div>
-      </article>
-      <article class="agent reveal" data-cat="music" tabindex="0" aria-label="Scoring Director · 配乐导演">
-        <div class="agent-top" style="background:var(--pink-t)">
-          <span class="agent-badge" aria-hidden="true">S</span>
-          <div><div class="agent-name">Scoring Director</div><div class="agent-cn">配乐导演</div></div>
-        </div>
-        <div class="agent-body">
-          <p class="agent-desc">将情绪与场景转译为可执行的配乐指令，统一系列一致性。</p>
-          <div class="skill-tags"><span class="chip chip--pink">音乐 / 音频</span></div>
-        </div>
-      </article>
-      <article class="agent reveal" data-cat="music" tabindex="0" aria-label="Song Forge · 歌曲流水线总控">
-        <div class="agent-top" style="background:var(--pink-t)">
-          <span class="agent-badge" aria-hidden="true">S</span>
-          <div><div class="agent-name">Song Forge</div><div class="agent-cn">歌曲流水线总控</div></div>
-        </div>
-        <div class="agent-body">
-          <p class="agent-desc">歌词 → 双评分质检 → 回炉改写 → 编译提示词，一条龙闭环（v1.0）。</p>
-          <div class="skill-tags"><span class="chip chip--pink">音乐 / 音频</span></div>
-        </div>
-      </article>
-      <article class="agent reveal" data-cat="content" tabindex="0" aria-label="Three-platform Copywriter · 三平台文案">
-        <div class="agent-top" style="background:var(--sky-t)">
-          <span class="agent-badge" aria-hidden="true">T</span>
-          <div><div class="agent-name">Three-platform Copywriter</div><div class="agent-cn">三平台文案</div></div>
-        </div>
-        <div class="agent-body">
-          <p class="agent-desc">抖音 / 小红书 / 公众号差异化文案，一次输入多端适配。</p>
-          <div class="skill-tags"><span class="chip chip--sky">内容运营</span></div>
-        </div>
-      </article>
-      <article class="agent reveal" data-cat="content" tabindex="0" aria-label="News Poster Crawler · 资讯海报生成">
-        <div class="agent-top" style="background:var(--sky-t)">
-          <span class="agent-badge" aria-hidden="true">N</span>
-          <div><div class="agent-name">News Poster Crawler</div><div class="agent-cn">资讯海报生成</div></div>
-        </div>
-        <div class="agent-body">
-          <p class="agent-desc">爬取新闻站实时生成 3:4 海报图，适合日更资讯账号。</p>
-          <div class="skill-tags"><span class="chip chip--sky">内容运营</span></div>
-        </div>
-      </article>
-      <article class="agent reveal" data-cat="tool" tabindex="0" aria-label="Skill Forge · 造 skill 的元技能">
-        <div class="agent-top" style="background:var(--lime-t)">
-          <span class="agent-badge" aria-hidden="true">S</span>
-          <div><div class="agent-name">Skill Forge</div><div class="agent-cn">造 skill 的元技能</div></div>
-        </div>
-        <div class="agent-body">
-          <p class="agent-desc">从零搭建 / 校验 / 发布 Agent Skills 的框架。</p>
-          <div class="skill-tags"><span class="chip chip--lime">开发 / 工具</span></div>
-        </div>
-      </article>
-      <article class="agent reveal" data-cat="tool" tabindex="0" aria-label="Dachuang Mentor · 大创项目辅导">
-        <div class="agent-top" style="background:var(--lime-t)">
-          <span class="agent-badge" aria-hidden="true">D</span>
-          <div><div class="agent-name">Dachuang Mentor</div><div class="agent-cn">大创项目辅导</div></div>
-        </div>
-        <div class="agent-body">
-          <p class="agent-desc">模糊项目方向 → 清晰可申报的创新训练计划。</p>
-          <div class="skill-tags"><span class="chip chip--lime">开发 / 工具</span></div>
-        </div>
-      </article>
-      <article class="agent reveal" data-cat="tool" tabindex="0" aria-label="HR Reply Scripts · 求职回复话术">
-        <div class="agent-top" style="background:var(--lime-t)">
-          <span class="agent-badge" aria-hidden="true">H</span>
-          <div><div class="agent-name">HR Reply Scripts</div><div class="agent-cn">求职回复话术</div></div>
-        </div>
-        <div class="agent-body">
-          <p class="agent-desc">谈薪 / 催进度 / Offer 管理的话术库。</p>
-          <div class="skill-tags"><span class="chip chip--lime">开发 / 工具</span></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 5 · 经历时间线 ═══ -->
-<section class="sec" id="timeline">
-  <div class="wrap">
-    <div class="kicker reveal"><span class="num">04</span><span class="en">Experience &amp; Awards</span></div>
-    <h2 class="sec-title reveal">一路走来的<mark>项目经历</mark></h2>
-    <p class="sec-lead reveal">项目经历与荣誉奖项，按时间线排布。</p>
-    <div class="tabs reveal" role="tablist" aria-label="时间线分类">
-      <button class="tab" id="tab-exp" role="tab" aria-selected="true" aria-controls="tlList" data-tl="exp" type="button">项目经历 <span class="n">04</span></button>
-      <button class="tab" id="tab-awd" role="tab" aria-selected="false" aria-controls="tlList" data-tl="awd" type="button">荣誉奖项 <span class="n">04</span></button>
-    </div>
-    <div class="tl" id="tlList" role="tabpanel" aria-labelledby="tab-exp">
-      <article class="tl-item reveal" data-tl="exp">
-        <div class="tl-card">
-          <span class="tl-year">2023 · National Project</span>
-          <h3>新声音计划 · 羊角钮钟虚拟音源</h3>
-          <span class="en">Ethnic Instrument Kontakt Library</span>
-          <p>主持研发广西艺术学院首款中国传统民族乐器 Kontakt 音源，完成多力度采样录音、降噪精修、Mapping 与脚本，获国家级大创认证。</p>
-          <div class="tl-chips"><span class="chip chip--pink">Lead Audio Designer</span><span class="chip chip--lime">Kontakt</span><span class="chip chip--sky">Sampling</span><span class="chip chip--yellow">Mapping</span></div>
-        </div>
-      </article>
-      <article class="tl-item reveal" data-tl="exp">
-        <div class="tl-card">
-          <span class="tl-year">Audio Drama</span>
-          <h3>《犬军》有声书声音设计</h3>
-          <span class="en">Audiobook Sound Design &amp; Mix</span>
-          <p>使用 Reaper 独立完成音效制作、环境音铺设与人声贴唱混音，并参与多部画本绘本的声音设计。</p>
-          <div class="tl-chips"><span class="chip chip--pink">Sound Designer</span><span class="chip chip--purple">Reaper</span><span class="chip chip--sky">Post</span><span class="chip chip--orange">Mix</span></div>
-        </div>
-      </article>
-      <article class="tl-item reveal" data-tl="exp">
-        <div class="tl-card">
-          <span class="tl-year">30+ Shows</span>
-          <h3>现场扩声与演艺音频控制</h3>
-          <span class="en">Live Sound Engineering</span>
-          <p>累计执行 30+ 场扩声项目，负责舞台返送调试、主扩搭建、现场调音台操作与突发故障排除。</p>
-          <div class="tl-chips"><span class="chip chip--pink">Live Sound Engineer</span><span class="chip chip--orange">FOH</span><span class="chip chip--lime">Monitor</span></div>
-        </div>
-      </article>
-      <article class="tl-item reveal" data-tl="exp">
-        <div class="tl-card">
-          <span class="tl-year">10+ Concerts</span>
-          <h3>音乐会实况录音与混音</h3>
-          <span class="en">Classical Recording &amp; Mix</span>
-          <p>第十四届中国—东盟音乐会等 10+ 场钢琴音乐会高质量实况录音与后期混音，熟练运用 AB / XY / ORTF 等制式还原真实声场。</p>
-          <div class="tl-chips"><span class="chip chip--pink">Recording Engineer</span><span class="chip chip--sky">ORTF</span><span class="chip chip--purple">Mix</span></div>
-        </div>
-      </article>
-      <article class="tl-item reveal is-hidden" data-tl="awd">
-        <div class="tl-card">
-          <span class="tl-year">2025 · Competition</span>
-          <h3>高校音乐创作大赛华南区 · AI 音乐赛道</h3>
-          <span class="en">Music Creation Awards</span>
-          <p>《鹏城青春之歌》三等奖、《心灵舒缓》二等奖。</p>
-          <div class="tl-chips"><span class="chip chip--yellow">2nd Prize</span><span class="chip chip--orange">3rd Prize</span></div>
-        </div>
-      </article>
-      <article class="tl-item reveal is-hidden" data-tl="awd">
-        <div class="tl-card">
-          <span class="tl-year">2025 · Finalist</span>
-          <h3>USC 上和弦 · 杜比全景声混音赛道</h3>
-          <span class="en">Dolby Atmos Mix Competition</span>
-          <p>混音作品《TOOOOO BUSY》进入决赛。</p>
-          <div class="tl-chips"><span class="chip chip--pink">Finalist</span><span class="chip chip--sky">Dolby Atmos</span></div>
-        </div>
-      </article>
-      <article class="tl-item reveal is-hidden" data-tl="awd">
-        <div class="tl-card">
-          <span class="tl-year">2024 · Publication</span>
-          <h3>国家级期刊《参花》论文发表</h3>
-          <span class="en">Academic Paper</span>
-          <p>《古乐器「羊角钮钟」在现代音乐中的创新应用》正式发表。</p>
-          <div class="tl-chips"><span class="chip chip--lime">Published</span></div>
-        </div>
-      </article>
-      <article class="tl-item reveal is-hidden" data-tl="awd">
-        <div class="tl-card">
-          <span class="tl-year">2023 – 2024 · Honor</span>
-          <h3>筑梦奖学金 · 正艺微创工作室</h3>
-          <span class="en">Scholarship &amp; Studio Lead</span>
-          <p>2024 年度筑梦奖学金；主导完成 2023 校级网络文化工作室项目（正艺微创）。</p>
-          <div class="tl-chips"><span class="chip chip--yellow">Scholarship</span><span class="chip chip--purple">Studio Lead</span></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 6 · 关于卡片 ═══ -->
+<!-- ══════════ 痛点 ══════════ -->
 <section class="sec" id="about">
   <div class="wrap">
-    <div class="kicker reveal"><span class="num">05</span><span class="en">About Me</span></div>
-    <h2 class="sec-title reveal">Jason是个<mark>声音制造者</mark></h2>
-    <div class="about-grid">
-      <aside class="about-card reveal">
-        <div class="about-avatar">
-          <img src="avatar.jpg" alt="邓家森" loading="lazy" decoding="async" />
-        </div>
-        <h3>邓家森</h3>
-        <p class="role">Sound Designer · Mix Engineer</p>
-        <span class="chip chip--yellow">用技术驱动声音创作</span>
-        <ul class="about-contact">
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.6"><rect x="2" y="5" width="20" height="14"/><path d="m2 6 10 7 10-7"/></svg>1823086554@qq.com</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.6"><path d="M21 12a9 9 0 1 1-3.5-7.1L21 4l-1 4"/></svg>微信 qwe886501</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.6"><path d="M12 22s7-6.2 7-12A7 7 0 0 0 5 10c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>广西南宁 · 广西艺术学院</li>
-        </ul>
-      </aside>
-      <div class="about-body">
-        <div class="quote-box reveal">
-          <span class="qm" aria-hidden="true">&ldquo;</span>
-          <p>声音不是参数的堆叠，而是<span class="hl">情绪、空间与人物身份</span>的延伸。</p>
-          <p>每一次混音，都是<span class="hl">寻找声音身份</span>的过程。</p>
-          <p>无论是人声的人格化、游戏场景的声场构建，还是民族乐器的现代化编配，我始终相信：技术应当服务于表达，而非替代它。</p>
-        </div>
-        <p class="reveal">热爱<strong>音频与游戏的声音设计师</strong>，拥有扎实的声学理论与丰富的音频工程实践经验。精通 Pro Tools、Reaper、Cubase 等主流 DAW，擅长游戏音效设计、音乐混音与虚拟音源开发；曾完成多款影视 / 游戏音效项目，熟悉音频引擎与后期混音流程，<strong>致力于以技术驱动声音创作</strong>。</p>
-        <div class="about-cols">
-          <div class="about-col reveal">
-            <h4>Audio Production</h4>
-            <div class="chips">
-              <span class="chip chip--pink">Mixing</span><span class="chip chip--pink">Sound Design</span>
-              <span class="chip chip--pink">Game Audio</span><span class="chip chip--pink">Live Sound</span>
-              <span class="chip chip--pink">Spatial Audio</span>
-            </div>
-          </div>
-          <div class="about-col reveal">
-            <h4>Tools &amp; Studio</h4>
-            <div class="chips">
-              <span class="chip chip--sky">Pro Tools</span><span class="chip chip--sky">Reaper</span>
-              <span class="chip chip--sky">Cubase</span><span class="chip chip--sky">Kontakt</span>
-              <span class="chip chip--sky">Dolby Atmos</span>
-            </div>
-          </div>
-        </div>
+    <div class="kicker rv">About Me</div>
+    <h2 class="sec-t rv">声音不是参数的堆叠，<mark>而是情绪、空间与身份的延伸</mark></h2>
+    <div class="about-grid" style="margin-top:40px">
+      <div class="rv">
+        <div class="quote">「每一次混音，都是一次寻找声音身份的过程。技术应当服务于表达，而不是替代它。」</div>
+        <p>声音设计师 / 混音师，广西艺术学院录音艺术方向。精通 Pro Tools、Reaper、Cubase 等主流 DAW，擅长音乐混音、游戏与影视声音设计、虚拟音源开发。2023 年主持研发广西艺术学院首款中国传统民族乐器 Kontakt 音源「羊角钮钟」，相关论文《古乐器「羊角钮钟」在现代音乐中的创新应用》发表于国家级期刊《参花》。累计交付 25 首混音作品，执行 30+ 场现场扩声与 10+ 场音乐会实况录音。</p>
+      </div>
+      <div class="skill-bars rv">
+        <div class="skill-b"><div class="lab"><span><b>分轨混音</b> Stem Mixing</span><span>95%</span></div><div class="bar"><i data-w="95"></i></div></div>
+        <div class="skill-b"><div class="lab"><span><b>贴唱混音</b> Vocal Mixing</span><span>92%</span></div><div class="bar"><i data-w="92"></i></div></div>
+        <div class="skill-b"><div class="lab"><span><b>母带处理</b> Mastering</span><span>84%</span></div><div class="bar"><i data-w="84"></i></div></div>
+        <div class="skill-b"><div class="lab"><span><b>音效设计</b> Foley &amp; SFX</span><span>90%</span></div><div class="bar"><i data-w="90"></i></div></div>
+        <div class="skill-b"><div class="lab"><span><b>空间音频</b> Spatial / Atmos</span><span>86%</span></div><div class="bar"><i data-w="86"></i></div></div>
+        <div class="skill-b"><div class="lab"><span><b>采样与精修</b> Sampling &amp; Editing</span><span>91%</span></div><div class="bar"><i data-w="91"></i></div></div>
+        <div class="skill-b"><div class="lab"><span><b>现场扩声</b> FOH / Monitor</span><span>89%</span></div><div class="bar"><i data-w="89"></i></div></div>
+        <div class="skill-b"><div class="lab"><span><b>古典录音</b> Classical Recording</span><span>87%</span></div><div class="bar"><i data-w="87"></i></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ 7 · 黄底联系 CTA ═══ -->
-<section class="cta" id="contact">
+
+<!-- ══════════ 服务三支柱 ══════════ -->
+
+<!-- ══════════ 调试自检工具 ══════════ -->
+
+<!-- ══════════ 试听 ══════════ -->
+<section class="sec" id="work">
   <div class="wrap">
-    <div class="cta-in reveal">
-      <p class="cta-lead">声音合作、混音委托、虚拟音源定制或只是聊聊都欢迎。<br>邮件与微信都能找到我。</p>
-      <div class="cta-btns">
-        <a class="btn btn--pink" href="mailto:1823086554@qq.com">✉ 发邮件</a>
-        <a class="btn btn--sky" href="#top">↑ 回到顶部</a>
-        <a class="btn btn--lime" href="#works">▶ 试听作品</a>
+    <div class="kicker rv">Real Delivered Work</div>
+    <h2 class="sec-t rv">别听我说，<mark>听作品</mark></h2>
+    <p class="sec-l rv">下面是已交付的真实曲目。重点试试「回放环境」切换——同一首歌在手机、耳机、车载上的表现，就是混音师真正的功力所在。音频版权归原作者及演唱者所有，仅供学习交流。</p>
+    <div class="player-w">
+      <div class="p-main beam spot rv">
+        <div class="envs" id="envs">
+          <button type="button" class="on" data-env="hp">🎧 监听耳机</button>
+          <button type="button" data-env="phone">📱 手机外放</button>
+          <button type="button" data-env="car">🚗 车载音响</button>
+        </div>
+        <canvas id="viz"></canvas>
+        <div class="now">
+          <div id="nowCover" style="width:56px;height:56px;border-radius:10px;background:#17171c;display:grid;place-items:center;font-family:var(--f-d);font-size:22px;border:1px solid var(--line-2)">♪</div>
+          <div>
+            <div class="t" id="nowTitle">点击右侧列表开始试听</div>
+            <div class="s" id="nowSub">25 首作品 · 分轨混音 14 / 贴唱混音 11</div>
+          </div>
+        </div>
+        <div class="rail">
+          <div class="rail-bar" id="bar"><i id="fill"></i></div>
+          <div class="rail-t"><span id="tCur">0:00</span><span id="tDur">0:00</span></div>
+        </div>
+        <div class="ctrls">
+          <button type="button" id="pPrev" aria-label="上一首"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h3v14H6zM20 5v14l-10-7z"/></svg></button>
+          <button type="button" class="play" id="pPlay" aria-label="播放"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" id="pIcon"><path d="M7 4l13 8-13 8z"/></svg></button>
+          <button type="button" id="pNext" aria-label="下一首"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15 5h3v14h-3zM4 5l10 7-10 7z"/></svg></button>
+          <span class="mono" style="margin-left:auto;font-size:11px;color:var(--dim)" id="envNote">FLAT · 未做染色</span>
+        </div>
+      </div>
+      <div class="pl beam spot rv">
+        <h4>Playlist</h4>
+        <div id="plList">
+          <div class="pl-i" data-src="audio/01.mp3" data-title="就是不想睡觉" data-singer="胡海泉 · 分轨混音" data-cover="covers/01.png"><img src="covers/01.png" alt="" loading="lazy"><div class="m"><b>就是不想睡觉</b><span>胡海泉 · 分轨混音</span></div><span class="k">01</span></div>
+          <div class="pl-i" data-src="audio/03.mp3" data-title="马兰花" data-singer="腾格尔 · 分轨混音" data-cover="covers/03.png"><img src="covers/03.png" alt="" loading="lazy"><div class="m"><b>马兰花</b><span>腾格尔 · 分轨混音</span></div><span class="k">03</span></div>
+          <div class="pl-i" data-src="audio/04.mp3" data-title="从小到大" data-singer="裘海正 · 杜比全景声" data-cover="covers/04.png"><img src="covers/04.png" alt="" loading="lazy"><div class="m"><b>从小到大</b><span>裘海正 · 杜比全景声</span></div><span class="k">04</span></div>
+          <div class="pl-i" data-src="audio/06.mp3" data-title="假如我先幸福了" data-singer="满文军 · 分轨混音" data-cover="covers/06.png"><img src="covers/06.png" alt="" loading="lazy"><div class="m"><b>假如我先幸福了</b><span>满文军 · 分轨混音</span></div><span class="k">06</span></div>
+          <div class="pl-i" data-src="audio/09.mp3" data-title="长河" data-singer="李宸希 · 分轨混音" data-cover="covers/09.png"><img src="covers/09.png" alt="" loading="lazy"><div class="m"><b>长河</b><span>李宸希 · 分轨混音</span></div><span class="k">09</span></div>
+          <div class="pl-i" data-src="audio/10.mp3" data-title="没有的光" data-singer="李宸希 · 分轨混音" data-cover="covers/10.png"><img src="covers/10.png" alt="" loading="lazy"><div class="m"><b>没有的光</b><span>李宸希 · 分轨混音</span></div><span class="k">10</span></div>
+          <div class="pl-i" data-src="audio/15.mp3" data-title="在夜里跳舞" data-singer="翻唱 · 贴唱混音" data-cover=""><div class="m" style="margin-left:6px"><b>在夜里跳舞</b><span>翻唱 · 贴唱混音</span></div><span class="k">15</span></div>
+          <div class="pl-i" data-src="audio/19.mp3" data-title="归途有风" data-singer="翻唱 · 贴唱混音" data-cover=""><div class="m" style="margin-left:6px"><b>归途有风</b><span>翻唱 · 贴唱混音</span></div><span class="k">19</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
-</main>
 
-<!-- ═══ 8 · 黑底 Footer ═══ -->
+<!-- ══════════ 教学 ══════════ -->
+
+<!-- ══════════ 流程 ══════════ -->
+<section class="sec" id="exp">
+  <div class="wrap">
+    <div class="kicker rv">How It Works</div>
+    <h2 class="sec-t rv">项目经历与<mark>荣誉奖项</mark></h2>
+        <div class="tl-tabs" id="tlTabs">
+      <button type="button" class="on" data-tl="exp">项目经历 <span style="opacity:.6">04</span></button>
+      <button type="button" data-tl="awd">荣誉奖项 <span style="opacity:.6">04</span></button>
+    </div>
+    <div class="resume" id="tlBody">
+      <div class="res-row rv" data-tl="exp">
+        <div class="yr">2023 · National Project</div>
+        <div>
+          <h4>新声音计划 · 羊角钮钟虚拟音源</h4>
+          <div class="org">Ethnic Instrument Kontakt Library · Lead Audio Designer</div>
+          <p>主持研发广西艺术学院首款中国传统民族乐器 Kontakt 音源，完成多力度采样录音、降噪精修、Mapping 与脚本，获国家级大创认证。</p>
+        </div>
+      </div>
+      <div class="res-row rv" data-tl="exp">
+        <div class="yr">Audio Drama</div>
+        <div>
+          <h4>《犬军》有声书声音设计</h4>
+          <div class="org">Audiobook Sound Design &amp; Mix · Sound Designer</div>
+          <p>使用 Reaper 独立完成音效制作、环境音铺设与人声贴唱混音，并参与多部画本绘本的声音设计。</p>
+        </div>
+      </div>
+      <div class="res-row rv" data-tl="exp">
+        <div class="yr">30+ Shows</div>
+        <div>
+          <h4>现场扩声与演艺音频控制</h4>
+          <div class="org">Live Sound Engineering · FOH / Monitor</div>
+          <p>累计执行 30+ 场扩声项目，负责舞台返送调试、主扩搭建、现场调音台操作与突发故障排除。</p>
+        </div>
+      </div>
+      <div class="res-row rv" data-tl="exp">
+        <div class="yr">10+ Concerts</div>
+        <div>
+          <h4>音乐会实况录音与混音</h4>
+          <div class="org">Classical Recording &amp; Mix · Recording Engineer</div>
+          <p>第十四届中国—东盟音乐会等 10+ 场钢琴音乐会高质量实况录音与后期混音，熟练运用 AB / XY / ORTF 等制式还原真实声场。</p>
+        </div>
+      </div>
+      <div class="res-row rv is-hidden" data-tl="awd">
+        <div class="yr">2025 · Competition</div>
+        <div>
+          <h4>高校音乐创作大赛华南区 · AI 音乐赛道</h4>
+          <div class="org">Music Creation Awards</div>
+          <p>《鹏城青春之歌》三等奖、《心灵舒缓》二等奖。</p>
+        </div>
+      </div>
+      <div class="res-row rv is-hidden" data-tl="awd">
+        <div class="yr">2025 · Finalist</div>
+        <div>
+          <h4>USC 上和弦 · 杜比全景声混音赛道</h4>
+          <div class="org">Dolby Atmos Mix Competition · Finalist</div>
+          <p>混音作品《TOOOOO BUSY》进入决赛。</p>
+        </div>
+      </div>
+      <div class="res-row rv is-hidden" data-tl="awd">
+        <div class="yr">2024 · Publication</div>
+        <div>
+          <h4>国家级期刊《参花》论文发表</h4>
+          <div class="org">Academic Paper · Published</div>
+          <p>《古乐器「羊角钮钟」在现代音乐中的创新应用》正式发表。</p>
+        </div>
+      </div>
+      <div class="res-row rv is-hidden" data-tl="awd">
+        <div class="yr">2023 – 2024 · Honor</div>
+        <div>
+          <h4>筑梦奖学金 · 正艺微创工作室</h4>
+          <div class="org">Scholarship &amp; Studio Lead</div>
+          <p>2024 年度筑梦奖学金；主导完成 2023 校级网络文化工作室项目（正艺微创）。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats" style="margin-top:60px">
+      <div class="stat-c beam spot rv"><b data-count="25">0</b><span>已交付混音作品</span></div>
+      <div class="stat-c beam spot rv"><b data-count="30" data-suffix="+">0</b><span>现场扩声场次</span></div>
+      <div class="stat-c beam spot rv"><b data-count="10" data-suffix="+">0</b><span>音乐会实况录音</span></div>
+      <div class="stat-c beam spot rv"><b data-count="6">0</b><span>赛事奖项与发表</span></div>
+    </div>
+    <div class="creds">
+      <div class="cred beam spot rv"><span class="y">2025</span><div><b>USC 上和弦 · 杜比全景声混音赛道决赛</b>作品《TOOOOO BUSY》进入决赛</div></div>
+      <div class="cred beam spot rv"><span class="y">2024</span><div><b>全国校园混音大赛 · 声音设计与作品创新技能大赛</b>多首作品进入复赛与决赛</div></div>
+      <div class="cred beam spot rv"><span class="y">2024</span><div><b>国家级期刊《参花》论文发表</b>《古乐器「羊角钮钟」在现代音乐中的创新应用》</div></div>
+      <div class="cred beam spot rv"><span class="y">2023</span><div><b>国家级大创项目 · 羊角钮钟虚拟音源</b>主持研发广西艺术学院首款民族乐器 Kontakt 音源</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 价格 ══════════ -->
+<section class="sec" id="edu">
+  <div class="wrap">
+    <div class="kicker rv">Education &amp; Credentials</div>
+    <h2 class="sec-t rv">教育背景与<mark>资质</mark></h2>
+    <p class="sec-l rv">学历、项目认证与发表记录，均可核查。</p>
+    <div class="resume" style="margin-top:34px">
+      <div class="res-row rv">
+        <div class="yr">本科</div>
+        <div>
+          <h4>广西艺术学院 · 录音艺术</h4>
+          <div class="org">Guangxi Arts University</div>
+          <p>系统学习声学理论、录音工程、音乐制作与后期混音。在校期间主持国家级大创项目，并参与多场校级与省级音乐会录音与扩声工作。</p>
+        </div>
+      </div>
+      <div class="res-row rv">
+        <div class="yr">2023</div>
+        <div>
+          <h4>国家级大学生创新创业训练计划 · 羊角钮钟虚拟音源</h4>
+          <div class="org">National Innovation Project · Lead</div>
+          <p>主持研发广西艺术学院首款中国传统民族乐器 Kontakt 音源。多力度采样录音、降噪精修、Mapping 与脚本全程负责，获国家级大创认证。</p>
+        </div>
+      </div>
+      <div class="res-row rv">
+        <div class="yr">2024</div>
+        <div>
+          <h4>国家级期刊《参花》· 论文发表</h4>
+          <div class="org">Academic Paper</div>
+          <p>《古乐器「羊角钮钟」在现代音乐中的创新应用》正式发表。</p>
+        </div>
+      </div>
+      <div class="res-row rv">
+        <div class="yr">2024 – 2025</div>
+        <div>
+          <h4>声音设计与作品创新技能大赛 · 立体声 / 三维声组</h4>
+          <div class="org">National Mixing Competition</div>
+          <p>多首作品进入复赛与决赛（立体声组、三维声组）。第七届、第六届全国校园混音大赛参赛作品。</p>
+        </div>
+      </div>
+      <div class="res-row rv">
+        <div class="yr">2025</div>
+        <div>
+          <h4>USC 上和弦 · 杜比全景声混音赛道 · 决赛</h4>
+          <div class="org">Dolby Atmos Mix Competition · Finalist</div>
+          <p>混音作品《TOOOOO BUSY》进入决赛；同年获高校音乐创作大赛华南区 AI 音乐赛道二等奖、三等奖。</p>
+        </div>
+      </div>
+    </div>
+    <h3 style="font-size:20px;margin-top:44px" class="rv">工具箱</h3>
+    <div class="toolbox rv">
+      <span>Pro Tools</span><span>Cubase</span><span>Reaper</span><span>Kontakt</span>
+      <span>iZotope RX</span><span>Dolby Atmos</span><span>空间音频后期</span>
+      <span>AB / XY / ORTF 制式</span><span>FOH / Monitor</span><span>多力度采样</span>
+      <span>降噪精修</span><span>Mapping &amp; 脚本</span><span>母带交付</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="build">
+  <div class="wrap">
+    <div class="kicker rv">Things I Built</div>
+    <h2 class="sec-t rv">我不只是用工具，<mark>也自己做工具</mark></h2>
+    <p class="sec-l rv">除了音频本身，我也把工作流沉淀成可复用的 AI Skill 与小工具。下面是其中 9 个，以及上面那个声卡自检工具。</p>
+    <div class="agent-g">
+      <div class="agent-c beam spot rv"><div class="nm">Lyria Music Producer</div><div class="cn">AI 音乐制作人决策系统</div><div class="ds">把制作人判断固化成「强制锚点 + 双槽路由」，输出专业级提示词，杜绝长推理跑偏。</div><div class="tag">Music</div></div>
+      <div class="agent-c beam spot rv"><div class="nm">Lyria Scoring Prompt</div><div class="cn">AI 配乐提示词专家</div><div class="ds">专攻游戏 / 影视过场配乐，强制锚点 + 音乐语言翻译，零伪控制标签。</div><div class="tag">Music</div></div>
+      <div class="agent-c beam spot rv"><div class="nm">Scoring Director</div><div class="cn">配乐导演</div><div class="ds">将情绪与场景转译为可执行的配乐指令，统一系列一致性。</div><div class="tag">Music</div></div>
+      <div class="agent-c beam spot rv"><div class="nm">Song Forge</div><div class="cn">歌曲流水线总控</div><div class="ds">歌词 → 双评分质检 → 回炉改写 → 编译提示词，一条龙闭环。</div><div class="tag">Music</div></div>
+      <div class="agent-c beam spot rv"><div class="nm">Three-platform Copywriter</div><div class="cn">三平台文案</div><div class="ds">抖音 / 小红书 / 公众号差异化文案，一次输入多端适配。</div><div class="tag">Content</div></div>
+      <div class="agent-c beam spot rv"><div class="nm">News Poster Crawler</div><div class="cn">资讯海报生成</div><div class="ds">爬取新闻站实时生成 3:4 海报图，适合日更资讯账号。</div><div class="tag">Content</div></div>
+      <div class="agent-c beam spot rv"><div class="nm">Skill Forge</div><div class="cn">造 skill 的元技能</div><div class="ds">从零搭建 / 校验 / 发布 Agent Skills 的框架。</div><div class="tag">Tool</div></div>
+      <div class="agent-c beam spot rv"><div class="nm">Dachuang Mentor</div><div class="cn">大创项目辅导</div><div class="ds">模糊项目方向 → 清晰可申报的创新训练计划。</div><div class="tag">Tool</div></div>
+      <div class="agent-c beam spot rv"><div class="nm">HR Reply Scripts</div><div class="cn">求职回复话术</div><div class="ds">谈薪 / 催进度 / Offer 管理的话术库。</div><div class="tag">Tool</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ FAQ + 保障 ══════════ -->
+
+<!-- ══════════ 终局 CTA ══════════ -->
+<section class="fin" id="cta">
+  <span class="blob b2" style="top:10%;right:-10%"></span>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="kicker rv" style="justify-content:center">Let's Work Together</div>
+    <h2 class="rv">想聊聊合作，<br><span class="gold">或者只是想认识一下？</span></h2>
+    <p class="lead rv">发我一份分轨，48 小时内你会收到 30 秒试混片段。听完再决定要不要继续——这是零风险的。也欢迎直接下载这份简历。</p>
+    <div class="fin-cta rv">
+      <a class="btn btn--main" href="mailto:1823086554@qq.com?subject=%E5%90%88%E4%BD%9C%E5%92%A8%E8%AF%A2">✉ 发分轨给我</a>
+      <a class="btn btn--gold" href="#work">▶ 先听作品</a>
+      <button class="btn btn--ghost" id="dl2" type="button">↓ 下载简历 PDF</button>
+    </div>
+    <div class="contact-row rv">
+      <a href="mailto:1823086554@qq.com">1823086554@qq.com</a>
+      <a>微信 qwe886501</a>
+      <a>广西南宁 · 广西艺术学院</a>
+    </div>
+    <div class="scar rv"><i></i>本月混音名额还剩 3 个 · 排期按定金到账顺序</div>
+  </div>
+</section>
+
 <footer class="foot">
-  <div class="wrap">
-    <div class="foot-top">
-      <div>
-        <div class="foot-brand">
-          <span class="brand-mark" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.4" stroke-linejoin="round"><path d="M6 5h5v4H6zM13 5h5v14h-5z" fill="#FFE135"/></svg></span>
-          <b>声音实验室</b>
-        </div>
-        <p>邓家森的声音设计与混音作品集。分轨混音 · 贴唱混音 · 虚拟音源研发 · 现场扩声 · 音乐会录音。</p>
-      </div>
-      <div>
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="#skills">技能 Skills</a></li>
-          <li><a href="#works">作品 Works</a></li>
-          <li><a href="#timeline">经历 Experience</a></li>
-          <li><a href="#about">关于 About</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:1823086554@qq.com">1823086554@qq.com</a></li>
-          <li><span style="font-family:var(--f-mono);font-size:12px;opacity:.85">微信 qwe886501</span></li>
-          <li><span style="font-family:var(--f-mono);font-size:12px;opacity:.85">广西南宁 · 广西艺术学院</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot-bot">
-      <span>© 2026 邓家森 · Sound Designer &amp; Mix Engineer</span>
-      <span>音频版权归原作者及演唱者所有，仅供学习交流，请勿商用。</span>
-    </div>
+  <div class="wrap foot-in">
+    <span>© 2026 邓家森 · Sound Designer &amp; Mix Engineer</span>
+    <span>音频版权归原作者及演唱者所有，仅供学习交流，请勿商用。</span>
   </div>
 </footer>
 
-<!-- ══════ 底部播放器 ══════ -->
-<div class="player" id="player" role="region" aria-label="音频播放器" aria-hidden="true">
-  <div class="pl-cover" id="plCover" aria-hidden="true"></div>
-  <div class="pl-info"><div class="t" id="plTitle">—</div><div class="s" id="plSinger"></div></div>
-  <div class="pl-ctrl">
-    <button class="pl-btn" id="plPrev" type="button" aria-label="上一首"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M6 5h3v14H6zM20 5v14l-10-7z"/></svg></button>
-    <button class="pl-btn main" id="plPlay" type="button" aria-label="播放"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" id="plIcon"><path d="M7 4l13 8-13 8z"/></svg></button>
-    <button class="pl-btn" id="plNext" type="button" aria-label="下一首"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A0A0A"><path d="M15 5h3v14h-3zM4 5l10 7-10 7z"/></svg></button>
-  </div>
-  <div class="pl-rail">
-    <span class="pl-time" id="plCur">0:00</span>
-    <div class="pl-track" id="plTrack" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="plFill"></i></div>
-    <span class="pl-time" id="plDur">0:00</span>
-  </div>
-  <button class="pl-btn pl-x" id="plClose" type="button" aria-label="关闭播放器"><svg width="15" height="15" viewBox="0 0 24 24" stroke="#0A0A0A" stroke-width="3.2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+<div class="sticky-cta">
+  <a class="btn btn--main" href="#work">听作品</a>
+  <a class="btn btn--ghost" href="#cta">联系我</a>
 </div>
-<audio id="audio" preload="none"></audio>
 
 <script>
 (function(){
-"use strict";
-var $ = function(s){return document.querySelector(s);};
-var $$ = function(s){return Array.prototype.slice.call(document.querySelectorAll(s));};
+'use strict';
+var $ = function(s){ return document.querySelector(s); };
+var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+var REDUCE = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* 作品数据直接来自静态 DOM：HTML 是唯一真实来源，无 JS 时爬虫也能读到 */
-var WORKS = $$("#bento .work").map(function(el){
-  return {
-    id: parseInt(el.getAttribute("data-id"), 10),
-    cat: el.getAttribute("data-cat") || "",
-    title: el.getAttribute("data-title") || "",
-    singer: el.getAttribute("data-singer") || "",
-    src: el.getAttribute("data-src") || "",
-    audio: el.getAttribute("data-audio") || "",
-    cover: el.getAttribute("data-cover") || ""
-  };
-});
-var REDUCE = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* ── 1. 点阵加载器 ── */
+(function(){
+  var d = $('#dots');
+  for (var i = 0; i < 49; i++) {
+    var s = document.createElement('i');
+    s.style.animationDelay = ((i % 7) * 0.05 + Math.floor(i / 7) * 0.05) + 's';
+    d.appendChild(s);
+  }
+  window.addEventListener('load', function(){
+    setTimeout(function(){ $('#loader').classList.add('off'); }, 420);
+  });
+  setTimeout(function(){ $('#loader').classList.add('off'); }, 2600);
+})();
 
-/* 导航 */
-var navLinks = $("#navLinks"), navToggle = $("#navToggle");
-navToggle.addEventListener("click", function(){
-  var open = navLinks.classList.toggle("open");
-  navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-});
-navLinks.addEventListener("click", function(e){
-  if(e.target.tagName === "A"){ navLinks.classList.remove("open"); navToggle.setAttribute("aria-expanded","false"); }
-});
-
-/* 滚动进度 */
-var progress = $("#progress"), ticking = false;
+/* ── 2. 滚动进度 / 导航状态 ── */
+var nav = $('#nav'), prog = $('#prog');
 function onScroll(){
   var h = document.documentElement.scrollHeight - window.innerHeight;
-  progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
-  ticking = false;
+  prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  nav.classList.toggle('on', window.scrollY > 40);
 }
-window.addEventListener("scroll", function(){ if(!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+window.addEventListener('scroll', function(){ requestAnimationFrame(onScroll); }, {passive:true});
 onScroll();
 
-/* 当前区块高亮 */
-var secIds = ["skills","works","timeline","about","contact"];
-if("IntersectionObserver" in window){
+var nl = $('#navLinks'), burger = $('#burger');
+burger.addEventListener('click', function(){
+  var open = nl.style.display !== 'flex';
+  if (open) {
+    nl.style.cssText = 'display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:4px;padding:16px 20px;background:rgba(10,10,11,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)';
+  } else { nl.style.cssText = ''; }
+});
+nl.addEventListener('click', function(e){ if (e.target.tagName === 'A') nl.style.cssText = ''; });
+window.addEventListener('resize', function(){ if (window.innerWidth > 1000) nl.style.cssText = ''; });
+
+if ('IntersectionObserver' in window) {
   var navIo = new IntersectionObserver(function(es){
     es.forEach(function(e){
-      if(e.isIntersecting){
-        $$(".nav-links a").forEach(function(a){ a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id); });
-      }
+      if (!e.isIntersecting) return;
+      $$('.nav-links a').forEach(function(a){
+        a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+      });
     });
-  }, {rootMargin:"-45% 0px -50% 0px"});
-  secIds.forEach(function(id){ var el = document.getElementById(id); if(el) navIo.observe(el); });
-}
-
-/* 作品 Bento：25 张卡片已静态写在 HTML 里，这里只负责分类显隐 */
-var bento = $("#bento"), curCat = "分轨混音", list = [];
-function esc(s){ return String(s).replace(/[&<>"]/g, function(m){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]; }); }
-function showCat(cat, force){
-  curCat = cat;
-  list = WORKS.filter(function(w){ return w.cat === cat; });
-  $$("#bento .work").forEach(function(el){
-    var on = el.getAttribute("data-cat") === cat;
-    el.classList.toggle("is-hidden", !on);
-    if(on && force) el.classList.add("in");
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  ['about','work','exp','edu','build'].forEach(function(id){
+    var el = document.getElementById(id); if (el) navIo.observe(el);
   });
 }
-$$('.tabs .tab').forEach(function(t){
-  t.addEventListener("click", function(){
-    $$('.tabs .tab').forEach(function(o){ o.setAttribute("aria-selected","false"); });
-    t.setAttribute("aria-selected","true");
-    bento.setAttribute("aria-labelledby", t.id);
-    showCat(t.getAttribute("data-cat"), true);
-  });
-});
 
-/* ═══ AI Skills / Agent 模块：9 张卡片同样静态渲染 ═══ */
-var agentGrid = $("#agentGrid");
-function showAgents(cat, force){
-  $$("#agentGrid .agent").forEach(function(el){
-    var on = cat === "all" || el.getAttribute("data-cat") === cat;
-    el.classList.toggle("is-hidden", !on);
-    if(on && force) el.classList.add("in");
-  });
+/* ── 3. 揭示动画 + 数字滚动 + EQ 条 ── */
+var counted = {};
+function countUp(el){
+  var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+  var suffix = el.getAttribute('data-suffix') || '';
+  if (counted[target]) { el.textContent = target + suffix; return; }
+  counted[target] = 1;
+  var t0 = null, dur = 1100;
+  function step(ts){
+    if (!t0) t0 = ts;
+    var p = Math.min((ts - t0) / dur, 1);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
 }
-$$('.agent-tabs .tab').forEach(function(t){
-  t.addEventListener("click", function(){
-    $$('.agent-tabs .tab').forEach(function(o){ o.setAttribute("aria-selected","false"); });
-    t.setAttribute("aria-selected","true");
-    agentGrid.setAttribute("aria-labelledby", t.id);
-    showAgents(t.getAttribute("data-cat"), true);
-  });
-});
+function fillBars(scope){ $$(scope + ' .eq-bar i').forEach(function(b){ b.style.width = b.getAttribute('data-w') + '%'; }); }
 
-/* 时间线：8 条（项目经历 4 + 荣誉奖项 4）已静态渲染 */
-var tlList = $("#tlList");
-function showTL(key, force){
-  $$("#tlList .tl-item").forEach(function(el){
-    var on = el.getAttribute("data-tl") === key;
-    el.classList.toggle("is-hidden", !on);
-    if(on && force) el.classList.add("in");
-  });
-}
-$$('#timeline .tabs .tab').forEach(function(t){
-  t.addEventListener("click", function(){
-    $$('#timeline .tabs .tab').forEach(function(o){ o.setAttribute("aria-selected","false"); });
-    t.setAttribute("aria-selected","true");
-    tlList.setAttribute("aria-labelledby", t.id);
-    showTL(t.getAttribute("data-tl"), true);
-  });
-});
-
-/* 滚动揭示 + 进度条 */
-function fillBars(scope){ $$(scope + " .bar i").forEach(function(b){ b.style.width = b.getAttribute("data-w") + "%"; }); }
-if(REDUCE || !("IntersectionObserver" in window)){
-  $$(".reveal").forEach(function(el){ el.classList.add("in"); });
-  fillBars("#skills");
-}else{
+if (REDUCE || !('IntersectionObserver' in window)) {
+  $$('.rv').forEach(function(el){ el.classList.add('in'); });
+  fillBars('body');
+  $$('[data-count]').forEach(countUp);
+} else {
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){
-      if(!e.isIntersecting) return;
+      if (!e.isIntersecting) return;
       var el = e.target;
-      var sibs = Array.prototype.slice.call(el.parentNode.children).filter(function(n){return n.classList.contains("reveal");});
-      el.style.transitionDelay = Math.min(sibs.indexOf(el), 7) * 70 + "ms";
-      el.classList.add("in");
+      el.classList.add('in');
+      el.querySelectorAll('[data-count]').forEach(countUp);
+      if (el.hasAttribute('data-count')) countUp(el);
       io.unobserve(el);
     });
-  }, {threshold:0.1, rootMargin:"0px 0px -6% 0px"});
-  $$(".reveal").forEach(function(el){ io.observe(el); });
-  var barIo = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(!e.isIntersecting) return;
-      var bars = e.target.querySelectorAll(".bar i");
-      Array.prototype.forEach.call(bars, function(b,i){ setTimeout(function(){ b.style.width = b.getAttribute("data-w") + "%"; }, 120 + i*130); });
-      barIo.unobserve(e.target);
+  }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  $$('.rv').forEach(function(el){ io.observe(el); });
+  var eqIo = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ fillBars('.hero-card'); eqIo.unobserve(e.target); } });
+  }, {threshold:.4});
+  var hc = document.querySelector('.hero-card'); if (hc) eqIo.observe(hc);
+}
+
+/* ── 4. 鼠标聚光灯 ── */
+$$('.spot').forEach(function(el){
+  el.addEventListener('pointermove', function(e){
+    var r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
+
+/* ── 5. 磁吸按钮 ── */
+if (!REDUCE && window.matchMedia('(hover:hover)').matches) {
+  $$('.btn').forEach(function(b){
+    b.addEventListener('pointermove', function(e){
+      var r = b.getBoundingClientRect();
+      b.style.transform = 'translate(' + ((e.clientX - r.left - r.width/2) * 0.18).toFixed(1) + 'px,' + ((e.clientY - r.top - r.height/2) * 0.28).toFixed(1) + 'px)';
     });
-  }, {threshold:0.35});
-  $$(".skill-card").forEach(function(c){ barIo.observe(c); });
-}
-
-/* ════════ 播放器 ════════ */
-var audio = $("#audio"), player = $("#player");
-var plCover = $("#plCover"), plTitle = $("#plTitle"), plSinger = $("#plSinger");
-var plPlay = $("#plPlay"), plIcon = $("#plIcon"), plFill = $("#plFill");
-var plTrack = $("#plTrack"), plCur = $("#plCur"), plDur = $("#plDur");
-var current = null;
-
-var ICON_PLAY = '<path d="M7 4l13 8-13 8z"/>';
-var ICON_PAUSE = '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
-
-function fmt(s){
-  if(!s || isNaN(s) || !isFinite(s)) return "0:00";
-  var m = Math.floor(s/60), ss = Math.floor(s%60);
-  return m + ":" + (ss < 10 ? "0" : "") + ss;
-}
-
-function markPlaying(){
-  $$("#bento .work").forEach(function(el){
-    el.classList.toggle("playing", !!current && parseInt(el.getAttribute("data-id"),10) === current.id && !audio.paused);
+    b.addEventListener('pointerleave', function(){ b.style.transform = ''; });
   });
 }
 
-function play(w){
-  if(current && current.id === w.id){
-    if(audio.paused){ audio.play().catch(noop); } else { audio.pause(); }
-    return;
+/* ── 6. 手风琴 ── */
+$$('.acc-h').forEach(function(h){
+  h.addEventListener('click', function(){
+    var acc = h.parentNode, open = acc.classList.contains('open');
+    var body = acc.querySelector('.acc-b');
+    if (open) { acc.classList.remove('open'); body.style.maxHeight = '0px'; }
+    else { acc.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; }
+  });
+});
+
+/* ── 6b. 简历专属：经历 / 奖项切换、能力条、导出 PDF ── */
+(function(){
+  var tabs = $('#tlTabs');
+  if (tabs) {
+    tabs.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if (!b) return;
+      tabs.querySelectorAll('button').forEach(function(o){ o.classList.remove('on'); });
+      b.classList.add('on');
+      var key = b.getAttribute('data-tl');
+      $$('#tlBody .res-row').forEach(function(r){
+        var on = r.getAttribute('data-tl') === key;
+        r.classList.toggle('is-hidden', !on);
+        if (on) r.classList.add('in');
+      });
+    });
   }
-  current = w;
-  audio.src = w.audio;
-  audio.play().catch(noop);
-  plTitle.textContent = w.title;
-  plSinger.textContent = (w.singer ? w.singer + " · " : "") + (w.src || w.cat);
-  plCover.innerHTML = w.cover
-    ? '<img src="' + w.cover + '" alt="" />'
-    : '<span>' + esc((w.title||"♪").trim().charAt(0)) + '</span>';
-  player.classList.add("on");
-  player.setAttribute("aria-hidden","false");
-  document.body.classList.add("player-on");
-}
-function noop(){}
+  var sb = $$('.skill-bars');
+  if (sb.length) {
+    function fill(){ sb.forEach(function(s){ s.querySelectorAll('.bar i').forEach(function(b){ b.style.width = b.getAttribute('data-w') + '%'; }); }); }
+    if (REDUCE || !('IntersectionObserver' in window)) { fill(); }
+    else {
+      var o = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if (e.isIntersecting) { fill(); o.disconnect(); } });
+      }, {threshold:.3});
+      sb.forEach(function(s){ o.observe(s); });
+    }
+  }
+  $$('#dl,#dl2').forEach(function(b){ b.addEventListener('click', function(){ window.print(); }); });
+})();
 
-function step(dir){
-  if(!current) return;
-  var i = list.findIndex(function(w){ return w.id === current.id; });
-  if(i < 0){ play(list[0]); return; }
-  play(list[(i + dir + list.length) % list.length]);
-}
+/* ── 7. Hero 波形画布 ── */
+(function(){
+  var c = $('#wave'), x = c.getContext('2d'), t = 0, raf;
+  function size(){
+    var r = c.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c.width = r.width * dpr; c.height = r.height * dpr; x.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function draw(){
+    var w = c.clientWidth, h = c.clientHeight;
+    x.clearRect(0,0,w,h);
+    var layers = [
+      {a:.55, s:1.0, k:0.008, c:'#FF1493', o:0.30},
+      {a:.40, s:1.4, k:0.011, c:'#8B7CF6', o:0.55},
+      {a:.30, s:2.1, k:0.015, c:'#00BFFF', o:0.80}
+    ];
+    layers.forEach(function(L, li){
+      x.beginPath();
+      for (var px = 0; px <= w; px += 3) {
+        var y = h * L.o
+          + Math.sin(px * L.k + t * L.s) * h * 0.16 * L.a
+          + Math.sin(px * L.k * 2.3 + t * L.s * 1.6) * h * 0.07 * L.a
+          + Math.sin(px * L.k * 0.4 - t * 0.4) * h * 0.05;
+        if (px === 0) x.moveTo(px, y); else x.lineTo(px, y);
+      }
+      var g = x.createLinearGradient(0,0,w,0);
+      g.addColorStop(0, 'rgba(255,20,147,0)');
+      g.addColorStop(.2, L.c);
+      g.addColorStop(.8, L.c);
+      g.addColorStop(1, 'rgba(0,191,255,0)');
+      x.strokeStyle = g; x.globalAlpha = .5 - li * 0.1; x.lineWidth = 1.6; x.stroke();
+    });
+    x.globalAlpha = 1;
+    t += REDUCE ? 0 : 0.02;
+    raf = requestAnimationFrame(draw);
+  }
+  size(); draw();
+  window.addEventListener('resize', function(){ size(); if (REDUCE) draw(); });
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden) { cancelAnimationFrame(raf); } else { draw(); }
+  });
+})();
 
-function fireCard(card){
-  if(!card) return;
-  var id = parseInt(card.getAttribute("data-id"), 10);
-  var w = WORKS.filter(function(x){ return x.id === id; })[0];
-  if(w) play(w);
-}
-bento.addEventListener("click", function(e){ fireCard(e.target.closest(".work")); });
-bento.addEventListener("keydown", function(e){
-  if(e.key !== "Enter" && e.key !== " " && e.code !== "Space") return;
-  var card = e.target.closest(".work");
-  if(!card) return;
-  e.preventDefault();
-  fireCard(card);
-});
+/* ── 8. Hero 频谱卡（装饰动画） ── */
+(function(){
+  var c = $('#spec'), x = c.getContext('2d'), t = 0, raf;
+  function size(){
+    var r = c.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c.width = r.width * dpr; c.height = r.height * dpr; x.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function draw(){
+    var w = c.clientWidth, h = c.clientHeight, n = 40, bw = w / n;
+    x.clearRect(0,0,w,h);
+    for (var i = 0; i < n; i++) {
+      var base = Math.sin(i * 0.35 + t) * 0.28 + Math.sin(i * 0.13 + t * 1.7) * 0.24 + 0.5;
+      var v = Math.max(0.06, Math.min(base * (1 - i / (n * 1.6)), 1));
+      var bh = v * (h - 12);
+      var g = x.createLinearGradient(0, h, 0, h - bh);
+      g.addColorStop(0, '#8B7CF6'); g.addColorStop(1, i % 3 ? '#FF1493' : '#00BFFF');
+      x.fillStyle = g;
+      x.fillRect(i * bw + 1.5, h - bh - 6, bw - 3, bh);
+    }
+    t += REDUCE ? 0 : 0.05;
+    raf = requestAnimationFrame(draw);
+  }
+  size(); draw();
+  window.addEventListener('resize', size);
+})();
 
-plPlay.addEventListener("click", function(){
-  if(!current){ if(list.length) play(list[0]); return; }
-  if(audio.paused){ audio.play().catch(noop); } else { audio.pause(); }
-});
-$("#plPrev").addEventListener("click", function(){ step(-1); });
-$("#plNext").addEventListener("click", function(){ step(1); });
-$("#plClose").addEventListener("click", function(){
-  audio.pause(); audio.removeAttribute("src"); audio.load();
-  current = null; markPlaying();
-  player.classList.remove("on");
-  player.setAttribute("aria-hidden","true");
-  document.body.classList.remove("player-on");
-});
+/* ── 9. 声卡调试自检工具 ── */
+(function(){
+  if (!$('#toolTitle')) return; /* 板块已移除时直接跳过 */
+  var LABEL = {
+    os:{win:'Windows', mac:'macOS'},
+    card:{entry:'入门 USB 声卡', mid:'中端专业声卡', pro:'高端机架接口'},
+    use:{rec:'人声录音', live:'直播', mix:'混音监听', midi:'编曲 / MIDI'}
+  };
+  var state = {os:'win', card:'entry', use:'rec'};
+  var BUF = {
+    entry:{rec:128, live:256, mix:256, midi:128},
+    mid:{rec:64, live:128, mix:128, midi:64},
+    pro:{rec:32, live:64, mix:64, midi:32}
+  };
+  var BASE = {entry:6, mid:3, pro:1.4};
+  var GAIN = {rec:'−12 dBFS', live:'−10 dBFS', mix:'78–83 dB', midi:'−18 dBFS'};
 
-audio.addEventListener("play", function(){ plIcon.innerHTML = ICON_PAUSE; plPlay.setAttribute("aria-label","暂停"); markPlaying(); });
-audio.addEventListener("pause", function(){ plIcon.innerHTML = ICON_PLAY; plPlay.setAttribute("aria-label","播放"); markPlaying(); });
-audio.addEventListener("ended", function(){ step(1); });
-audio.addEventListener("loadedmetadata", function(){ plDur.textContent = fmt(audio.duration); });
-audio.addEventListener("timeupdate", function(){
-  var p = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
-  plFill.style.width = p + "%";
-  plCur.textContent = fmt(audio.currentTime);
-  plTrack.setAttribute("aria-valuenow", Math.round(p));
-});
-audio.addEventListener("error", function(){
-  if(!current) return;
-  plSinger.textContent = "音频加载失败：" + current.audio;
-});
+  function tips(){
+    var o = [];
+    if (state.os === 'win' && state.card === 'entry') o.push('装厂商自带的 ASIO 驱动，别用系统默认的 WDM / MME，延迟能差一倍。');
+    if (state.os === 'win' && state.card !== 'entry') o.push('在厂商 ASIO 面板里把采样率锁成 48 kHz，并和 DAW 工程设置保持一致。');
+    if (state.os === 'mac') o.push('Core Audio 免驱即用，重点检查「音频 MIDI 设置」里的采样率是否与 DAW 一致。');
+    if (state.use === 'rec') o.push('录人声峰值控制在 −12 dBFS 左右，最高不超 −6，留出后期余量，别贴着 0 录。');
+    if (state.use === 'live') o.push('直播优先稳定：缓冲区别低于 128，开播前锁死采样率，别在直播中途改设置。');
+    if (state.use === 'mix') o.push('把监听音量固定在 78–83 dB 再判断音色，音量一大低频就会"变好"，那是错觉。');
+    if (state.use === 'midi') o.push('软音源多开卡顿时，先加缓冲区而不是减轨；还卡再查 DPC 延迟（LatencyMon）。');
+    if (state.card === 'entry') o.push('入门声卡别追求 32 的缓冲区，稳定不爆音比数字好看重要得多。');
+    if (state.card === 'pro') o.push('高端接口注意话放增益与话筒阻抗匹配，底噪往往来自增益结构而不是设备本身。');
+    return o.slice(0, 4);
+  }
+  function render(){
+    var buf = BUF[state.card][state.use];
+    var lat = Math.round((buf / 48000 * 1000) * 2 + BASE[state.card]);
+    $('#toolTitle').textContent = LABEL.use[state.use] + ' · ' + LABEL.card[state.card];
+    $('#oSr').textContent = '48 kHz / 24bit';
+    $('#oBuf').textContent = buf + ' samples';
+    $('#oLat').textContent = '≈ ' + lat + ' ms';
+    $('#oGain').textContent = GAIN[state.use];
+    $('#oTips').innerHTML = tips().map(function(s){ return '<li>' + s + '</li>'; }).join('');
+  }
+  $$('.chips-f').forEach(function(g){
+    var key = g.getAttribute('data-g');
+    g.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if (!b) return;
+      g.querySelectorAll('button').forEach(function(o){ o.classList.remove('on'); });
+      b.classList.add('on');
+      state[key] = b.getAttribute('data-v');
+      render();
+    });
+  });
+  render();
 
-function seekAt(clientX){
-  if(!audio.duration) return;
-  var r = plTrack.getBoundingClientRect();
-  audio.currentTime = Math.min(Math.max((clientX - r.left) / r.width, 0), 1) * audio.duration;
-}
-plTrack.addEventListener("click", function(e){ seekAt(e.clientX); });
-plTrack.addEventListener("keydown", function(e){
-  if(!audio.duration) return;
-  if(e.key === "ArrowRight"){ e.preventDefault(); audio.currentTime = Math.min(audio.currentTime + 5, audio.duration); }
-  if(e.key === "ArrowLeft"){ e.preventDefault(); audio.currentTime = Math.max(audio.currentTime - 5, 0); }
-});
+  $('#copyCfg').addEventListener('click', function(){
+    var gLabel = $('#oGain').textContent;
+    var gLine = (state.use === 'mix') ? '监听音量：' + gLabel : '目标电平：' + gLabel;
+    var txt = '声卡配置建议（' + LABEL.os[state.os] + ' / ' + LABEL.card[state.card] + ' / ' + LABEL.use[state.use] + '）\n'
+      + '采样率：48 kHz / 24bit\n'
+      + '缓冲区：' + BUF[state.card][state.use] + ' samples\n'
+      + '预估往返延迟：' + $('#oLat').textContent + '\n'
+      + gLine + '\n\n'
+      + tips().map(function(s, i){ return (i + 1) + '. ' + s; }).join('\n');
+    var btn = this, old = btn.textContent;
+    function done(){ btn.textContent = '已复制 ✓'; setTimeout(function(){ btn.textContent = old; }, 1600); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(done, function(){ btn.textContent = '复制失败，请手动选中'; setTimeout(function(){ btn.textContent = old; }, 1600); });
+    } else { done(); }
+  });
+})();
 
-/* 空格键全局播放/暂停（非输入焦点时） */
-document.addEventListener("keydown", function(e){
-  if(e.code !== "Space" || !current) return;
-  var t = e.target.tagName;
-  if(t === "INPUT" || t === "TEXTAREA" || e.target.isContentEditable) return;
-  if(e.target.closest("button, a, [tabindex]")) return;
-  e.preventDefault();
-  if(audio.paused){ audio.play().catch(noop); } else { audio.pause(); }
-});
+/* ── 10. 播放器：真实频谱 + 三种回放环境模拟 ── */
+(function(){
+  var audio = new Audio(); audio.preload = 'none';
+  var items = $$('#plList .pl-i');
+  var idx = -1, playing = false;
+  var ctx = null, srcNode = null, hp = null, lp = null, pk = null, analyser = null;
+  var ENV = {
+    hp:{hp:20, lp:20000, f:1000, g:0, note:'FLAT · 未做染色'},
+    phone:{hp:320, lp:6500, f:2500, g:3, note:'模拟手机：切掉 320Hz 以下 / 6.5kHz 以上'},
+    car:{hp:45, lp:13000, f:80, g:5, note:'模拟车载：低频抬 5dB，高频收到 13kHz'}
+  };
+  var curEnv = 'hp';
 
-/* 启动：内容已在 HTML 中，这里只同步一次默认分类 */
-showCat(curCat);
-showAgents("all");
-showTL("exp");
+  function fmt(s){
+    if (!s || !isFinite(s)) return '0:00';
+    var m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function build(){
+    if (ctx) return;
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    ctx = new AC();
+    srcNode = ctx.createMediaElementSource(audio);
+    hp = ctx.createBiquadFilter(); hp.type = 'highpass';
+    lp = ctx.createBiquadFilter(); lp.type = 'lowpass';
+    pk = ctx.createBiquadFilter(); pk.type = 'peaking'; pk.Q.value = 0.9;
+    analyser = ctx.createAnalyser(); analyser.fftSize = 256; analyser.smoothingTimeConstant = 0.75;
+    srcNode.connect(hp); hp.connect(lp); lp.connect(pk); pk.connect(analyser); analyser.connect(ctx.destination);
+    applyEnv();
+  }
+  function applyEnv(){
+    if (!ctx) return;
+    var e = ENV[curEnv];
+    hp.frequency.value = e.hp; lp.frequency.value = e.lp;
+    pk.frequency.value = e.f; pk.gain.value = e.g;
+    $('#envNote').textContent = e.note;
+  }
+  function setCover(el, it){
+    var cover = it.getAttribute('data-cover');
+    el.innerHTML = cover
+      ? '<img src="' + cover + '" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px" />'
+      : '<span>' + (it.getAttribute('data-title') || '♪').trim().charAt(0) + '</span>';
+  }
+  function load(i){
+    idx = i;
+    var it = items[i];
+    items.forEach(function(o){ o.classList.remove('on'); });
+    it.classList.add('on');
+    audio.src = it.getAttribute('data-src');
+    $('#nowTitle').textContent = it.getAttribute('data-title');
+    $('#nowSub').textContent = it.getAttribute('data-singer');
+    setCover($('#nowCover'), it);
+  }
+  function play(i){
+    if (i !== undefined && i !== idx) load(i);
+    if (idx < 0) load(0);
+    build();
+    if (ctx && ctx.state === 'suspended') ctx.resume();
+    var p = audio.play();
+    if (p && typeof p.then === 'function') { p.then(null, function(){}); }
+  }
+  function toggle(){ if (audio.paused) play(); else audio.pause(); }
+
+  items.forEach(function(it, i){ it.addEventListener('click', function(){ play(i); }); });
+  $('#pPlay').addEventListener('click', toggle);
+  $('#pPrev').addEventListener('click', function(){ play((idx - 1 + items.length) % items.length); });
+  $('#pNext').addEventListener('click', function(){ play((idx + 1) % items.length); });
+  $('#bar').addEventListener('click', function(e){
+    if (!audio.duration) return;
+    var r = this.getBoundingClientRect();
+    audio.currentTime = Math.max(0, Math.min((e.clientX - r.left) / r.width, 1)) * audio.duration;
+  });
+  $('#envs').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    $$('#envs button').forEach(function(o){ o.classList.remove('on'); });
+    b.classList.add('on'); curEnv = b.getAttribute('data-env'); applyEnv();
+  });
+
+  var ICON_P = '<path d="M7 4l13 8-13 8z"/>', ICON_S = '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
+  audio.addEventListener('play', function(){ playing = true; $('#pIcon').innerHTML = ICON_S; });
+  audio.addEventListener('pause', function(){ playing = false; $('#pIcon').innerHTML = ICON_P; });
+  audio.addEventListener('ended', function(){ play((idx + 1) % items.length); });
+  audio.addEventListener('loadedmetadata', function(){ $('#tDur').textContent = fmt(audio.duration); });
+  audio.addEventListener('timeupdate', function(){
+    var p = audio.duration ? audio.currentTime / audio.duration * 100 : 0;
+    $('#fill').style.width = p + '%';
+    $('#tCur').textContent = fmt(audio.currentTime);
+  });
+  audio.addEventListener('error', function(){
+    if (audio.src) $('#nowSub').textContent = '音频加载失败，请检查网络或稍后再试';
+  });
+
+  /* 频谱画布：播放时走真实 AnalyserNode，空闲时走装饰动画 */
+  var c = $('#viz'), x = c.getContext('2d'), t = 0, data = null;
+  function size(){
+    var r = c.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c.width = r.width * dpr; c.height = r.height * dpr; x.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function draw(){
+    var w = c.clientWidth, h = c.clientHeight, n = 48, bw = w / n;
+    x.clearRect(0,0,w,h);
+    if (analyser && playing) {
+      if (!data) data = new Uint8Array(analyser.frequencyBinCount);
+      analyser.getByteFrequencyData(data);
+      var stepN = Math.max(1, Math.floor(data.length * 0.7 / n));
+      for (var i = 0; i < n; i++) {
+        var v = data[i * stepN] / 255;
+        var bh = Math.max(3, v * (h - 14));
+        var g = x.createLinearGradient(0, h, 0, h - bh);
+        g.addColorStop(0, '#8B7CF6'); g.addColorStop(1, i > n * 0.72 ? '#00BFFF' : '#FF1493');
+        x.fillStyle = g; x.fillRect(i * bw + 1.5, h - bh - 7, bw - 3, bh);
+      }
+    } else {
+      for (var j = 0; j < n; j++) {
+        var base = Math.sin(j * 0.4 + t) * 0.22 + Math.sin(j * 0.11 + t * 1.4) * 0.2 + 0.28;
+        var bh2 = Math.max(3, Math.min(base, 1) * (h - 14) * 0.7);
+        var g2 = x.createLinearGradient(0, h, 0, h - bh2);
+        g2.addColorStop(0, '#2a2a33'); g2.addColorStop(1, '#3d3d49');
+        x.fillStyle = g2; x.fillRect(j * bw + 1.5, h - bh2 - 7, bw - 3, bh2);
+      }
+    }
+    t += REDUCE ? 0 : 0.045;
+    requestAnimationFrame(draw);
+  }
+  size(); draw();
+  window.addEventListener('resize', size);
+})();
 })();
 </script>
 </body>
