@@ -238,7 +238,7 @@ mark{background:none;color:var(--gold)}
 .envs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
 .envs button{padding:9px 16px;border:1px solid var(--line-2);border-radius:99px;font-size:14.0px;color:var(--dim)}
 .envs button.on{background:var(--gold);color:#14100A;border-color:var(--gold);font-weight:600}
-#viz{width:100%;height:150px;display:block;border-radius:12px;background:#0c0c0f}
+#viz{width:100%;height:150px;display:block;border-radius:12px;background:#0c0c0f;transform:translateZ(0)}
 .now{display:flex;align-items:center;gap:14px;margin-top:16px}
 .now img{width:56px;height:56px;border-radius:10px;object-fit:cover;border:1px solid var(--line-2)}
 .now .t{font-family:var(--f-d);font-size:18.5px}
@@ -1365,6 +1365,15 @@ $$('.acc-h').forEach(function(h){
 
   allItems.forEach(function(it){ it.addEventListener('click', function(){ play(items.indexOf(it)); }); });
   $('#pPlay').addEventListener('click', toggle);
+  /* 空格键播放/暂停（输入框和可聚焦元素除外） */
+  document.addEventListener('keydown', function(e){
+    if (e.code !== 'Space') return;
+    var tg = e.target.tagName;
+    if (tg === 'INPUT' || tg === 'TEXTAREA' || e.target.isContentEditable) return;
+    if (e.target.closest && e.target.closest('button, a, [tabindex]')) return;
+    e.preventDefault();
+    toggle();
+  });
   $('#pPrev').addEventListener('click', function(){ play((idx - 1 + items.length) % items.length); });
   $('#pNext').addEventListener('click', function(){ play((idx + 1) % items.length); });
   $('#bar').addEventListener('click', function(e){
@@ -1421,10 +1430,11 @@ $$('.acc-h').forEach(function(h){
   });
 
   /* 频谱画布：播放时走真实 AnalyserNode，空闲时走装饰动画 */
-  var c = $('#viz'), x = c.getContext('2d'), t = 0, data = null, lastMode = '';
+  var c = $('#viz'), x = c.getContext('2d'), t = 0, data = null, lastMode = '', vrect = null;
   function size(){
     var r = c.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
     c.width = r.width * dpr; c.height = r.height * dpr; x.setTransform(dpr,0,0,dpr,0,0);
+    vrect = r;
   }
   function draw(){
     /* 先调度下一帧：任何异常都不会终止循环 */
@@ -1445,7 +1455,7 @@ $$('.acc-h').forEach(function(h){
           mode = maxV > 0 ? 'real' : 'fake';
         } catch (e) { mode = 'fake'; window.__vizErr = 'analyser: ' + e.message; }
       }
-      var lmx = (window._mx == null ? -1e5 : window._mx - srect.left);
+      var lmx = (window._mx == null ? -1e5 : window._mx - vrect.left);
       var note = $('#envNote');
       if (note && mode !== 'idle' && mode !== lastMode) {
         note.textContent = mode === 'real' ? ENV[curEnv].note : ENV[curEnv].note + ' · 演示频谱';
