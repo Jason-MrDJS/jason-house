@@ -1421,63 +1421,66 @@ $$('.acc-h').forEach(function(h){
   });
 
   /* 频谱画布：播放时走真实 AnalyserNode，空闲时走装饰动画 */
-  var c = $('#viz'), x = c.getContext('2d'), t = 0, data = null;
+  var c = $('#viz'), x = c.getContext('2d'), t = 0, data = null, lastMode = '';
   function size(){
     var r = c.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
     c.width = r.width * dpr; c.height = r.height * dpr; x.setTransform(dpr,0,0,dpr,0,0);
   }
   function draw(){
-    var w = c.clientWidth, h = c.clientHeight, n = 48, bw = w / n;
-    x.clearRect(0,0,w,h);
-    /* 三种模式：real=真实分析数据 / fake=合成频谱兜底 / idle=待机 */
-    var mode = 'idle';
-    if (analyser && playing) {
-      try {
-        if (!data || data.length !== analyser.frequencyBinCount) data = new Uint8Array(analyser.frequencyBinCount);
-        analyser.getByteFrequencyData(data);
-        var maxV = 0;
-        for (var k = 0; k < data.length; k++) { if (data[k] > maxV) maxV = data[k]; }
-        mode = maxV > 0 ? 'real' : 'fake';
-      } catch(e) { mode = 'fake'; }
-    }
-    if (mode === 'real') {
-      var stepN = Math.max(1, Math.floor(data.length * 0.7 / n));
-      for (var i = 0; i < n; i++) {
-        var v = data[i * stepN] / 255;
-        var bh = Math.max(3, v * (h - 14));
-        var g = x.createLinearGradient(0, h, 0, h - bh);
-        g.addColorStop(0, '#5B8CFF'); g.addColorStop(1, i > n * 0.72 ? '#D6B36A' : '#8B7CF6');
-        x.fillStyle = g; x.fillRect(i * bw + 1.5, h - bh - 7, bw - 3, bh);
-      }
-    } else if (mode === 'fake') {
-      /* AnalyserNode 拿不到数据时的合成频谱：按节拍呼吸，永远不会黑屏 */
-      var sec = audio.currentTime || 0;
-      var beat = Math.pow(1 - (sec % 0.5) / 0.5, 2.2);
-      for (var j2 = 0; j2 < n; j2++) {
-        var f2 = j2 / n;
-        var v2 = (0.30 + 0.45 * Math.pow(Math.abs(Math.sin(t * 1.9 + j2 * 0.32)), 2))
-               * (0.55 + 0.45 * Math.sin(t * 0.5 + j2 * 0.12))
-               * (0.45 + 0.55 * beat) * (1.15 - f2 * 0.55);
-        v2 = Math.max(0.06, Math.min(1, v2));
-        var bh3 = Math.max(3, v2 * (h - 14));
-        var g3 = x.createLinearGradient(0, h, 0, h - bh3);
-        g3.addColorStop(0, '#5B8CFF'); g3.addColorStop(1, j2 > n * 0.72 ? '#D6B36A' : '#8B7CF6');
-        x.fillStyle = g3; x.fillRect(j2 * bw + 1.5, h - bh3 - 7, bw - 3, bh3);
-      }
-    } else {
-      var lmx = (window._mx == null ? -1e5 : window._mx - srect.left);
-      for (var j = 0; j < n; j++) {
-        var base = Math.sin(j * 0.4 + t) * 0.22 + Math.sin(j * 0.11 + t * 1.4) * 0.2 + 0.28;
-        /* 空闲时频谱向鼠标聚拢 */
-        var lean = 1 + 0.85 * Math.exp(-Math.pow(j * bw + bw / 2 - lmx, 2) / 12800);
-        var bh2 = Math.max(3, Math.min(base, 1) * (h - 14) * 0.7 * lean);
-        var g2 = x.createLinearGradient(0, h, 0, h - bh2);
-        g2.addColorStop(0, '#2a2a33'); g2.addColorStop(1, '#3d3d49');
-        x.fillStyle = g2; x.fillRect(j * bw + 1.5, h - bh2 - 7, bw - 3, bh2);
-      }
-    }
-    t += REDUCE ? 0 : 0.045;
+    /* 先调度下一帧：任何异常都不会终止循环 */
     requestAnimationFrame(draw);
+    try {
+      var w = c.clientWidth, h = c.clientHeight, n = 48;
+      if (!w || !h) { size(); return; }
+      var bw = w / n;
+      x.clearRect(0, 0, w, h);
+      /* 三种模式：real=真实分析数据 / fake=合成频谱兜底 / idle=待机 */
+      var mode = 'idle';
+      if (analyser && playing) {
+        try {
+          if (!data || data.length !== analyser.frequencyBinCount) data = new Uint8Array(analyser.frequencyBinCount);
+          analyser.getByteFrequencyData(data);
+          var maxV = 0;
+          for (var k = 0; k < data.length; k++) { if (data[k] > maxV) maxV = data[k]; }
+          mode = maxV > 0 ? 'real' : 'fake';
+        } catch (e) { mode = 'fake'; window.__vizErr = 'analyser: ' + e.message; }
+      }
+      var lmx = (window._mx == null ? -1e5 : window._mx - srect.left);
+      var note = $('#envNote');
+      if (note && mode !== 'idle' && mode !== lastMode) {
+        note.textContent = mode === 'real' ? ENV[curEnv].note : ENV[curEnv].note + ' · 演示频谱';
+      }
+      lastMode = mode;
+      for (var i = 0; i < n; i++) {
+        var v = 0;
+        if (mode === 'real') {
+          var stepN = Math.max(1, Math.floor(data.length * 0.7 / n));
+          v = data[i * stepN] / 255;
+        } else if (mode === 'fake') {
+          var sec = audio.currentTime || 0;
+          var beat = Math.pow(1 - (sec % 0.5) / 0.5, 2.2);
+          var f = i / n;
+          v = (0.30 + 0.45 * Math.pow(Math.abs(Math.sin(t * 1.9 + i * 0.32)), 2))
+            * (0.55 + 0.45 * Math.sin(t * 0.5 + i * 0.12))
+            * (0.45 + 0.55 * beat) * (1.15 - f * 0.55);
+        } else {
+          var base = Math.sin(i * 0.4 + t) * 0.22 + Math.sin(i * 0.11 + t * 1.4) * 0.2 + 0.28;
+          var lean = 1 + 0.85 * Math.exp(-Math.pow(i * bw + bw / 2 - lmx, 2) / 12800);
+          v = Math.min(Math.max(base, 0), 1) * 0.7 * lean;
+        }
+        if (!isFinite(v)) v = 0.08;
+        v = Math.max(0.06, Math.min(v, 1));
+        var bh = Math.max(3, Math.min(v * (h - 14), h - 8));
+        var g = x.createLinearGradient(0, h, 0, h - bh);
+        if (mode === 'idle') { g.addColorStop(0, '#2a2a33'); g.addColorStop(1, '#3d3d49'); }
+        else { g.addColorStop(0, '#5B8CFF'); g.addColorStop(1, i > n * 0.72 ? '#D6B36A' : '#8B7CF6'); }
+        x.fillStyle = g;
+        x.fillRect(i * bw + 1.5, h - bh - 7, Math.max(1, bw - 3), bh);
+      }
+      t += REDUCE ? 0 : 0.045;
+    } catch (e) {
+      window.__vizErr = e.message;
+    }
   }
   size(); draw();
   window.addEventListener('resize', size);
