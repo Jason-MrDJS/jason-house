@@ -4,25 +4,28 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="邓家森 · 声音设计师 / 混音师。作品集与简历：25 首混音作品、国家级民族乐器虚拟音源研发、30+ 场现场扩声、10+ 场音乐会录音、6 项赛事奖项与期刊发表。" />
-<meta name="theme-color" content="#0A0A0B" />
+<meta name="theme-color" content="#080A0F" />
 <title>邓家森 · 声音设计师 / 混音师 ｜ 作品集 &amp; 简历</title>
 <style>
 /* ═══════════ 设计系统 ═══════════ */
 :root{
-  --bg:#0A0A0B;
-  --bg-2:#111114;
-  --ink:#F5F5F3;
-  --dim:#ADADB8;
-  --line:rgba(255,255,255,.10);
-  --line-2:rgba(255,255,255,.16);
-  --gold:#FFD166;
-  --pink:#FF1493;
+  /* Design System · Future Digital Atelier */
+  --bg:#080A0F;
+  --surface:#11141C;
+  --ink:#E8E8E8;
+  --dim:#9096A3;
+  --line:rgba(255,255,255,.08);
+  --line-2:rgba(255,255,255,.14);
+  --gold:#D6B36A;
+  --ai:#5B8CFF;
+  --pink:#E0679F;
   --violet:#8B7CF6;
-  --sky:#00BFFF;
-  --lime:#B4E61E;
-  --grad:linear-gradient(115deg,var(--pink),var(--violet) 45%,var(--sky));
-  --f-d:"Space Grotesk","PingFang SC","HarmonyOS Sans","Source Han Sans SC","Source Han Sans CN","Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-b:"Inter","PingFang SC","HarmonyOS Sans","Source Han Sans SC","Source Han Sans CN","Noto Sans SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --sky:#5B8CFF;
+  --lime:#9FBF7E;
+  --grad:linear-gradient(115deg,var(--ai),var(--violet) 52%,#A78BFA);
+  --gold-metal:linear-gradient(92deg,#E8CF9C,#D6B36A 55%,#B9954E);
+  --f-d:"Geist","Inter","Space Grotesk","HarmonyOS Sans SC","HarmonyOS Sans","Source Han Sans SC","Source Han Sans CN","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-b:"Inter","Geist","HarmonyOS Sans SC","HarmonyOS Sans","Source Han Sans SC","Source Han Sans CN","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-m:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
   --r:16px;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -34,10 +37,10 @@ html{
 }
 body{
   background:
-    radial-gradient(1000px 620px at 10% -8%, rgba(255,20,147,.11), transparent 62%),
-    radial-gradient(900px 620px at 92% 6%, rgba(139,124,246,.11), transparent 62%),
-    radial-gradient(1000px 760px at 50% 106%, rgba(0,191,255,.10), transparent 62%),
-    var(--bg);
+    radial-gradient(circle at 30% 8%, rgba(91,140,255,.13), transparent 46%),
+    radial-gradient(circle at 82% 68%, rgba(214,179,106,.07), transparent 38%),
+    radial-gradient(1000px 760px at 50% 106%, rgba(139,124,246,.08), transparent 62%),
+    linear-gradient(180deg, #090B12, #050507);
   color:var(--ink);font-family:var(--f-b);
   font-size:17.5px;line-height:1.78;letter-spacing:.012em;
   text-rendering:optimizeLegibility;font-kerning:normal;font-variant-ligatures:common-ligatures;
@@ -48,23 +51,25 @@ img,canvas,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 p{text-wrap:pretty}
-::selection{background:var(--pink);color:#fff}
+::selection{background:rgba(91,140,255,.35);color:#fff}
 ::-webkit-scrollbar{width:10px}
-::-webkit-scrollbar-thumb{background:#2a2a31;border-radius:10px;border:3px solid var(--bg)}
+::-webkit-scrollbar-thumb{background:#1d222d;border-radius:10px;border:3px solid var(--bg)}
 
-/* 底层网格：像音频编辑器的标尺，固定不动，滚动时有参照 */
+/* 底层网格：远距离的实验室参照线，弱化为空气的一部分 */
 body::before{
   content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
   background-image:
-    linear-gradient(rgba(255,255,255,.030) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.030) 1px, transparent 1px);
-  background-size:64px 64px;
-  -webkit-mask-image:radial-gradient(130% 95% at 50% 0%, #000 35%, transparent 100%);
-  mask-image:radial-gradient(130% 95% at 50% 0%, #000 35%, transparent 100%);
+    linear-gradient(rgba(148,163,199,.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,199,.012) 1px, transparent 1px),
+    linear-gradient(rgba(148,163,199,.006) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,199,.006) 1px, transparent 1px);
+  background-size:72px 72px, 72px 72px, 18px 18px, 18px 18px;
+  -webkit-mask-image:radial-gradient(130% 95% at 50% 0%, #000 30%, transparent 100%);
+  mask-image:radial-gradient(130% 95% at 50% 0%, #000 30%, transparent 100%);
 }
 /* 颗粒噪点：让大面积暗色不发死 */
 body::after{
-  content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.065;mix-blend-mode:overlay;
+  content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .wrap{width:min(1180px,92vw);margin-inline:auto}
@@ -75,11 +80,12 @@ body::after{
 }
 .kicker::before{content:'';width:26px;height:1px;background:var(--grad)}
 /* 中西文混排：标题不收紧字距（负字距会挤压汉字），改用轻微正字距 + balance 换行 */
-h1,h2,h3,h4{font-family:var(--f-d);font-weight:700;line-height:1.2;letter-spacing:.005em;text-wrap:balance}
+h1,h2,h3,h4{font-family:var(--f-d);font-weight:600;line-height:1.22;letter-spacing:.014em;text-wrap:balance}
+h1{font-weight:600}
 h1{line-height:1.14}
 h2{line-height:1.22}
 h3,h4{line-height:1.35}
-.gold{background:linear-gradient(92deg,var(--gold),#FFA94D);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gold{background:var(--gold-metal);-webkit-background-clip:text;background-clip:text;color:transparent}
 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sec{padding:110px 0;position:relative}
 .sec-t{font-size:clamp(32px,4.8vw,56px);margin-bottom:14px}
@@ -101,8 +107,8 @@ mark{background:none;color:var(--gold)}
 .nav{position:fixed;top:0;left:0;right:0;z-index:900;transition:.3s var(--ease)}
 .nav.on{background:rgba(10,10,11,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;gap:22px;height:70px}
-.brand{display:flex;align-items:center;gap:11px;font-family:var(--f-d);font-weight:700;font-size:17px}
-.brand i{width:26px;height:26px;border-radius:7px;background:var(--grad);display:grid;place-items:center;font-style:normal;font-size:13px;color:#0A0A0B;font-weight:800}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--f-d);font-weight:600;font-size:17px;letter-spacing:.01em}
+.brand i{width:26px;height:26px;border-radius:7px;background:var(--grad);display:grid;place-items:center;font-style:normal;font-size:13px;color:#fff;font-weight:600}
 .nav-links{display:flex;gap:26px;margin-left:auto;font-size:14px;color:var(--dim)}
 .nav-links a{transition:color .2s;position:relative}
 .nav-links a:hover,.nav-links a.active{color:var(--ink)}
@@ -115,23 +121,38 @@ mark{background:none;color:var(--gold)}
   position:relative;display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;
   font-weight:600;font-size:15.5px;transition:transform .18s var(--ease),box-shadow .25s;will-change:transform;
 }
-.btn--main{background:var(--grad);color:#0A0A0B;box-shadow:0 8px 30px -10px rgba(255,20,147,.6)}
-.btn--main:hover{box-shadow:0 14px 40px -10px rgba(255,20,147,.8)}
-.btn--gold{background:linear-gradient(92deg,var(--gold),#FFA94D);color:#14100A}
+.btn--main{background:var(--grad);color:#fff;box-shadow:0 10px 32px -14px rgba(91,140,255,.55)}
+.btn--main:hover{box-shadow:0 16px 42px -14px rgba(91,140,255,.7)}
+.btn--gold{background:var(--gold-metal);color:#191308}
 .btn--ghost{border:1px solid var(--line-2);color:var(--ink)}
 .btn--ghost:hover{border-color:var(--ink)}
 .btn--sm{padding:10px 18px;font-size:13.5px}
 
 /* ── 边框流光（Border beam） ── */
-.beam{position:relative;border-radius:var(--r);background:var(--bg-2);border:1px solid var(--line)}
+/* 卡片：悬浮在空间中的半透明面板，柔和玻璃，不抢戏 */
+.beam{
+  position:relative;border-radius:var(--r);
+  background:rgba(255,255,255,.035);
+  border:1px solid var(--line);
+  backdrop-filter:blur(20px) saturate(1.05);
+  -webkit-backdrop-filter:blur(20px) saturate(1.05);
+  box-shadow:0 20px 50px -32px rgba(0,0,0,.55);
+  transition:background-color .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease),box-shadow .35s var(--ease);
+}
+.beam:hover{
+  background-color:rgba(255,255,255,.055);
+  border-color:rgba(255,255,255,.16);
+  transform:translateY(-4px);
+  box-shadow:0 28px 60px -32px rgba(0,0,0,.6);
+}
 .beam::before{
   content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
-  background:conic-gradient(from var(--a,0deg),transparent 0 300deg,var(--pink) 330deg,var(--violet) 350deg,transparent 360deg);
+  background:conic-gradient(from var(--a,0deg),transparent 0 300deg,var(--ai) 330deg,var(--gold) 350deg,transparent 360deg);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
   -webkit-mask-composite:xor;mask-composite:exclude;
-  animation:spin 5.5s linear infinite;opacity:0;transition:opacity .4s;
+  animation:spin 8s linear infinite;opacity:0;transition:opacity .5s;
 }
-.beam:hover::before,.beam.lit::before{opacity:1}
+.beam:hover::before,.beam.lit::before{opacity:.5}
 @keyframes spin{to{--a:360deg}}
 @property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
 
@@ -145,10 +166,10 @@ mark{background:none;color:var(--gold)}
 
 /* ═══════════ HERO ═══════════ */
 .hero{position:relative;padding:150px 0 90px;overflow:hidden}
-.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none}
-.b1{width:520px;height:520px;background:var(--pink);top:-160px;left:-120px;animation:drift 18s ease-in-out infinite}
-.b2{width:460px;height:460px;background:var(--violet);top:-60px;right:-140px;animation:drift 22s ease-in-out infinite reverse}
-.b3{width:380px;height:380px;background:var(--sky);bottom:-200px;left:38%;animation:drift 26s ease-in-out infinite}
+.blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:.26;pointer-events:none}
+.b1{width:520px;height:520px;background:var(--ai);top:-160px;left:-120px;animation:drift 38s ease-in-out infinite}
+.b2{width:460px;height:460px;background:var(--violet);top:-60px;right:-140px;animation:drift 44s ease-in-out infinite reverse}
+.b3{width:380px;height:380px;background:var(--gold);bottom:-200px;left:38%;animation:drift 52s ease-in-out infinite}
 @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,40px) scale(1.12)}}
 #wave{position:absolute;inset:auto 0 0;height:220px;width:100%;opacity:.55;pointer-events:none}
 .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
@@ -202,7 +223,7 @@ mark{background:none;color:var(--gold)}
 .chips-f{display:flex;gap:8px;flex-wrap:wrap}
 .chips-f button{padding:9px 15px;border:1px solid var(--line-2);border-radius:99px;font-size:13px;color:var(--dim);transition:.2s}
 .chips-f button:hover{border-color:var(--line-2);color:var(--ink)}
-.chips-f button.on{background:var(--ink);color:#0A0A0B;border-color:var(--ink);font-weight:600}
+.chips-f button.on{background:var(--ink);color:#10131A;border-color:var(--ink);font-weight:600}
 .tool-o{padding:28px;display:flex;flex-direction:column}
 .tool-o .kv{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0}
 .kv div{border:1px solid var(--line);border-radius:12px;padding:14px;background:#0d0d10}
@@ -229,7 +250,7 @@ mark{background:none;color:var(--gold)}
 .ctrls{display:flex;align-items:center;gap:12px;margin-top:14px}
 .ctrls button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;transition:.2s}
 .ctrls button:hover{border-color:var(--ink)}
-.ctrls .play{background:var(--ink);color:#0A0A0B;border-color:var(--ink);width:52px;height:52px}
+.ctrls .play{background:var(--ink);color:#10131A;border-color:var(--ink);width:52px;height:52px}
 .pl{padding:18px;max-height:430px;overflow:auto}
 .pl h4{font-family:var(--f-m);font-size:11.5px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase;margin-bottom:12px}
 .pl-i{display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:10px;cursor:pointer;transition:.18s}
@@ -353,7 +374,7 @@ mark{background:none;color:var(--gold)}
 .res-row ul{margin:8px 0 0 18px;display:grid;gap:6px;font-size:16.0px;line-height:1.7;color:var(--dim)}
 .tl-tabs{display:flex;gap:9px;margin:26px 0 6px;flex-wrap:wrap}
 .tl-tabs button{padding:9px 17px;border:1px solid var(--line-2);border-radius:99px;font-size:14.5px;color:var(--dim)}
-.tl-tabs button.on{background:var(--ink);color:#0A0A0B;border-color:var(--ink);font-weight:600}
+.tl-tabs button.on{background:var(--ink);color:#10131A;border-color:var(--ink);font-weight:600}
 .toolbox{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
 .toolbox span{padding:8px 14px;border:1px solid var(--line-2);border-radius:99px;font-size:14.5px;color:var(--dim)}
 .agent-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px}
@@ -396,10 +417,10 @@ mark{background:none;color:var(--gold)}
 .side-tag{
   position:absolute;left:14px;top:104px;z-index:1;
   writing-mode:vertical-rl;font-family:var(--f-m);font-size:11px;letter-spacing:.36em;
-  text-transform:uppercase;color:rgba(255,255,255,.20);user-select:none;
+  text-transform:uppercase;color:rgba(255,255,255,.13);user-select:none;
 }
 /* 卡片点阵肌理 */
-.beam{background-image:radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);background-size:18px 18px}
+.beam{background-image:radial-gradient(rgba(255,255,255,.026) 1px, transparent 1px);background-size:20px 20px}
 @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 @media (max-width:1000px){.side-tag{display:none}}
 @media (prefers-reduced-motion:reduce){.deco{animation:none}}
@@ -438,8 +459,8 @@ mark{background:none;color:var(--gold)}
 /* 斜向光柱：给平面加方向感，缓慢滑移 */
 .bg-beams{
   position:absolute;inset:-25%;
-  background:repeating-linear-gradient(112deg, rgba(255,255,255,.030) 0 1px, transparent 1px 52px);
-  animation:beamSlip 46s linear infinite;
+  background:repeating-linear-gradient(112deg, rgba(255,255,255,.016) 0 1px, transparent 1px 56px);
+  animation:beamSlip 80s linear infinite;
   -webkit-mask-image:radial-gradient(95% 70% at 50% 30%, #000 20%, transparent 88%);
   mask-image:radial-gradient(95% 70% at 50% 30%, #000 20%, transparent 88%);
 }
@@ -453,10 +474,8 @@ mark{background:none;color:var(--gold)}
 .bg-vignette{position:absolute;inset:0;background:radial-gradient(125% 90% at 50% 18%, transparent 42%, rgba(0,0,0,.62) 100%)}
 /* 玻璃材质：大面积面板磨砂 + 上下内高光，做出厚度 */
 .hero-card,.p-main,.pl,.stat-c,.cred,.agent-c{
-  background-color:rgba(18,18,22,.74);
-  backdrop-filter:blur(8px) saturate(1.08);
-  -webkit-backdrop-filter:blur(8px) saturate(1.08);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.075), inset 0 -1px 0 rgba(0,0,0,.42);
+  background-color:rgba(255,255,255,.05);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), inset 0 -1px 0 rgba(0,0,0,.35);
 }
 /* 板块顶部一层极淡的雾，前后分层 */
 .sec{background:linear-gradient(180deg, rgba(255,255,255,.014), transparent 26%)}
@@ -528,7 +547,7 @@ mark{background:none;color:var(--gold)}
 .svc-c .price{
   font-family:"Times New Roman",Times,"Nimbus Roman",Georgia,serif;
 }
-.kicker{font-size:13.5px;letter-spacing:.18em}
+.kicker{font-size:11px;letter-spacing:.3em;opacity:.85}
 .res-row .yr{font-size:14.5px;letter-spacing:.04em;line-height:1.7}
 .res-row .org{letter-spacing:.05em}
 .stat-c b{font-size:52.0px;font-variant-numeric:lining-nums}
@@ -647,7 +666,7 @@ mark{background:none;color:var(--gold)}
 <section class="sec" id="about">
   <span class="deco deco--glow" aria-hidden="true"></span>
   <div class="wrap">
-    <div class="kicker rv">About Me</div>
+    <div class="kicker rv">Profile · Creative Technologist</div>
     <h2 class="sec-t rv">声音不是参数的堆叠，<mark>而是情绪、空间与身份的延伸</mark></h2>
     <div class="about-grid" style="margin-top:40px">
       <div class="rv">
@@ -678,7 +697,7 @@ mark{background:none;color:var(--gold)}
   <span class="side-tag mono" aria-hidden="true">Selected Works · 2026</span>
   <span class="deco deco--vinyl" aria-hidden="true"></span>
   <div class="wrap">
-    <div class="kicker rv">Real Delivered Work</div>
+    <div class="kicker rv">Selected Works · Mixing &amp; Sound Design</div>
     <h2 class="sec-t rv">别听我说，<mark>听作品</mark></h2>
     <p class="sec-l rv">下面是已交付的真实曲目。重点试试「回放环境」切换——同一首歌在手机、耳机、车载上的表现，就是混音师真正的功力所在。音频版权归原作者及演唱者所有，仅供学习交流。</p>
     <div class="player-w">
@@ -844,9 +863,9 @@ mark{background:none;color:var(--gold)}
 
 <!-- ══════════ 价格 ══════════ -->
 <section class="sec" id="edu">
-  <span class="side-tag mono" aria-hidden="true">Education · Toolbox</span>
+  <span class="side-tag mono" aria-hidden="true">Education · Research</span>
   <div class="wrap">
-    <div class="kicker rv">Education &amp; Credentials</div>
+    <div class="kicker rv">Education &amp; Research</div>
     <h2 class="sec-t rv">教育背景与<mark>资质</mark></h2>
     <p class="sec-l rv">学历、项目认证与发表记录，均可核查。</p>
     <div class="resume" style="margin-top:34px">
@@ -902,9 +921,9 @@ mark{background:none;color:var(--gold)}
 </section>
 
 <section class="sec" id="build">
-  <span class="side-tag mono" aria-hidden="true">Things I Built</span>
+  <span class="side-tag mono" aria-hidden="true">Systems I Designed</span>
   <div class="wrap">
-    <div class="kicker rv">Things I Built</div>
+    <div class="kicker rv">Systems I Designed</div>
     <h2 class="sec-t rv">我不只是用工具，<mark>也自己做工具</mark></h2>
     <p class="sec-l rv">除了音频本身，我也把工作流沉淀成可复用的 AI Skill 与小工具。下面是其中 9 个，以及上面那个声卡自检工具。</p>
     <div class="agent-g">
@@ -960,21 +979,21 @@ mark{background:none;color:var(--gold)}
 <div class="mascot" id="mascot" role="img" aria-label="戴耳机的卡通混音师，眼睛会跟着鼠标看，点它会说话">
   <span class="mascot-bubble" id="mBubble" aria-hidden="true">耳机戴好，开始试听。</span>
   <svg id="mSvg" viewBox="0 0 130 150" width="106" height="122" aria-hidden="true">
-    <path d="M45 106 L85 106 L93 144 L37 144 Z" fill="#1b1b22" stroke="#F4F4F2" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M45 106 L85 106 L93 144 L37 144 Z" fill="#151924" stroke="#E8E8E8" stroke-width="2.5" stroke-linejoin="round"/>
     <g id="mHead">
-      <circle cx="65" cy="52" r="32" fill="#17171c" stroke="#F4F4F2" stroke-width="2.5"/>
-      <path d="M58 21 q4 -9 8 0 M70 21 q4 -8 7 0" stroke="#F4F4F2" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="65" cy="52" r="32" fill="#131722" stroke="#E8E8E8" stroke-width="2.5"/>
+      <path d="M58 21 q4 -9 8 0 M70 21 q4 -8 7 0" stroke="#E8E8E8" stroke-width="2" fill="none" stroke-linecap="round"/>
       <circle cx="52" cy="48" r="7.5" fill="#fff"/>
-      <circle class="m-pupil" cx="52" cy="48" r="3.4" fill="#0A0A0B"/>
+      <circle class="m-pupil" cx="52" cy="48" r="3.4" fill="#10131A"/>
       <circle cx="78" cy="48" r="7.5" fill="#fff"/>
-      <circle class="m-pupil" cx="78" cy="48" r="3.4" fill="#0A0A0B"/>
-      <circle cx="46" cy="61" r="3.4" fill="#FF1493" opacity=".32"/>
-      <circle cx="84" cy="61" r="3.4" fill="#FF1493" opacity=".32"/>
-      <path d="M57 64 q8 7 16 0" stroke="#F4F4F2" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <circle class="m-pupil" cx="78" cy="48" r="3.4" fill="#10131A"/>
+      <circle cx="46" cy="61" r="3.4" fill="#E0679F" opacity=".32"/>
+      <circle cx="84" cy="61" r="3.4" fill="#E0679F" opacity=".32"/>
+      <path d="M57 64 q8 7 16 0" stroke="#E8E8E8" stroke-width="2.4" fill="none" stroke-linecap="round"/>
     </g>
-    <path d="M31 54 a34 34 0 0 1 68 0" stroke="#FFD166" stroke-width="5" fill="none" stroke-linecap="round"/>
-    <rect x="24" y="47" width="13" height="21" rx="5.5" fill="#FFD166" stroke="#0A0A0B" stroke-width="1.5"/>
-    <rect x="93" y="47" width="13" height="21" rx="5.5" fill="#FFD166" stroke="#0A0A0B" stroke-width="1.5"/>
+    <path d="M31 54 a34 34 0 0 1 68 0" stroke="#D6B36A" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <rect x="24" y="47" width="13" height="21" rx="5.5" fill="#D6B36A" stroke="#10131A" stroke-width="1.5"/>
+    <rect x="93" y="47" width="13" height="21" rx="5.5" fill="#D6B36A" stroke="#10131A" stroke-width="1.5"/>
   </svg>
 </div>
 
@@ -1145,9 +1164,9 @@ $$('.acc-h').forEach(function(h){
     var w = c.clientWidth, h = c.clientHeight;
     x.clearRect(0,0,w,h);
     var layers = [
-      {a:.55, s:1.0, k:0.008, c:'#FF1493', o:0.30},
+      {a:.55, s:1.0, k:0.008, c:'#5B8CFF', o:0.30},
       {a:.40, s:1.4, k:0.011, c:'#8B7CF6', o:0.55},
-      {a:.30, s:2.1, k:0.015, c:'#00BFFF', o:0.80}
+      {a:.30, s:2.1, k:0.015, c:'#D6B36A', o:0.80}
     ];
     layers.forEach(function(L, li){
       x.beginPath();
@@ -1162,7 +1181,7 @@ $$('.acc-h').forEach(function(h){
         if (px === 0) x.moveTo(px, y); else x.lineTo(px, y);
       }
       var g = x.createLinearGradient(0,0,w,0);
-      g.addColorStop(0, 'rgba(255,20,147,0)');
+      g.addColorStop(0, 'rgba(91,140,255,0)');
       g.addColorStop(.2, L.c);
       g.addColorStop(.8, L.c);
       g.addColorStop(1, 'rgba(0,191,255,0)');
@@ -1195,7 +1214,7 @@ $$('.acc-h').forEach(function(h){
       var v = Math.max(0.06, Math.min(base * (1 - i / (n * 1.6)), 1));
       var bh = v * (h - 12);
       var g = x.createLinearGradient(0, h, 0, h - bh);
-      g.addColorStop(0, '#8B7CF6'); g.addColorStop(1, i % 3 ? '#FF1493' : '#00BFFF');
+      g.addColorStop(0, '#5B8CFF'); g.addColorStop(1, i % 3 ? '#8B7CF6' : '#D6B36A');
       x.fillStyle = g;
       x.fillRect(i * bw + 1.5, h - bh - 6, bw - 3, bh);
     }
@@ -1414,7 +1433,7 @@ $$('.acc-h').forEach(function(h){
         var v = data[i * stepN] / 255;
         var bh = Math.max(3, v * (h - 14));
         var g = x.createLinearGradient(0, h, 0, h - bh);
-        g.addColorStop(0, '#8B7CF6'); g.addColorStop(1, i > n * 0.72 ? '#00BFFF' : '#FF1493');
+        g.addColorStop(0, '#5B8CFF'); g.addColorStop(1, i > n * 0.72 ? '#D6B36A' : '#8B7CF6');
         x.fillStyle = g; x.fillRect(i * bw + 1.5, h - bh - 7, bw - 3, bh);
       }
     } else {
@@ -1512,9 +1531,9 @@ $$('.acc-h').forEach(function(h){
 (function(){
   var c = $('#dust'); if (!c) return;
   var x = c.getContext('2d'), W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  var N = window.innerWidth < 700 ? 24 : 52;
+  var N = window.innerWidth < 700 ? 20 : 34;
   var ps = [];
-  var TINT = ['255,255,255', '255,255,255', '255,255,255', '255,209,102', '255,20,147', '0,191,255'];
+  var TINT = ['255,255,255', '255,255,255', '232,232,232', '214,179,106', '91,140,255'];
 
   function size(){
     W = window.innerWidth; H = window.innerHeight;
@@ -1550,7 +1569,7 @@ $$('.acc-h').forEach(function(h){
       /* 视差：远景几乎不动，近景跟着滚动明显位移 */
       var py = p.y + sy * (0.02 + p.z * 0.07);
       py = ((py % (H + 20)) + H + 20) % (H + 20) - 10;
-      var a = 0.10 + p.z * 0.32;
+      var a = 0.07 + p.z * 0.2;
       x.beginPath();
       x.fillStyle = 'rgba(' + p.tint + ',' + a.toFixed(3) + ')';
       x.arc(p.x, py, p.r, 0, 6.283);
