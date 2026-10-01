@@ -1319,6 +1319,7 @@ $$('.acc-h').forEach(function(h){
     var AC = window.AudioContext || window.webkitAudioContext;
     if (!AC) return;
     ctx = new AC();
+    try { if (ctx.state === 'suspended') { ctx.resume().catch(function(){}); } } catch(e){}
     srcNode = ctx.createMediaElementSource(audio);
     hp = ctx.createBiquadFilter(); hp.type = 'highpass';
     lp = ctx.createBiquadFilter(); lp.type = 'lowpass';
@@ -1327,6 +1328,7 @@ $$('.acc-h').forEach(function(h){
     srcNode.connect(hp); hp.connect(lp); lp.connect(pk); pk.connect(analyser); analyser.connect(ctx.destination);
     applyEnv();
   }
+  function wake(){ try { if (ctx && ctx.state === 'suspended') { ctx.resume().catch(function(){}); } } catch(e){} }
   function applyEnv(){
     if (!ctx) return;
     var e = ENV[curEnv];
@@ -1406,6 +1408,8 @@ $$('.acc-h').forEach(function(h){
   audio.addEventListener('play', function(){ playing = true; $('#pIcon').innerHTML = ICON_S; addEq(); });
   audio.addEventListener('pause', function(){ playing = false; $('#pIcon').innerHTML = ICON_P; removeEq(); });
   audio.addEventListener('ended', function(){ play((idx + 1) % items.length); });
+  audio.addEventListener('playing', wake);
+  document.addEventListener('pointerdown', wake);
   audio.addEventListener('loadedmetadata', function(){ $('#tDur').textContent = fmt(audio.duration); });
   audio.addEventListener('timeupdate', function(){
     var p = audio.duration ? audio.currentTime / audio.duration * 100 : 0;
@@ -1425,9 +1429,18 @@ $$('.acc-h').forEach(function(h){
   function draw(){
     var w = c.clientWidth, h = c.clientHeight, n = 48, bw = w / n;
     x.clearRect(0,0,w,h);
+    /* 三种模式：real=真实分析数据 / fake=合成频谱兜底 / idle=待机 */
+    var mode = 'idle';
     if (analyser && playing) {
-      if (!data) data = new Uint8Array(analyser.frequencyBinCount);
-      analyser.getByteFrequencyData(data);
+      try {
+        if (!data || data.length !== analyser.frequencyBinCount) data = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(data);
+        var maxV = 0;
+        for (var k = 0; k < data.length; k++) { if (data[k] > maxV) maxV = data[k]; }
+        mode = maxV > 0 ? 'real' : 'fake';
+      } catch(e) { mode = 'fake'; }
+    }
+    if (mode === 'real') {
       var stepN = Math.max(1, Math.floor(data.length * 0.7 / n));
       for (var i = 0; i < n; i++) {
         var v = data[i * stepN] / 255;
@@ -1435,6 +1448,21 @@ $$('.acc-h').forEach(function(h){
         var g = x.createLinearGradient(0, h, 0, h - bh);
         g.addColorStop(0, '#5B8CFF'); g.addColorStop(1, i > n * 0.72 ? '#D6B36A' : '#8B7CF6');
         x.fillStyle = g; x.fillRect(i * bw + 1.5, h - bh - 7, bw - 3, bh);
+      }
+    } else if (mode === 'fake') {
+      /* AnalyserNode 拿不到数据时的合成频谱：按节拍呼吸，永远不会黑屏 */
+      var sec = audio.currentTime || 0;
+      var beat = Math.pow(1 - (sec % 0.5) / 0.5, 2.2);
+      for (var j2 = 0; j2 < n; j2++) {
+        var f2 = j2 / n;
+        var v2 = (0.30 + 0.45 * Math.pow(Math.abs(Math.sin(t * 1.9 + j2 * 0.32)), 2))
+               * (0.55 + 0.45 * Math.sin(t * 0.5 + j2 * 0.12))
+               * (0.45 + 0.55 * beat) * (1.15 - f2 * 0.55);
+        v2 = Math.max(0.06, Math.min(1, v2));
+        var bh3 = Math.max(3, v2 * (h - 14));
+        var g3 = x.createLinearGradient(0, h, 0, h - bh3);
+        g3.addColorStop(0, '#5B8CFF'); g3.addColorStop(1, j2 > n * 0.72 ? '#D6B36A' : '#8B7CF6');
+        x.fillStyle = g3; x.fillRect(j2 * bw + 1.5, h - bh3 - 7, bw - 3, bh3);
       }
     } else {
       var lmx = (window._mx == null ? -1e5 : window._mx - srect.left);
