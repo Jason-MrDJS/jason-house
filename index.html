@@ -34,6 +34,7 @@
 html{
   scroll-behavior:smooth;scroll-padding-top:82px;
   -webkit-text-size-adjust:100%;text-size-adjust:100%;
+  overflow-x:hidden;overflow-x:clip;
 }
 body{
   background:
@@ -105,7 +106,7 @@ mark{background:none;color:var(--gold)}
 
 /* ── 导航 ── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:900;transition:.3s var(--ease)}
-.nav.on{background:rgba(10,10,11,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav.on{background:rgba(8,10,15,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;gap:22px;height:70px}
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--f-d);font-weight:600;font-size:17px;letter-spacing:.01em}
 .brand i{width:26px;height:26px;border-radius:7px;background:var(--grad);display:grid;place-items:center;font-style:normal;font-size:13px;color:#fff;font-weight:600}
@@ -334,7 +335,7 @@ mark{background:none;color:var(--gold)}
 /* ── 移动端常驻 CTA ── */
 .sticky-cta{
   position:fixed;left:0;right:0;bottom:0;z-index:890;display:none;gap:10px;padding:12px 14px;
-  background:rgba(10,10,11,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);
+  background:rgba(8,10,15,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);
 }
 .sticky-cta .btn{flex:1;justify-content:center;padding:13px}
 
@@ -481,6 +482,16 @@ mark{background:none;color:var(--gold)}
 .sec{background:linear-gradient(180deg, rgba(255,255,255,.014), transparent 26%)}
 @media (prefers-reduced-motion:reduce){.bg-beams{animation:none}}
 
+/* ── 触屏防粘滞：触屏设备上不保留桌面 hover 效果 ── */
+@media (hover:none){
+  .beam:hover{background-color:rgba(255,255,255,.035);border-color:var(--line);transform:none;box-shadow:0 20px 50px -32px rgba(0,0,0,.55)}
+  .beam:hover::before{opacity:0}
+  .beam.lit::before{opacity:.35}
+  .pl-i:hover{background:transparent}
+  .mascot:hover{transform:none}
+  .btn:hover{transform:none}
+}
+
 /* ── 触摸目标：手机上放大到 44px 量级 ── */
 @media (max-width:1000px){
   .chips-f button{padding:11px 16px}
@@ -492,6 +503,7 @@ mark{background:none;color:var(--gold)}
 
 /* ── 横屏手机 / 矮视口：压缩纵向占用，保证首屏与功能一致 ── */
 @media (orientation:landscape) and (max-height:620px){
+  html body{padding-bottom:64px}
   .hero{padding:104px 0 48px}
   .hero h1{font-size:clamp(28px,5.4vw,44px)}
   .hero p.lead{font-size:17.5px}
@@ -567,6 +579,8 @@ mark{background:none;color:var(--gold)}
   .burger{display:grid}
   .sticky-cta{display:flex}
   body{padding-bottom:76px}
+  /* 手机上关掉两层全屏噪点混合，省下大量重绘 */
+  body::after,.bg-stage::after{display:none}
   .sec{padding:80px 0}
 }
 @media (max-width:620px){
@@ -1033,7 +1047,7 @@ var nl = $('#navLinks'), burger = $('#burger');
 burger.addEventListener('click', function(){
   var open = nl.style.display !== 'flex';
   if (open) {
-    nl.style.cssText = 'display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:4px;padding:16px 20px;background:rgba(10,10,11,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)';
+    nl.style.cssText = 'display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:4px;padding:16px 20px;background:rgba(8,10,15,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)';
   } else { nl.style.cssText = ''; }
 });
 nl.addEventListener('click', function(e){ if (e.target.tagName === 'A') nl.style.cssText = ''; });
@@ -1430,7 +1444,7 @@ $$('.acc-h').forEach(function(h){
   });
 
   /* 频谱画布：播放时走真实 AnalyserNode，空闲时走装饰动画 */
-  var c = $('#viz'), x = c.getContext('2d'), t = 0, data = null, lastMode = '', vrect = null;
+  var c = $('#viz'), x = c.getContext('2d'), t = 0, data = null, lastMode = '', vrect = null, idleSkip = 0;
   function size(){
     var r = c.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
     c.width = r.width * dpr; c.height = r.height * dpr; x.setTransform(dpr,0,0,dpr,0,0);
@@ -1443,7 +1457,6 @@ $$('.acc-h').forEach(function(h){
       var w = c.clientWidth, h = c.clientHeight, n = 48;
       if (!w || !h) { size(); return; }
       var bw = w / n;
-      x.clearRect(0, 0, w, h);
       /* 三种模式：real=真实分析数据 / fake=合成频谱兜底 / idle=待机 */
       var mode = 'idle';
       if (analyser && playing) {
@@ -1455,6 +1468,9 @@ $$('.acc-h').forEach(function(h){
           mode = maxV > 0 ? 'real' : 'fake';
         } catch (e) { mode = 'fake'; window.__vizErr = 'analyser: ' + e.message; }
       }
+      /* 待机降帧：约 20fps，省电省合成；播放时全帧率 */
+      if (mode === 'idle') { idleSkip++; if (idleSkip % 3 !== 0) return; } else { idleSkip = 0; }
+      x.clearRect(0, 0, w, h);
       var lmx = (window._mx == null ? -1e5 : window._mx - vrect.left);
       var note = $('#envNote');
       if (note && mode !== 'idle' && mode !== lastMode) {
