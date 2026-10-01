@@ -64,8 +64,10 @@ h1{font-family:var(--f-d);font-weight:600;font-size:clamp(24px,3.4vw,34px);lette
 #pdfFrame{display:block;width:100%;height:calc(100vh - 210px);height:calc(100dvh - 210px);min-height:520px;border:0;background:#161a22}
 .fallback{display:none;padding:48px 24px;text-align:center}
 .fallback p{color:var(--dim);margin-bottom:18px;font-size:15px}
+body.pdf-canvas #pdfFrame{display:none}
+body.pdf-canvas .pdf-pages{display:block}
 body.no-embed #pdfFrame{display:none}
-body.no-embed .fallback{display:block}
+body.no-embed:not(.pdf-canvas) .fallback{display:block}
 .pdf-pages{display:none;background:#0d1017;min-height:200px}
 .pdf-pages canvas{display:block;width:100%;height:auto;margin:0 auto 14px;border-radius:8px;box-shadow:0 8px 30px -18px rgba(0,0,0,.8)}
 body.rendering #pdfFrame{display:none}
@@ -121,14 +123,23 @@ body.rendering .pdf-pages{display:block}
     });
     return;
   }
-  /* 手机端：iframe 内嵌 PDF 不可靠，改用 PDF.js 把每一页画到 canvas */
-  document.body.classList.add('no-embed');
-  document.body.classList.add('rendering');
+  /* 手机端：iframe 内嵌 PDF 不可靠，改用 PDF.js 把每一页画到 canvas。
+     pdf-canvas 是持久态：只要画出至少一页就保持显示，不再回退。 */
+  document.body.classList.add('no-embed', 'pdf-canvas');
   var box = document.getElementById('pdfPages');
   var tip = document.createElement('div');
   tip.className = 'pdf-loading';
   tip.textContent = 'LOADING PDF · 简历渲染中';
   box.appendChild(tip);
+
+  var fail = function(){
+    /* 一页都没画出来时才退回下载按钮 */
+    if (!box.querySelector('canvas')) {
+      document.body.classList.remove('pdf-canvas');
+    }
+    document.body.classList.add('no-embed');
+    if (tip.parentNode) tip.parentNode.removeChild(tip);
+  };
 
   var s = document.createElement('script');
   s.src = 'pdfjs/pdf.min.js';
@@ -137,39 +148,29 @@ body.rendering .pdf-pages{display:block}
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs/pdf.worker.min.js';
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       pdfjsLib.getDocument('dengjiasen-resume.pdf').promise.then(function(doc){
-        box.removeChild(tip);
-        var width = box.clientWidth || document.documentElement.clientWidth * 0.92;
-        var done = 0;
+        if (tip.parentNode) tip.parentNode.removeChild(tip);
+        var width = box.clientWidth || Math.floor(document.documentElement.clientWidth * 0.92);
+        var done = 0, failed = 0;
+        var settle = function(){ if (done + failed === doc.numPages && done === 0) fail(); };
         for (var p = 1; p <= doc.numPages; p++) {
           doc.getPage(p).then(function(page){
             var vp0 = page.getViewport({scale: 1});
             var scale = Math.min((width * dpr) / vp0.width, 2.4);
             var vp = page.getViewport({scale: scale});
             var cv = document.createElement('canvas');
-            cv.width = Math.floor(vp.width);
-            cv.height = Math.floor(vp.height);
+            cv.width = Math.max(1, Math.floor(vp.width));
+            cv.height = Math.max(1, Math.floor(vp.height));
             cv.style.aspectRatio = vp.width + '/' + vp.height;
             box.appendChild(cv);
             page.render({canvasContext: cv.getContext('2d'), viewport: vp}).promise.then(function(){
-              done++;
-              if (done === doc.numPages) document.body.classList.remove('rendering');
-            }).catch(function(){ document.body.classList.remove('rendering'); });
-          });
+              done++; settle();
+            }).catch(function(){ failed++; settle(); });
+          }).catch(function(){ failed++; settle(); });
         }
-      }).catch(function(){
-        document.body.classList.remove('rendering');
-        document.body.classList.add('no-embed');
-        if (tip.parentNode) tip.parentNode.removeChild(tip);
-      });
-    } catch (e) {
-      document.body.classList.remove('rendering');
-      document.body.classList.add('no-embed');
-    }
+      }).catch(fail);
+    } catch (e) { fail(); }
   };
-  s.onerror = function(){
-    document.body.classList.remove('rendering');
-    if (tip.parentNode) tip.parentNode.removeChild(tip);
-  };
+  s.onerror = fail;
   document.head.appendChild(s);
 })();
 </script>
