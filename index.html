@@ -404,6 +404,34 @@ mark{background:none;color:var(--gold)}
 @media (max-width:1000px){.side-tag{display:none}}
 @media (prefers-reduced-motion:reduce){.deco{animation:none}}
 
+/* ═══════════ 交互层：吉祥物 / 视差 / 迷你均衡器 ═══════════ */
+.mascot{position:fixed;right:26px;bottom:22px;z-index:880;cursor:pointer;user-select:none;-webkit-user-select:none;transition:transform .25s var(--ease)}
+.mascot:hover{transform:translateY(-5px)}
+.mascot.boing{animation:boing .55s var(--ease)}
+@keyframes boing{0%{transform:scale(1)}35%{transform:scale(1.14,.88)}65%{transform:scale(.93,1.09)}100%{transform:scale(1)}}
+.mascot svg{display:block;filter:drop-shadow(0 10px 22px rgba(0,0,0,.45))}
+.mascot-bubble{
+  position:absolute;right:88px;bottom:84px;white-space:nowrap;
+  background:var(--bg-2);border:1px solid var(--line-2);border-radius:12px;
+  padding:10px 14px;font-size:13.5px;color:var(--ink);
+  opacity:0;transform:translateY(8px);transition:.35s var(--ease);
+  pointer-events:none;box-shadow:0 10px 30px -12px rgba(0,0,0,.7);
+}
+.mascot-bubble::after{
+  content:'';position:absolute;right:-6px;bottom:14px;width:10px;height:10px;
+  background:var(--bg-2);border-right:1px solid var(--line-2);border-top:1px solid var(--line-2);
+  transform:rotate(45deg);
+}
+.mascot-bubble.on{opacity:1;transform:none}
+.tilt{transition:transform .22s var(--ease);transform-style:preserve-3d;will-change:transform}
+.mini-eq{display:inline-flex;align-items:flex-end;gap:2.5px;height:13px;flex:none;margin-left:8px}
+.mini-eq i{width:3px;border-radius:1px;background:var(--gold);animation:eqb .9s ease-in-out infinite}
+.mini-eq i:nth-child(2){animation-delay:.18s}
+.mini-eq i:nth-child(3){animation-delay:.36s}
+@keyframes eqb{0%,100%{height:4px}50%{height:13px}}
+@media (max-width:1000px){.mascot{display:none}}
+@media (prefers-reduced-motion:reduce){.mascot{display:none}.tilt{transition:none}}
+
 /* ── 触摸目标：手机上放大到 44px 量级 ── */
 @media (max-width:1000px){
   .chips-f button{padding:11px 16px}
@@ -891,6 +919,28 @@ mark{background:none;color:var(--gold)}
   <a class="btn btn--ghost" href="#cta">联系我</a>
 </div>
 
+<!-- ══════ 吉祥物：戴耳机的混音师，眼睛跟着鼠标走 ══════ -->
+<div class="mascot" id="mascot" role="img" aria-label="戴耳机的卡通混音师，眼睛会跟着鼠标看，点它会说话">
+  <span class="mascot-bubble" id="mBubble" aria-hidden="true">耳机戴好，开始试听。</span>
+  <svg id="mSvg" viewBox="0 0 130 150" width="106" height="122" aria-hidden="true">
+    <path d="M45 106 L85 106 L93 144 L37 144 Z" fill="#1b1b22" stroke="#F4F4F2" stroke-width="2.5" stroke-linejoin="round"/>
+    <g id="mHead">
+      <circle cx="65" cy="52" r="32" fill="#17171c" stroke="#F4F4F2" stroke-width="2.5"/>
+      <path d="M58 21 q4 -9 8 0 M70 21 q4 -8 7 0" stroke="#F4F4F2" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="52" cy="48" r="7.5" fill="#fff"/>
+      <circle class="m-pupil" cx="52" cy="48" r="3.4" fill="#0A0A0B"/>
+      <circle cx="78" cy="48" r="7.5" fill="#fff"/>
+      <circle class="m-pupil" cx="78" cy="48" r="3.4" fill="#0A0A0B"/>
+      <circle cx="46" cy="61" r="3.4" fill="#FF1493" opacity=".32"/>
+      <circle cx="84" cy="61" r="3.4" fill="#FF1493" opacity=".32"/>
+      <path d="M57 64 q8 7 16 0" stroke="#F4F4F2" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    </g>
+    <path d="M31 54 a34 34 0 0 1 68 0" stroke="#FFD166" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <rect x="24" y="47" width="13" height="21" rx="5.5" fill="#FFD166" stroke="#0A0A0B" stroke-width="1.5"/>
+    <rect x="93" y="47" width="13" height="21" rx="5.5" fill="#FFD166" stroke="#0A0A0B" stroke-width="1.5"/>
+  </svg>
+</div>
+
 <script>
 (function(){
 'use strict';
@@ -1048,10 +1098,11 @@ $$('.acc-h').forEach(function(h){
 
 /* ── 7. Hero 波形画布 ── */
 (function(){
-  var c = $('#wave'), x = c.getContext('2d'), t = 0, raf;
+  var c = $('#wave'), x = c.getContext('2d'), t = 0, raf, wrect = null;
   function size(){
     var r = c.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
     c.width = r.width * dpr; c.height = r.height * dpr; x.setTransform(dpr,0,0,dpr,0,0);
+    wrect = r;
   }
   function draw(){
     var w = c.clientWidth, h = c.clientHeight;
@@ -1063,9 +1114,12 @@ $$('.acc-h').forEach(function(h){
     ];
     layers.forEach(function(L, li){
       x.beginPath();
+      var lmx = (window._mx == null ? -1e5 : window._mx - wrect.left);
       for (var px = 0; px <= w; px += 3) {
+        /* 鼠标附近的波形会隆起，像被手拨动 */
+        var amp = 1 + 0.85 * Math.exp(-Math.pow(px - lmx, 2) / 16200);
         var y = h * L.o
-          + Math.sin(px * L.k + t * L.s) * h * 0.16 * L.a
+          + Math.sin(px * L.k + t * L.s) * h * 0.16 * L.a * amp
           + Math.sin(px * L.k * 2.3 + t * L.s * 1.6) * h * 0.07 * L.a
           + Math.sin(px * L.k * 0.4 - t * 0.4) * h * 0.05;
         if (px === 0) x.moveTo(px, y); else x.lineTo(px, y);
@@ -1090,10 +1144,11 @@ $$('.acc-h').forEach(function(h){
 
 /* ── 8. Hero 频谱卡（装饰动画） ── */
 (function(){
-  var c = $('#spec'), x = c.getContext('2d'), t = 0, raf;
+  var c = $('#spec'), x = c.getContext('2d'), t = 0, raf, srect = null;
   function size(){
     var r = c.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
     c.width = r.width * dpr; c.height = r.height * dpr; x.setTransform(dpr,0,0,dpr,0,0);
+    srect = r;
   }
   function draw(){
     var w = c.clientWidth, h = c.clientHeight, n = 40, bw = w / n;
@@ -1231,6 +1286,7 @@ $$('.acc-h').forEach(function(h){
   }
   function load(i){
     idx = i;
+    removeEq();
     var it = items[i];
     items.forEach(function(o){ o.classList.remove('on'); });
     it.classList.add('on');
@@ -1280,8 +1336,19 @@ $$('.acc-h').forEach(function(h){
   refreshList();
 
   var ICON_P = '<path d="M7 4l13 8-13 8z"/>', ICON_S = '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
-  audio.addEventListener('play', function(){ playing = true; $('#pIcon').innerHTML = ICON_S; });
-  audio.addEventListener('pause', function(){ playing = false; $('#pIcon').innerHTML = ICON_P; });
+  var eqEl = null;
+  function removeEq(){ if (eqEl && eqEl.parentNode) { eqEl.parentNode.removeChild(eqEl); } eqEl = null; }
+  function addEq(){
+    removeEq();
+    if (idx < 0 || !items[idx]) return;
+    var s = document.createElement('span');
+    s.className = 'mini-eq';
+    s.innerHTML = '<i></i><i></i><i></i>';
+    items[idx].insertBefore(s, items[idx].querySelector('.k'));
+    eqEl = s;
+  }
+  audio.addEventListener('play', function(){ playing = true; $('#pIcon').innerHTML = ICON_S; addEq(); });
+  audio.addEventListener('pause', function(){ playing = false; $('#pIcon').innerHTML = ICON_P; removeEq(); });
   audio.addEventListener('ended', function(){ play((idx + 1) % items.length); });
   audio.addEventListener('loadedmetadata', function(){ $('#tDur').textContent = fmt(audio.duration); });
   audio.addEventListener('timeupdate', function(){
@@ -1314,9 +1381,12 @@ $$('.acc-h').forEach(function(h){
         x.fillStyle = g; x.fillRect(i * bw + 1.5, h - bh - 7, bw - 3, bh);
       }
     } else {
+      var lmx = (window._mx == null ? -1e5 : window._mx - srect.left);
       for (var j = 0; j < n; j++) {
         var base = Math.sin(j * 0.4 + t) * 0.22 + Math.sin(j * 0.11 + t * 1.4) * 0.2 + 0.28;
-        var bh2 = Math.max(3, Math.min(base, 1) * (h - 14) * 0.7);
+        /* 空闲时频谱向鼠标聚拢 */
+        var lean = 1 + 0.85 * Math.exp(-Math.pow(j * bw + bw / 2 - lmx, 2) / 12800);
+        var bh2 = Math.max(3, Math.min(base, 1) * (h - 14) * 0.7 * lean);
         var g2 = x.createLinearGradient(0, h, 0, h - bh2);
         g2.addColorStop(0, '#2a2a33'); g2.addColorStop(1, '#3d3d49');
         x.fillStyle = g2; x.fillRect(j * bw + 1.5, h - bh2 - 7, bw - 3, bh2);
@@ -1327,6 +1397,78 @@ $$('.acc-h').forEach(function(h){
   }
   size(); draw();
   window.addEventListener('resize', size);
+})();
+
+/* ── 11. 吉祥物：视线跟随 + 会说话 ── */
+(function(){
+  if (window._mx == null) { window._mx = window.innerWidth / 2; window._my = window.innerHeight * 0.4; }
+  window.addEventListener('pointermove', function(e){ window._mx = e.clientX; window._my = e.clientY; }, {passive:true});
+
+  var m = $('#mascot'); if (!m) return;
+  var head = $('#mHead'), pupils = $$('.m-pupil');
+  var bubble = $('#mBubble'), cx = 0, cy = 0;
+
+  function measure(){
+    var r = m.getBoundingClientRect();
+    cx = r.left + r.width / 2; cy = r.top + r.height * 0.34;
+  }
+  measure();
+  window.addEventListener('resize', measure);
+
+  var LINES = [
+    '耳机戴好，这段低频有点东西。',
+    '人声再抬 1dB，你听。',
+    '别催，母带正在压限。',
+    '今天混哪首？点歌。',
+    '增益别开太大，会爆。',
+    '小音箱听不出低频？正常。',
+    '27 首都在列表里，随便听。'
+  ];
+  var bi = 0, hideTimer = null;
+  function say(){
+    bubble.textContent = LINES[bi++ % LINES.length];
+    bubble.classList.add('on');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function(){ bubble.classList.remove('on'); }, 3400);
+  }
+  m.addEventListener('click', function(){
+    say();
+    m.classList.remove('boing');
+    void m.offsetWidth;
+    m.classList.add('boing');
+  });
+  setTimeout(say, 2400);
+  setInterval(function(){ if (!document.hidden) say(); }, 12000);
+
+  if (REDUCE || !pupils.length) return;
+  var cur = { x: 0, y: 0, r: 0 };
+  (function loop(){
+    var dx = window._mx - cx, dy = window._my - cy;
+    var d = Math.min(Math.hypot(dx, dy) / 42, 1);
+    var a = Math.atan2(dy, dx);
+    var tx = Math.cos(a) * 3.4 * d, ty = Math.sin(a) * 3.4 * d;
+    var tr = Math.max(-5, Math.min(5, dx / 60));
+    cur.x += (tx - cur.x) * 0.085; cur.y += (ty - cur.y) * 0.085; cur.r += (tr - cur.r) * 0.085;
+    var t = 'translate(' + cur.x.toFixed(2) + ',' + cur.y.toFixed(2) + ')';
+    for (var i = 0; i < pupils.length; i++) pupils[i].setAttribute('transform', t);
+    head.setAttribute('transform', 'rotate(' + cur.r.toFixed(2) + ' 65 58)');
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ── 12. 卡片 3D 视差：随鼠标轻微倾斜 ── */
+(function(){
+  if (REDUCE || !window.matchMedia('(hover:hover)').matches) return;
+  $$('.agent-c, .cred, .hero-card, .stat-c').forEach(function(el){
+    el.classList.add('tilt');
+    el.addEventListener('pointermove', function(e){
+      var r = el.getBoundingClientRect();
+      var rx = ((e.clientY - r.top) / r.height - 0.5) * -5;
+      var ry = ((e.clientX - r.left) / r.width - 0.5) * 5;
+      el.style.transform = 'perspective(720px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+    });
+    el.addEventListener('pointerleave', function(){ el.style.transform = ''; });
+  });
 })();
 })();
 </script>
