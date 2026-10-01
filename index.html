@@ -432,6 +432,36 @@ mark{background:none;color:var(--gold)}
 @media (max-width:1000px){.mascot{display:none}}
 @media (prefers-reduced-motion:reduce){.mascot{display:none}.tilt{transition:none}}
 
+/* ═══════════ 背景材质 / 空间深度 ═══════════ */
+.bg-stage{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
+#dust{position:absolute;inset:0;width:100%;height:100%;display:block}
+/* 斜向光柱：给平面加方向感，缓慢滑移 */
+.bg-beams{
+  position:absolute;inset:-25%;
+  background:repeating-linear-gradient(112deg, rgba(255,255,255,.030) 0 1px, transparent 1px 52px);
+  animation:beamSlip 46s linear infinite;
+  -webkit-mask-image:radial-gradient(95% 70% at 50% 30%, #000 20%, transparent 88%);
+  mask-image:radial-gradient(95% 70% at 50% 30%, #000 20%, transparent 88%);
+}
+@keyframes beamSlip{to{transform:translate3d(-52px,30px,0)}}
+/* 粗颗粒云斑：和细颗粒叠出真实胶片质感 */
+.bg-stage::after{
+  content:'';position:absolute;inset:0;opacity:.055;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.022' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
+}
+/* 暗角：把视线收拢到中间，制造纵深 */
+.bg-vignette{position:absolute;inset:0;background:radial-gradient(125% 90% at 50% 18%, transparent 42%, rgba(0,0,0,.62) 100%)}
+/* 玻璃材质：大面积面板磨砂 + 上下内高光，做出厚度 */
+.hero-card,.p-main,.pl,.stat-c,.cred,.agent-c{
+  background-color:rgba(18,18,22,.74);
+  backdrop-filter:blur(8px) saturate(1.08);
+  -webkit-backdrop-filter:blur(8px) saturate(1.08);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.075), inset 0 -1px 0 rgba(0,0,0,.42);
+}
+/* 板块顶部一层极淡的雾，前后分层 */
+.sec{background:linear-gradient(180deg, rgba(255,255,255,.014), transparent 26%)}
+@media (prefers-reduced-motion:reduce){.bg-beams{animation:none}}
+
 /* ── 触摸目标：手机上放大到 44px 量级 ── */
 @media (max-width:1000px){
   .chips-f button{padding:11px 16px}
@@ -532,6 +562,13 @@ mark{background:none;color:var(--gold)}
 </style>
 </head>
 <body>
+
+<!-- ══════ 背景舞台：尘埃粒子 / 光柱 / 暗角 ══════ -->
+<div class="bg-stage" aria-hidden="true">
+  <canvas id="dust"></canvas>
+  <span class="bg-beams"></span>
+  <span class="bg-vignette"></span>
+</div>
 
 <div id="loader">
   <div class="dots" id="dots"></div>
@@ -1469,6 +1506,67 @@ $$('.acc-h').forEach(function(h){
     });
     el.addEventListener('pointerleave', function(){ el.style.transform = ''; });
   });
+})();
+
+/* ── 13. 尘埃粒子：三层景深 + 滚动视差 ── */
+(function(){
+  var c = $('#dust'); if (!c) return;
+  var x = c.getContext('2d'), W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var N = window.innerWidth < 700 ? 24 : 52;
+  var ps = [];
+  var TINT = ['255,255,255', '255,255,255', '255,255,255', '255,209,102', '255,20,147', '0,191,255'];
+
+  function size(){
+    W = window.innerWidth; H = window.innerHeight;
+    c.width = W * dpr; c.height = H * dpr;
+    x.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function seed(){
+    ps = [];
+    for (var i = 0; i < N; i++) {
+      var z = Math.random() * 0.85 + 0.15;
+      ps.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        z: z,
+        r: 0.5 + z * 1.7,
+        vy: -(0.05 + z * 0.15),
+        ph: Math.random() * 6.283,
+        tint: TINT[Math.floor(Math.random() * TINT.length)]
+      });
+    }
+  }
+  function draw(){
+    x.clearRect(0, 0, W, H);
+    var sy = window.scrollY || 0;
+    for (var i = 0; i < ps.length; i++) {
+      var p = ps[i];
+      p.y += p.vy;
+      var drift = REDUCE ? 0 : Math.sin(p.ph + Date.now() / 2600) * (0.12 + p.z * 0.22);
+      p.x += drift;
+      if (p.y < -10) { p.y = H + 10; p.x = Math.random() * W; }
+      if (p.x < -10) p.x = W + 10;
+      if (p.x > W + 10) p.x = -10;
+      /* 视差：远景几乎不动，近景跟着滚动明显位移 */
+      var py = p.y + sy * (0.02 + p.z * 0.07);
+      py = ((py % (H + 20)) + H + 20) % (H + 20) - 10;
+      var a = 0.10 + p.z * 0.32;
+      x.beginPath();
+      x.fillStyle = 'rgba(' + p.tint + ',' + a.toFixed(3) + ')';
+      x.arc(p.x, py, p.r, 0, 6.283);
+      x.fill();
+      /* 近景颗粒带一点光晕 */
+      if (p.z > 0.72) {
+        x.beginPath();
+        x.fillStyle = 'rgba(' + p.tint + ',' + (a * 0.16).toFixed(3) + ')';
+        x.arc(p.x, py, p.r * 3.2, 0, 6.283);
+        x.fill();
+      }
+    }
+    if (!REDUCE) requestAnimationFrame(draw);
+  }
+  size(); seed(); draw();
+  window.addEventListener('resize', function(){ size(); seed(); if (REDUCE) draw(); });
 })();
 })();
 </script>
