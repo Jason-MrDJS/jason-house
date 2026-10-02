@@ -243,7 +243,6 @@ mark{background:none;color:var(--gold)}
 .acc-b p{padding:0 22px 20px 66px;color:var(--dim);font-size:17.5px;line-height:1.8}
 
 /* ═══════════ 流程 ═══════════ */
-}
 
 /* ═══════════ 数据 ═══════════ */
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:40px}
@@ -532,7 +531,7 @@ mark{background:none;color:var(--gold)}
   .sec{padding:80px 0}
 }
 @media (max-width:620px){
-  ..stats{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
   .hero{padding:120px 0 70px}
 }
 @media (prefers-reduced-motion:reduce){
