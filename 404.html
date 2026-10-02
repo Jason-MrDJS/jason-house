@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>404 · 页面不存在 ｜ 邓家森 · 声音实验室</title>
+<style>
+:root{
+  --bg:#080A0F;--ink:#E8E8E8;--dim:#9096A3;
+  --f-d:"Geist","Inter","Space Grotesk","HarmonyOS Sans SC","Source Han Sans SC","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-m:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  background:
+    radial-gradient(circle at 30% 10%, rgba(91,140,255,.13), transparent 46%),
+    radial-gradient(circle at 80% 70%, rgba(214,179,106,.07), transparent 38%),
+    #080A0F;
+  color:var(--ink);font-family:var(--f-d);padding:24px;
+}
+.code{
+  font-family:var(--f-m);font-size:clamp(64px,16vw,140px);font-weight:700;line-height:1;
+  background:linear-gradient(115deg,#5B8CFF,#8B7CF6 52%,#D6B36A);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+h1{font-size:clamp(18px,3vw,26px);font-weight:600;letter-spacing:.02em;margin:14px 0 10px}
+p{color:var(--dim);font-size:15px;margin-bottom:28px}
+a{
+  display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;
+  background:linear-gradient(115deg,#5B8CFF,#8B7CF6 52%,#A78BFA);color:#fff;
+  font-weight:600;font-size:15px;text-decoration:none;
+}
+.hint{font-family:var(--f-m);font-size:11px;letter-spacing:.2em;color:var(--dim);margin-top:22px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div>
+  <div class="code">404</div>
+  <h1>这一轨没有声音</h1>
+  <p>你要找的页面不存在，或已经被移动。</p>
+  <a href="/">← 回到主页</a>
+  <div class="hint">Deng Jiasen · Sound Lab</div>
+</div>
+</body>
+</html>
