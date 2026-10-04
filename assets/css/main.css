@@ -215,6 +215,11 @@ mark{background:none;color:var(--gold)}
 .rail{margin-top:16px}
 .rail-bar{height:6px;background:#1c1c22;border-radius:99px;cursor:pointer;position:relative;overflow:hidden}
 .rail-bar i{position:absolute;inset:0 auto 0 0;background:var(--grad);width:0}
+.rail-bar i.buf{background:rgba(255,255,255,.16)}
+/* 加载态：当前曲目序号处转圈，出声后恢复 */
+.pl-i.loading .k{color:transparent;position:relative}
+.pl-i.loading .k::after{content:'';position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-7px 0 0 -7px;border:2px solid var(--gold);border-top-color:transparent;border-radius:50%;animation:plspin .7s linear infinite}
+@keyframes plspin{to{transform:rotate(360deg)}}
 .rail-t{display:flex;justify-content:space-between;font-family:var(--f-m);font-size:11px;color:var(--dim);margin-top:8px}
 .ctrls{display:flex;align-items:center;gap:12px;margin-top:14px}
 .ctrls button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;transition:.2s}
