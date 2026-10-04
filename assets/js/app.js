@@ -295,7 +295,14 @@ $$('.acc-h').forEach(function(h){
 
 /* ── 10. 播放器：真实频谱 + 三种回放环境模拟 ── */
 (function(){
-  var audio = new Audio(); audio.preload = 'none';
+  var audio = new Audio(); audio.preload = 'metadata';
+  /* 预热：Range 拉首段 1MB 进 HTTP 缓存并提前建连（DNS/TLS），点击时出声更快 */
+  var warmed = {};
+  function warm(src){
+    if (!src || warmed[src] || typeof fetch !== 'function') return;
+    warmed[src] = 1;
+    try { fetch(src, { headers: { Range: 'bytes=0-1048575' } }).catch(function(){}); } catch(e){}
+  }
   var allItems = $$('#plList .pl-i');
   var items = allItems.slice();
   function refreshList(){
@@ -370,24 +377,30 @@ $$('.acc-h').forEach(function(h){
       el.appendChild(fpCanvas(fpSeed(it), 52));
     }
   }
+  var singerTxt = '';
   function load(i){
     idx = i;
     removeEq();
     var it = items[i];
-    items.forEach(function(o){ o.classList.remove('on'); });
-    it.classList.add('on');
+    items.forEach(function(o){ o.classList.remove('on', 'loading'); });
+    it.classList.add('on', 'loading');
     audio.src = it.getAttribute('data-src');
     $('#nowTitle').textContent = it.getAttribute('data-title');
-    $('#nowSub').textContent = it.getAttribute('data-singer');
+    singerTxt = it.getAttribute('data-singer') || '';
+    $('#nowSub').textContent = '加载中…';
     setCover($('#nowCover'), it);
   }
   function play(i){
     if (i !== undefined && i !== idx) load(i);
     if (idx < 0) load(0);
     build();
-    if (ctx && ctx.state === 'suspended') ctx.resume();
+    wake();
     var p = audio.play();
-    if (p && typeof p.then === 'function') { p.then(null, function(){}); }
+    if (p && typeof p.then === 'function') {
+      p.then(null, function(){
+        $('#nowSub').textContent = '浏览器拦截了自动播放，请再点一次播放键';
+      });
+    }
   }
   function toggle(){ if (audio.paused) play(); else audio.pause(); }
 
@@ -430,6 +443,19 @@ $$('.acc-h').forEach(function(h){
   }
   refreshList();
 
+  /* 首次接近作品区：预热第一首的连接与首段数据 */
+  var workSec = document.getElementById('work');
+  if (workSec && 'IntersectionObserver' in window) {
+    var warmIo = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (!e.isIntersecting) return;
+        warm(items[0] && items[0].getAttribute('data-src'));
+        warmIo.disconnect();
+      });
+    }, { rootMargin: '300px' });
+    warmIo.observe(workSec);
+  }
+
   /* 无真实封面的曲目：用指纹封面替换首字母占位 */
   allItems.forEach(function(it){
     if (it.getAttribute('data-cover')) return;
@@ -468,7 +494,26 @@ $$('.acc-h').forEach(function(h){
   audio.addEventListener('play', function(){ playing = true; $('#pIcon').innerHTML = ICON_S; addEq(); });
   audio.addEventListener('pause', function(){ playing = false; $('#pIcon').innerHTML = ICON_P; removeEq(); });
   audio.addEventListener('ended', function(){ play((idx + 1) % items.length); });
-  audio.addEventListener('playing', wake);
+  audio.addEventListener('playing', function(){
+    wake();
+    if (items[idx]) items[idx].classList.remove('loading');
+    $('#nowSub').textContent = singerTxt;
+    /* 当前曲已出声，顺手预热下一首的首段 */
+    var nx = items[(idx + 1) % items.length];
+    if (nx) warm(nx.getAttribute('data-src'));
+  });
+  audio.addEventListener('loadstart', function(){
+    if (items[idx]) items[idx].classList.add('loading');
+    $('#nowSub').textContent = '加载中…';
+  });
+  audio.addEventListener('waiting', function(){
+    if (items[idx]) items[idx].classList.add('loading');
+    $('#nowSub').textContent = '缓冲中…';
+  });
+  audio.addEventListener('progress', function(){
+    var b = audio.buffered, d = audio.duration;
+    if (b && d && b.length) $('#buf').style.width = (b.end(b.length - 1) / d * 100) + '%';
+  });
   document.addEventListener('pointerdown', wake);
   audio.addEventListener('loadedmetadata', function(){ $('#tDur').textContent = fmt(audio.duration); });
   audio.addEventListener('timeupdate', function(){
@@ -477,6 +522,7 @@ $$('.acc-h').forEach(function(h){
     $('#tCur').textContent = fmt(audio.currentTime);
   });
   audio.addEventListener('error', function(){
+    if (items[idx]) items[idx].classList.remove('loading');
     if (audio.src) $('#nowSub').textContent = '音频加载失败，请检查网络或稍后再试';
   });
 
